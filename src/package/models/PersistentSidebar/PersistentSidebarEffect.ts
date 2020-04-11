@@ -8,6 +8,7 @@ import {
   PersistentBehavior,
   IMargin,
   IWidth,
+  ISidebarEffect,
 } from "../../types"
 
 const attachOperator = (value: string | number, operator: 1 | -1) =>
@@ -15,7 +16,10 @@ const attachOperator = (value: string | number, operator: 1 | -1) =>
     ? operator * value
     : `${operator.toString().substr(0, 1)}${value}`
 
-export default (config: PersistentSidebarConfig, state: State) => {
+export default (
+  config: PersistentSidebarConfig,
+  state: State
+): ISidebarEffect => {
   const { anchor } = config
   const { currentWidth } = createModel(config, state)
 
@@ -34,6 +38,7 @@ export default (config: PersistentSidebarConfig, state: State) => {
   }
 
   return {
+    id: config.id,
     getObjectWidth: (objectId?: string): IWidth =>
       createWidthInterface(
         state.open && isBehavior("fit", objectId) ? currentWidth : 0

@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/models/SidebarList/SidebarListEffect.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/models/SidebarList/SidebarListEffect.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/models/SidebarList/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/Header/HeaderEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Header/HeaderEffect.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/models/PersistentSidebar/PersistentSidebarEffect.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/PersistentSidebar/PersistentSidebarEffect.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/models/PersistentSidebar/PersistentSidebarEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/PersistentSidebar/PersistentSidebarEffect.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/types/Model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Model.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,6 +15,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="267" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -188,7 +189,7 @@
       <workItem from="1586516865314" duration="2208000" />
       <workItem from="1586530023491" duration="21475000" />
       <workItem from="1586579855987" duration="226000" />
-      <workItem from="1586580186913" duration="35744000" />
+      <workItem from="1586580186913" duration="38128000" />
     </task>
     <servers />
   </component>
@@ -207,5 +208,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/gatsby_mui_layout$HeaderModel_return_correct_style.info" NAME="HeaderModel.return correct style Coverage Results" MODIFIED="1586626840493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

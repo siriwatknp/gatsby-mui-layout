@@ -6,11 +6,13 @@ export interface ISidebarListEffect {
 }
 
 export interface ISidebarEffect {
+  id: string
   getObjectWidth: (id?: string) => IWidth
   getObjectMargin: (id?: string) => IMargin
 }
 
 export interface IHeaderEffect {
+  id: string
   getHeaderZIndex: Function
   getEdgeSidebarZIndex: Function
 }

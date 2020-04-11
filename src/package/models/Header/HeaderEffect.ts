@@ -1,7 +1,7 @@
 import { Theme } from "@material-ui/core/styles"
-import { HeaderConfig } from "../../types"
+import { HeaderConfig, IHeaderEffect } from "../../types"
 
-type HeaderPartial = Pick<HeaderConfig, "position" | "clipped">
+type HeaderPartial = Pick<HeaderConfig, "id" | "position" | "clipped">
 
 const incrementZIndex = (theme: Theme, plus: number) => ({
   zIndex: (theme?.zIndex?.drawer ?? 1200) + plus,
@@ -17,11 +17,12 @@ export const isSomeClipped = ({ clipped }: Pick<HeaderConfig, "clipped">) => {
   return false
 }
 
-export default (header: HeaderPartial) => {
+export default (header: HeaderPartial): IHeaderEffect => {
   const isAboveSomeSidebars =
     header.position !== "static" && isSomeClipped(header)
 
   return {
+    id: header.id,
     getHeaderZIndex: (theme?: Theme) =>
       isAboveSomeSidebars ? incrementZIndex(theme, 10) : undefined,
     getEdgeSidebarZIndex: (sidebarId: string, theme?: Theme) =>
