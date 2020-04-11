@@ -1,11 +1,11 @@
 import createModel from './HeaderEffect';
 import {
-  SidebarEffect,
+  ISidebarEffect,
   HeaderConfig,
 } from "../../types"
 
 type HeaderDependencies = {
-  sidebarEffect: SidebarEffect
+  sidebarEffect: ISidebarEffect
 }
 
 export default (
@@ -16,7 +16,7 @@ export default (
   return {
     getStyle: () => ({
       ...sidebarEffect.getObjectWidth(config.id).getStyle(),
-      ...sidebarEffect.getObjectMargin(config.id),
+      ...sidebarEffect.getObjectMargin(config.id).getStyle(),
       ...headerEffect.getHeaderZIndex(),
     }),
   }

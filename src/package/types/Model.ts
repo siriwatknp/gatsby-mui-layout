@@ -1,11 +1,16 @@
 import { Width, Margin } from "./InlineStyle"
 
-export interface SidebarEffect {
-  getObjectWidth: Function
-  getObjectMargin: Function
+export interface ISidebarListEffect {
+  marginStyle: Margin
+  widthStyle: Width
 }
 
-export interface HeaderEffect {
+export interface ISidebarEffect {
+  getObjectWidth: (id?: string) => IWidth
+  getObjectMargin: (id?: string) => IMargin
+}
+
+export interface IHeaderEffect {
   getHeaderZIndex: Function
   getEdgeSidebarZIndex: Function
 }

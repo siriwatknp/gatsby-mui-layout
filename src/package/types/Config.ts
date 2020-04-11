@@ -1,4 +1,4 @@
-import { AppendDictionary, Dictionary } from './Utils';
+import { AppendDictionary, Dictionary } from "./Utils"
 
 export type PersistentBehavior = "fit" | "flexible" | "none"
 export type PersistentBehaviorById = Dictionary<PersistentBehavior>
@@ -15,14 +15,17 @@ export interface EdgeSidebarConfig {
 }
 
 export interface PersistentSidebarConfig extends EdgeSidebarConfig {
-  persistentBehavior: AppendDictionary<PersistentBehavior>,
+  persistentBehavior: AppendDictionary<PersistentBehavior>
 }
 
-export interface InsetSidebarConfig {
+export interface InsetSidebarConfig {}
 
-}
+export interface TemporarySidebarConfig {}
 
-export type SidebarConfig = EdgeSidebarConfig;
+export type SidebarConfig =
+  | EdgeSidebarConfig
+  | TemporarySidebarConfig
+  | InsetSidebarConfig
 
 export type Position = "static" | "relative" | "sticky" | "absolute" | "fixed"
 

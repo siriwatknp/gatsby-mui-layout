@@ -1,8 +1,10 @@
 import createModel from "./PersistentSidebarEffect"
-import { PersistentSidebarConfig, SidebarEffect } from "../../types"
+import { PersistentSidebarConfig, ISidebarEffect } from "../../types"
 
-const getWidthStyle = (model: SidebarEffect, ...args: any[]) =>
+const getWidthStyle = (model: ISidebarEffect, ...args: any[]) =>
   model.getObjectWidth(...args).getStyle()
+const getMarginStyle = (model: ISidebarEffect, ...args: any[]) =>
+  model.getObjectMargin(...args).getStyle()
 
 describe("[Simple] None Behavior", () => {
   const baseConfig = {
@@ -16,11 +18,11 @@ describe("[Simple] None Behavior", () => {
 
   it("affect nothing", () => {
     const model = createModel(baseConfig, { open: true })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginLeft: 0,
     })
     expect(getWidthStyle(model)).toEqual({
-      width: '100%',
+      width: "100%",
     })
   })
 })
@@ -40,30 +42,30 @@ describe("[Simple] Fit Behavior", () => {
 
   it("[anchor: left] affect margin left", () => {
     let model = createModel(baseConfig, { open: false })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginLeft: 0,
     })
 
     model = createModel(baseConfig, { open: true })
     // default to "fit"
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginLeft: 256,
     })
 
     model = createModel(baseConfig, { open: true })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginLeft: 256,
     })
 
     model = createModel(baseConfig, { open: true })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginLeft: 256,
     })
   })
 
   it("[anchor: left] affect margin left when collapsed", () => {
     let model = createModel(baseConfig, { open: true, collapsed: true })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginLeft: 80,
     })
   })
@@ -72,12 +74,12 @@ describe("[Simple] Fit Behavior", () => {
     baseConfig.width = 300
     baseConfig.anchor = "right"
     let model = createModel(baseConfig, { open: false })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginRight: 0,
     })
 
     model = createModel(baseConfig, { open: true })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginRight: 300,
     })
   })
@@ -120,13 +122,13 @@ describe("[Simple] Flexible Behavior", () => {
     // css constraint
     // todo support rtl direction
     let model = createModel(baseConfig, { open: true })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginLeft: 256,
     })
 
     baseConfig.anchor = "right"
     model = createModel(baseConfig, { open: true })
-    expect(model.getObjectMargin()).toEqual({
+    expect(getMarginStyle(model)).toEqual({
       marginLeft: -256,
     })
   })
@@ -150,7 +152,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
   it("[anchor: left] return correct width and margin for each object", () => {
     let model = createModel(baseConfig, { open: true })
     // object 1
-    expect(model.getObjectMargin("object1")).toEqual({
+    expect(getMarginStyle(model, "object1")).toEqual({
       marginLeft: 256,
     })
     expect(getWidthStyle(model, "object1")).toEqual({
@@ -158,7 +160,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
     })
 
     // object 2
-    expect(model.getObjectMargin("object2")).toEqual({
+    expect(getMarginStyle(model, "object2")).toEqual({
       marginLeft: 256,
     })
     expect(getWidthStyle(model, "object2")).toEqual({
@@ -170,7 +172,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
     baseConfig.anchor = "right"
     let model = createModel(baseConfig, { open: true, collapsed: true })
     // object 1
-    expect(model.getObjectMargin("object1")).toEqual({
+    expect(getMarginStyle(model, "object1")).toEqual({
       marginRight: 80,
     })
     expect(getWidthStyle(model, "object1")).toEqual({
@@ -178,7 +180,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
     })
 
     // object 2
-    expect(model.getObjectMargin("object2")).toEqual({
+    expect(getMarginStyle(model, "object2")).toEqual({
       marginLeft: -80,
     })
     expect(getWidthStyle(model, "object2")).toEqual({
