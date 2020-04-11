@@ -5,6 +5,41 @@ import Header from "../package/components/Header"
 import { EdgeSidebarConfig, HeaderConfig } from "../package/types"
 
 const IndexPage = () => {
+  const config = {
+    xs: {
+      header: {
+        id: 'app-header',
+        position: 'fixed',
+        clipped: true,
+      },
+      sidebars: [
+        {
+          id: 'app-primary-sidebar',
+          anchor: 'left',
+          width: 256,
+          collapsible: true,
+          collapsedWidth: 64,
+        },
+        {
+          id: 'app-secondary-sidebar',
+          anchor: 'right',
+          width: 200,
+          collapsible: true,
+          collapsedWidth: 64,
+        }
+      ]
+    },
+    sm: {
+      header: {
+        id: 'app-header',
+        position: 'relative',
+        clipped: {
+          'app-primary-sidebar': true,
+          'app-secondary-sidebar': false,
+        }
+      },
+    }
+  }
   const headerConfig = {
     xs: {
       position: "fixed",

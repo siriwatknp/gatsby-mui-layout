@@ -13,26 +13,9 @@ export default (
   { sidebarEffect }: HeaderDependencies
 ) => {
   const headerEffect = createModel(config);
-  // const marginStyle = sidebars.reduce((result, curr) => {
-  //   // todo: refactor type guard here
-  //   if (typeof config.persistentBehavior === "object") {
-  //     const value = config.persistentBehavior[curr.id]
-  //     if (!value) {
-  //       throw new Error(
-  //         `Cannot find Header\'s persistentBehavior for id: ${curr.id}`
-  //       )
-  //     }
-  //     return curr.getMarginEffect({
-  //       persistentBehavior: value,
-  //     })
-  //   }
-  //   return curr.getMarginEffect({
-  //     persistentBehavior: config.persistentBehavior,
-  //   })
-  // }, {})
   return {
     getStyle: () => ({
-      ...sidebarEffect.getObjectWidth(config.id),
+      ...sidebarEffect.getObjectWidth(config.id).getStyle(),
       ...sidebarEffect.getObjectMargin(config.id),
       ...headerEffect.getHeaderZIndex(),
     }),

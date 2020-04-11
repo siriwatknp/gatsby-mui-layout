@@ -1,12 +1,12 @@
 import upperFirst from "../../utils/upperFirst"
 import createModel from "../BaseSidebar"
-import { getCssWidth } from "../Width"
+import createWidthInterface from "../Width"
 import {
   PersistentSidebarConfig,
   State,
   PersistentBehavior,
   Margin,
-  Width,
+  IWidth,
 } from "../../types"
 
 const attachOperator = (value: string | number, operator: 1 | -1) =>
@@ -33,11 +33,10 @@ export default (config: PersistentSidebarConfig, state: State) => {
   }
 
   return {
-    getObjectWidth: (objectId?: string): Width => ({
-      width: getCssWidth(
+    getObjectWidth: (objectId?: string): IWidth =>
+      createWidthInterface(
         state.open && isBehavior("fit", objectId) ? currentWidth : 0
       ),
-    }),
     getObjectMargin: (objectId?: string): Margin => {
       if (!state.open) {
         return {

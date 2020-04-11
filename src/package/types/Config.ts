@@ -1,6 +1,6 @@
 import { AppendDictionary, Dictionary } from './Utils';
 
-export type PersistentBehavior = "fit" | "flexible"
+export type PersistentBehavior = "fit" | "flexible" | "none"
 export type PersistentBehaviorById = Dictionary<PersistentBehavior>
 export type InsetBehavior = "fit"
 

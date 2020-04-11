@@ -1,5 +1,29 @@
 import createModel from "./PersistentSidebarEffect"
-import { PersistentSidebarConfig } from "../../types"
+import { PersistentSidebarConfig, SidebarEffect } from "../../types"
+
+const getWidthStyle = (model: SidebarEffect, ...args: any[]) =>
+  model.getObjectWidth(...args).getStyle()
+
+describe("[Simple] None Behavior", () => {
+  const baseConfig = {
+    id: "persistent-sidebar",
+    anchor: "left" as const,
+    collapsible: true,
+    collapsedWidth: 80,
+    width: 256,
+    persistentBehavior: "none" as const,
+  }
+
+  it("affect nothing", () => {
+    const model = createModel(baseConfig, { open: true })
+    expect(model.getObjectMargin()).toEqual({
+      marginLeft: 0,
+    })
+    expect(getWidthStyle(model)).toEqual({
+      width: '100%',
+    })
+  })
+})
 
 describe("[Simple] Fit Behavior", () => {
   let baseConfig: PersistentSidebarConfig
@@ -62,16 +86,16 @@ describe("[Simple] Fit Behavior", () => {
     baseConfig.width = "30%"
     baseConfig.collapsedWidth = 80
     let model = createModel(baseConfig, { open: false, collapsed: false })
-    expect(model.getObjectWidth()).toEqual({ width: "100%" })
+    expect(getWidthStyle(model)).toEqual({ width: "100%" })
 
     model = createModel(baseConfig, { open: true, collapsed: false })
-    expect(model.getObjectWidth()).toEqual({ width: "calc(100% - (30%))" })
-    expect(model.getObjectWidth()).toEqual({
+    expect(getWidthStyle(model)).toEqual({ width: "calc(100% - (30%))" })
+    expect(getWidthStyle(model)).toEqual({
       width: "calc(100% - (30%))",
     })
 
     model = createModel(baseConfig, { open: true, collapsed: true })
-    expect(model.getObjectWidth()).toEqual({
+    expect(getWidthStyle(model)).toEqual({
       width: "calc(100% - 80px)",
     })
   })
@@ -129,7 +153,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
     expect(model.getObjectMargin("object1")).toEqual({
       marginLeft: 256,
     })
-    expect(model.getObjectWidth("object1")).toEqual({
+    expect(getWidthStyle(model, "object1")).toEqual({
       width: "calc(100% - 256px)",
     })
 
@@ -137,7 +161,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
     expect(model.getObjectMargin("object2")).toEqual({
       marginLeft: 256,
     })
-    expect(model.getObjectWidth("object2")).toEqual({
+    expect(getWidthStyle(model, "object2")).toEqual({
       width: "100%",
     })
   })
@@ -149,7 +173,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
     expect(model.getObjectMargin("object1")).toEqual({
       marginRight: 80,
     })
-    expect(model.getObjectWidth("object1")).toEqual({
+    expect(getWidthStyle(model, "object1")).toEqual({
       width: "calc(100% - 80px)",
     })
 
@@ -157,7 +181,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
     expect(model.getObjectMargin("object2")).toEqual({
       marginLeft: -80,
     })
-    expect(model.getObjectWidth("object2")).toEqual({
+    expect(getWidthStyle(model, "object2")).toEqual({
       width: "100%",
     })
   })
