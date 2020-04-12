@@ -1,5 +1,5 @@
 import { isNil, toValidCssValue } from "../../utils"
-import { Margin, IMargin } from "../../types"
+import { MarginStyle, IMargin } from "../../types"
 
 export const getCssMargin = (m?: string | number) => {
   if (typeof m === "string") {
@@ -9,7 +9,7 @@ export const getCssMargin = (m?: string | number) => {
 }
 
 const transformMargin = (
-  m: Margin,
+  m: MarginStyle,
   fn: (val: string | number) => string | number = val => val
 ) => ({
   ...(!isNil(m.marginLeft) && {
@@ -26,7 +26,7 @@ const getCssValue = (v1: string | number, v2: string | number) => {
   return `${toValidCssValue(v1)} + ${toValidCssValue(v2)}`
 }
 
-export const combineMargin = (m1: Margin, m2: Margin) => {
+export const combineMargin = (m1: MarginStyle, m2: MarginStyle) => {
   if (!m1 && !m2) return undefined
   if (!m1 && m2) return m2
   if (m1 && !m2) return m1
@@ -35,7 +35,7 @@ export const combineMargin = (m1: Margin, m2: Margin) => {
   return transformMargin({ marginLeft, marginRight })
 }
 
-const createMarginInterface = (value: Margin): IMargin => {
+const createMarginInterface = (value: MarginStyle): IMargin => {
   return {
     value,
     combine: m => createMarginInterface(combineMargin(value, m.value)),

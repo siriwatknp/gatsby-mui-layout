@@ -18,12 +18,16 @@ export interface PersistentSidebarConfig extends EdgeSidebarConfig {
   persistentBehavior: AppendDictionary<PersistentBehavior>
 }
 
-export interface InsetSidebarConfig {}
+export interface InsetSidebarConfig {
+  id: string
+}
 
-export interface TemporarySidebarConfig {}
+export interface TemporarySidebarConfig {
+  id: string
+}
 
 export type SidebarConfig =
-  | EdgeSidebarConfig
+  | PersistentSidebarConfig
   | TemporarySidebarConfig
   | InsetSidebarConfig
 
