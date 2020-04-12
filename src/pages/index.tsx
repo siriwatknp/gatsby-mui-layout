@@ -1,73 +1,30 @@
 import React from "react"
-import { Link } from "gatsby"
-
-import Header from "../package/components/Header"
-import { EdgeSidebarConfig, HeaderConfig } from "../package/types"
+import { Root, Header } from "../package/components"
+import Layout from "../package/core/Builder"
 
 const IndexPage = () => {
-  const config = {
-    xs: {
-      header: {
-        id: 'app-header',
-        position: 'fixed',
-        clipped: true,
-      },
-      sidebars: [
-        {
-          id: 'app-primary-sidebar',
-          anchor: 'left',
-          width: 256,
-          collapsible: true,
-          collapsedWidth: 64,
-        },
-        {
-          id: 'app-secondary-sidebar',
-          anchor: 'right',
-          width: 200,
-          collapsible: true,
-          collapsedWidth: 64,
-        }
-      ]
-    },
-    sm: {
-      header: {
-        id: 'app-header',
-        position: 'relative',
-        clipped: {
-          'app-primary-sidebar': true,
-          'app-secondary-sidebar': false,
-        }
-      },
-    }
-  }
-  const headerConfig = {
-    xs: {
+  const scheme = Layout()
+  scheme.configureHeader(h =>
+    h.createConfig("xs", {
+      id: "header",
       position: "fixed",
-    },
-    md: {
-      position: "relative",
-    },
-  }
-  const sidebarConfig = {
-    sm: {
-      headerClipped: false,
-      collapsedWidth: 64,
+      clipped: true,
+    })
+  )
+  scheme.configureSidebar(s =>
+    s.createPersistentSidebarConfig("sm", {
+      id: "primary-sidebar",
+      anchor: "left",
       width: 256,
+      persistentBehavior: "fit",
       collapsible: true,
-      anchor: "left",
-    },
-    lg: {
-      headerClipped: false,
       collapsedWidth: 80,
-      width: "30%",
-      collapsible: true,
-      anchor: "left",
-    },
-  }
+    })
+  )
   return (
-    <div>
+    <Root scheme={scheme}>
       <Header>Hello</Header>
-    </div>
+    </Root>
   )
 }
 

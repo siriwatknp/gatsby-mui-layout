@@ -1,5 +1,5 @@
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import { pickNearestBreakpoint } from "../../../utils"
+import { pickNearestBreakpoint, combineBreakpoints } from "../../../utils"
 import createHeaderModel, { createHeaderEffect } from "../../../models/Header"
 import {
   HeaderConfig,
@@ -24,15 +24,17 @@ export default (initialConfig?: HeaderConfig): IHeaderBuilder => {
     getBreakpointEffect: function(breakpoint) {
       return createHeaderEffect(this.getBreakpointConfig(breakpoint))
     },
-    getResultStyle: (state, sidebar) => {
+    getResultStyle(state, sidebar) {
       const result: ResultStyle = {}
-      Object.entries(map).forEach(
-        ([breakpoint, config]: [Breakpoint, HeaderConfig]) => {
-          const stateEffectCreators = sidebar.getBreakpointEffects(breakpoint)
+      const breakpoints = combineBreakpoints(map, sidebar.getConfig())
+      breakpoints.map(bp => {
+        const headerConfig = this.getBreakpointConfig(bp);
+        const stateEffectCreators = sidebar.getBreakpointEffects(bp)
+        if (stateEffectCreators) {
           const effects = stateEffectCreators.map(c => c(state))
-          result[breakpoint] = createHeaderModel(config, effects).getStyle()
+          result[bp] = createHeaderModel(headerConfig, effects).getStyle()
         }
-      )
+      })
       return result
     },
   }

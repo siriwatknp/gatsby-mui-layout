@@ -6,5 +6,5 @@ export type SidebarState = {
 }
 
 export type State = {
-  sidebar?: SidebarState
+  sidebar: SidebarState
 }

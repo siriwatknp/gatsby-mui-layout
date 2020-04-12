@@ -1,8 +1,8 @@
 import React from "react"
 import AppBar from "@material-ui/core/AppBar"
 import { makeStyles } from "@material-ui/core/styles"
+import { useHeader } from "../../core/Context/LayoutContext"
 import { createPersistentSidebarEffect } from "../../models/PersistentSidebar"
-import createModel from "../../models/Header"
 import createBreakpointStyles from "../../utils/createBreakpointStyles"
 
 export interface HeaderProps {}
@@ -53,13 +53,9 @@ const Header: React.FC<HeaderProps> = props => {
     },
     { sidebar: { "primary-sidebar": { open: true, collapsed: true } } }
   )
-  const xsModel = createModel(headerConfig, [effect1, effect2])
-  const mdModel = createModel(headerConfig, [effect3, effect2])
-  const styles = useStyles({
-    xs: xsModel.getStyle(),
-    md: mdModel.getStyle(),
-  })
-  return <AppBar classes={styles} color={"default"} elevation={0} {...props} />
+  const { styles } = useHeader();
+  const classes = useStyles(styles);
+  return <AppBar classes={classes} color={"default"} elevation={0} {...props} />
 }
 
 export default Header

@@ -1,9 +1,6 @@
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 import HeaderBuilder from "./Header/HeaderBuilder"
 import SidebarBuilder from "./Sidebar/SidebarBuilder"
-import createHeaderModel from "../../models/Header"
 import {
-  HeaderConfig,
   IHeaderBuilder,
   ISidebarBuilder,
   State,
@@ -17,7 +14,11 @@ interface BuilderCallback<T> {
 export interface ILayoutBuilder {
   configureHeader: (callback: BuilderCallback<IHeaderBuilder>) => void
   configureSidebar: (callback: BuilderCallback<ISidebarBuilder>) => void
-  // getConfig: () => LayoutConfig
+  getComponentStyle: (
+    state: State
+  ) => {
+    header: ResultStyle
+  }
 }
 
 export default (): ILayoutBuilder => {
@@ -31,6 +32,8 @@ export default (): ILayoutBuilder => {
     configureSidebar(callback) {
       callback(sidebar)
     },
-    // getConfig: () =>
+    getComponentStyle: (state: State) => ({
+      header: header.getResultStyle(state, sidebar),
+    }),
   }
 }

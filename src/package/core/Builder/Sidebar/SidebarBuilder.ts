@@ -28,27 +28,27 @@ export const isUniqueSidebars = (sidebars: SidebarConfig[]): boolean => {
 const createStateEffect = (
   effectCreator: ISidebarEffectCreator,
   config: SidebarConfig
-): ISidebarStateEffectCreator => state => effectCreator(config, state)
+): ISidebarStateEffectCreator => map => effectCreator(config, map)
 
 export default (): ISidebarBuilder => {
-  const state: MapBreakpoint<SidebarConfig[]> = {}
+  const map: MapBreakpoint<SidebarConfig[]> = {}
   const effect: MapBreakpoint<ISidebarStateEffectCreator[]> = {}
   const addConfig = (
     breakpoint: Breakpoint,
     config: SidebarConfig,
     effectCreator: ISidebarEffectCreator
   ): void => {
-    if (!state[breakpoint]) {
-      state[breakpoint] = []
+    if (!map[breakpoint]) {
+      map[breakpoint] = []
     }
-    state[breakpoint].push(config)
+    map[breakpoint].push(config)
 
     if (!effect[breakpoint]) {
       effect[breakpoint] = []
     }
     effect[breakpoint].push(createStateEffect(effectCreator, config))
 
-    if (!isUniqueSidebars(state[breakpoint])) {
+    if (!isUniqueSidebars(map[breakpoint])) {
       throw new Error(
         `Sidebar id: ${config.id} is duplicated at breakpoint "${breakpoint}"`
       )
@@ -62,8 +62,8 @@ export default (): ISidebarBuilder => {
       // todo: change effect creator to createTemporarySidebarEffect
       addConfig(breakpoint, config, createPersistentSidebarEffect)
     },
-    getConfig: () => state,
-    getBreakpointConfig: breakpoint => pickNearestBreakpoint(state, breakpoint),
+    getConfig: () => map,
+    getBreakpointConfig: breakpoint => pickNearestBreakpoint(map, breakpoint),
     getBreakpointEffects: breakpoint =>
       pickNearestBreakpoint(effect, breakpoint),
   }

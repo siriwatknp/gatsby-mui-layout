@@ -30,7 +30,7 @@ it("can create config and return correct config", () => {
   ).toBeUndefined()
 })
 
-it("return correct result style", () => {
+it("return correct result style by mapping all possible breakpoints with related effect", () => {
   const header = HeaderBuilder({
     id: "header",
     clipped: true,
@@ -51,6 +51,14 @@ it("return correct result style", () => {
     collapsedWidth: 80,
     persistentBehavior: "fit",
   })
+  sidebar.createPersistentSidebarConfig("xl", {
+    id: "sidebar-1",
+    anchor: "left",
+    width: "30%",
+    collapsible: false,
+    collapsedWidth: 80,
+    persistentBehavior: "fit",
+  })
 
   expect(
     header.getResultStyle({ sidebar: { "sidebar-1": { open: true } } }, sidebar)
@@ -61,6 +69,10 @@ it("return correct result style", () => {
     md: {
       width: "calc(100% - 256px)",
       marginLeft: 256,
+    },
+    xl: {
+      marginLeft: "calc(30%)",
+      width: "calc(100% - (30%))",
     },
   })
 })
