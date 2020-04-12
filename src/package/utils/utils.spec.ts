@@ -67,7 +67,6 @@ describe("createBreakpointStyles", () => {
   it("mix media queries", () => {
     const result = createBreakpointStyles(
       {
-        padding: 0,
         sm: {
           margin: 2,
         },
@@ -75,7 +74,6 @@ describe("createBreakpointStyles", () => {
       breakpoints
     )
     expect(result).toEqual({
-      padding: 0,
       "@media (min-width:600px)": {
         margin: 2,
       },

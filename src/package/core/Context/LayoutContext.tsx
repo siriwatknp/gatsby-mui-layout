@@ -1,6 +1,9 @@
 import React from "react"
-import { State } from "../../types"
-import { ILayoutBuilder } from "../Builder/Builder"
+import merge from "deepmerge"
+import { useTheme } from "@material-ui/core/styles"
+import { createBreakpointStyles } from "../../utils"
+import { ILayoutBuilder } from "../Builder"
+import { State, ResultStyle } from "../../types"
 
 const Context = React.createContext(null)
 Context.displayName = "MuiLayoutCtx"
@@ -9,6 +12,17 @@ type SidebarPayload = { id: string; value: boolean }
 type Action =
   | { type: "SET_OPEN"; payload: SidebarPayload }
   | { type: "SET_COLLAPSED"; payload: SidebarPayload }
+interface ISidebarTrigger {
+  (id: string, value: boolean): void
+}
+type ContextValue = {
+  state: State
+  styles: {
+    header: ResultStyle
+  }
+  setOpen: ISidebarTrigger
+  setCollapsed: ISidebarTrigger
+}
 
 const reducer = (state: State, action: Action) => {
   const newState = Object.assign({}, state)
@@ -24,10 +38,19 @@ const reducer = (state: State, action: Action) => {
   }
 }
 
-export const useHeader = () => {
+export const useLayoutCtx = (): ContextValue => {
   const ctx = React.useContext(Context)
+  if (!ctx) {
+    throw new Error("useLayoutCtx must be rendered under LayoutProvider")
+  }
+  return ctx
+}
+
+export const useHeader = () => {
+  const { styles } = useLayoutCtx()
+  const { breakpoints } = useTheme()
   return {
-    styles: ctx.styles.header,
+    styles: createBreakpointStyles(styles.header, breakpoints),
   }
 }
 
@@ -43,7 +66,10 @@ export const LayoutProvider = ({
   scheme,
   children,
 }: React.PropsWithChildren<LayoutProviderProps>) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [state, dispatch] = React.useReducer(
+    reducer,
+    merge(scheme.getInitialState(), initialState)
+  )
   const setOpen = (id: string, value: boolean) =>
     dispatch({ type: "SET_OPEN", payload: { id, value } })
   const setCollapsed = (id: string, value: boolean) =>

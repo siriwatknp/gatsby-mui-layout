@@ -19,6 +19,7 @@ export interface ILayoutBuilder {
   ) => {
     header: ResultStyle
   }
+  getInitialState: () => State
 }
 
 export default (): ILayoutBuilder => {
@@ -35,5 +36,17 @@ export default (): ILayoutBuilder => {
     getComponentStyle: (state: State) => ({
       header: header.getResultStyle(state, sidebar),
     }),
+    getInitialState: () => {
+      const sidebarIds = sidebar.getSidebarIds()
+      return {
+        sidebar: sidebarIds.reduce(
+          (result, curr) => ({
+            ...result,
+            [curr]: { open: false, collapsed: false },
+          }),
+          {}
+        ),
+      }
+    },
   }
 }

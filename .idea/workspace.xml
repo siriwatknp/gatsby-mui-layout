@@ -2,28 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/components/Root/Root.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/Root/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/Context/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/utils/combineBreakpoints.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Sidebar/Sidebar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Sidebar/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Builder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/Context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Context.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/createBreakpointStyles/createBreakpointStyles.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/createBreakpointStyles/createBreakpointStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/createBreakpointStyles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/createBreakpointStyles/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Builder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/createBreakpointStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/createBreakpointStyles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -207,7 +198,7 @@
       <workItem from="1586516865314" duration="2208000" />
       <workItem from="1586530023491" duration="21475000" />
       <workItem from="1586579855987" duration="226000" />
-      <workItem from="1586580186913" duration="65682000" />
+      <workItem from="1586580186913" duration="73542000" />
     </task>
     <servers />
   </component>

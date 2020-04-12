@@ -31,6 +31,7 @@ const createStateEffect = (
 ): ISidebarStateEffectCreator => map => effectCreator(config, map)
 
 export default (): ISidebarBuilder => {
+  const sidebarIds: string[] = []
   const map: MapBreakpoint<SidebarConfig[]> = {}
   const effect: MapBreakpoint<ISidebarStateEffectCreator[]> = {}
   const addConfig = (
@@ -38,6 +39,10 @@ export default (): ISidebarBuilder => {
     config: SidebarConfig,
     effectCreator: ISidebarEffectCreator
   ): void => {
+    if (!sidebarIds.includes(config.id)) {
+      sidebarIds.push(config.id)
+    }
+
     if (!map[breakpoint]) {
       map[breakpoint] = []
     }
@@ -62,6 +67,7 @@ export default (): ISidebarBuilder => {
       // todo: change effect creator to createTemporarySidebarEffect
       addConfig(breakpoint, config, createPersistentSidebarEffect)
     },
+    getSidebarIds: () => sidebarIds,
     getConfig: () => map,
     getBreakpointConfig: breakpoint => pickNearestBreakpoint(map, breakpoint),
     getBreakpointEffects: breakpoint =>

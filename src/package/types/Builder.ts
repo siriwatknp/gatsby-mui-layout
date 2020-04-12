@@ -27,6 +27,7 @@ export interface ISidebarBuilder {
     breakpoint: Breakpoint,
     config: TemporarySidebarConfig
   ) => void
+  getSidebarIds: () => string[]
   getConfig: () => MapBreakpoint<SidebarConfig[]>
   getBreakpointConfig: (breakpoint: Breakpoint) => SidebarConfig[]
   getBreakpointEffects: (breakpoint: Breakpoint) => ISidebarStateEffectCreator[]
