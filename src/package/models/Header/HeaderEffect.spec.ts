@@ -13,6 +13,7 @@ describe("HeaderEffect", function() {
 
   it("return undefined if no 'clipped' config in header", () => {
     let model = createModel({
+      id: "appHeader",
       position: "relative",
     })
     expect(model.getHeaderZIndex()).toBeUndefined()
@@ -21,6 +22,7 @@ describe("HeaderEffect", function() {
 
   it("return correct header zIndex (single sidebar)", () => {
     let model = createModel({
+      id: "appHeader",
       position: "sticky",
       clipped: { "sidebar-1": true },
     })
@@ -32,6 +34,7 @@ describe("HeaderEffect", function() {
 
   it("return correct header zIndex (multiple sidebars)", () => {
     let model = createModel({
+      id: "appHeader",
       position: "sticky",
       clipped: { "sidebar-1": false, "sidebar-2": true },
     })

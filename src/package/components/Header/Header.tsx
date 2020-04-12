@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = props => {
       collapsible: true,
       collapsedWidth: 80,
     },
-    { open: true, collapsed: false }
+    { sidebar: { "primary-sidebar": { open: true } } }
   )
   const effect2 = createPersistentSidebarEffect(
     {
@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = props => {
       collapsible: true,
       collapsedWidth: 64,
     },
-    { open: true, collapsed: true }
+    { sidebar: { "primary-sidebar": { open: true } } }
   )
   const effect3 = createPersistentSidebarEffect(
     {
@@ -51,13 +51,13 @@ const Header: React.FC<HeaderProps> = props => {
       collapsible: true,
       collapsedWidth: 80,
     },
-    { open: true, collapsed: true }
+    { sidebar: { "primary-sidebar": { open: true, collapsed: true } } }
   )
   const xsModel = createModel(headerConfig, [effect1, effect2])
   const mdModel = createModel(headerConfig, [effect3, effect2])
   const styles = useStyles({
     xs: xsModel.getStyle(),
-    md: mdModel.getStyle()
+    md: mdModel.getStyle(),
   })
   return <AppBar classes={styles} color={"default"} elevation={0} {...props} />
 }

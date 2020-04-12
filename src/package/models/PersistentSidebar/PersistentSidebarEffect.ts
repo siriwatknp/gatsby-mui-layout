@@ -18,7 +18,7 @@ const attachOperator = (value: string | number, operator: 1 | -1) =>
 
 export default (
   config: PersistentSidebarConfig,
-  state: State
+  state?: State
 ): ISidebarEffect => {
   const { anchor } = config
   const { currentWidth } = createModel(config, state)
@@ -37,15 +37,16 @@ export default (
     return config.persistentBehavior === value
   }
 
+  const isSidebarOpen = state?.sidebar?.[config.id]?.open
   return {
     id: config.id,
     getObjectWidth: (objectId?: string): IWidth =>
       createWidthInterface(
-        state.open && isBehavior("fit", objectId) ? currentWidth : 0
+        isSidebarOpen && isBehavior("fit", objectId) ? currentWidth : 0
       ),
     getObjectMargin: (objectId?: string): IMargin => {
       const getResult = () => {
-        if (!state.open) {
+        if (!isSidebarOpen) {
           return {
             [marginAttr]: 0,
           }

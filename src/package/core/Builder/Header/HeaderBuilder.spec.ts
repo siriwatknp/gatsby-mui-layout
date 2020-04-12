@@ -53,7 +53,7 @@ it("return correct result style", () => {
   })
 
   expect(
-    header.getResultStyle({ open: true, collapsed: false }, sidebar)
+    header.getResultStyle({ sidebar: { "sidebar-1": { open: true } } }, sidebar)
   ).toStrictEqual({
     xs: {
       zIndex: 1210,

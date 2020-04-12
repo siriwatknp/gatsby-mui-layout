@@ -8,21 +8,21 @@ describe("HeaderModel", () => {
   let state: State
   beforeEach(() => {
     headerConfig = {
-      id: "header",
+      id: "appHeader",
       position: "fixed" as const,
       clipped: false,
     }
     sidebarConfig = {
-      id: "sidebar",
+      id: "appSidebar",
       anchor: "left" as const,
       collapsible: true,
       width: 256,
       collapsedWidth: 64,
       persistentBehavior: {
-        header: "fit" as const,
+        appHeader: "fit" as const,
       },
     }
-    state = { open: true, collapsed: false }
+    state = { sidebar: { appSidebar: { open: true, collapsed: false } } }
   })
   it("[Unclipped Header] return correct style", () => {
     const sidebarEffect = createPersistentSidebarEffect(sidebarConfig, state)
