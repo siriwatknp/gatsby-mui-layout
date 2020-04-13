@@ -1,3 +1,3 @@
-export * from "./Builder"
+export * from "./LayoutBuilder"
 
-export { default } from "./Builder"
+export { default } from "./LayoutBuilder"

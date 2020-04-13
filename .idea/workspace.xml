@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Builder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/LayoutBuilder.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/LayoutBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/index.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
