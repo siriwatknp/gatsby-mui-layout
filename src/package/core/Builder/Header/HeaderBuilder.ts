@@ -1,21 +1,25 @@
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 import { pickNearestBreakpoint, combineBreakpoints } from "../../../utils"
 import createHeaderModel, { createHeaderEffect } from "../../../models/Header"
 import {
   HeaderConfig,
   IHeaderBuilder,
+  IRegistry,
   MapBreakpoint,
   ResultStyle,
 } from "../../../types"
 
-export default (initialConfig?: HeaderConfig): IHeaderBuilder => {
+export default (): IHeaderBuilder => {
   const map: MapBreakpoint<HeaderConfig> = {}
-  if (initialConfig) {
-    map.xs = initialConfig
-  }
+
   return {
-    createConfig: function(breakpoint, config) {
-      map[breakpoint] = config
+    create: function(id: string) {
+      const Registry = (): IRegistry<HeaderConfig> => ({
+        registerConfig(breakpoint, config) {
+          map[breakpoint] = { ...config, id }
+          return this
+        },
+      })
+      return Registry()
     },
     getConfig: () => map,
     getBreakpointConfig: function(breakpoint) {
@@ -28,8 +32,14 @@ export default (initialConfig?: HeaderConfig): IHeaderBuilder => {
       const result: ResultStyle = {}
       const breakpoints = combineBreakpoints(map, sidebar.getConfig())
       breakpoints.map(bp => {
-        const headerConfig = this.getBreakpointConfig(bp);
-        const stateEffectCreators = sidebar.getBreakpointEffects(bp)
+        const headerConfig = this.getBreakpointConfig(bp)
+        if (!headerConfig) {
+          throw new Error(
+            `Cannot find HeaderConfig at breakpoint: ${bp}, please provide config at least on "xs" breakpoint`
+          )
+        }
+
+        const stateEffectCreators = sidebar.getBreakpointEffect(bp)
         if (stateEffectCreators) {
           const effects = stateEffectCreators.map(c => c(state))
           result[bp] = createHeaderModel(headerConfig, effects).getStyle()

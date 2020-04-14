@@ -17,14 +17,20 @@ it("can check unique sidebars", () => {
 })
 
 it("can create config and get the correct config", () => {
-  const sidebar = SidebarBuilder();
-  sidebar.createPersistentSidebarConfig("xs", {
-    id: "sidebar-1",
-    anchor: "left",
-    width: 256,
-    collapsible: true,
-    collapsedWidth: 80,
-    persistentBehavior: "fit",
-  })
-
+  const sidebar = SidebarBuilder()
+  sidebar
+    .create("sidebar-1")
+    .registerPersistentSidebarConfig("xs", {
+      anchor: "left",
+      width: 256,
+      collapsible: true,
+      collapsedWidth: 80,
+      persistentBehavior: "flexible",
+    })
+    .registerPersistentSidebarConfig("md", {
+      anchor: "left",
+      width: "30%",
+      collapsible: false,
+      persistentBehavior: "fit",
+    })
 })

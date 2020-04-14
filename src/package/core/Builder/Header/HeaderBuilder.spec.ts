@@ -2,24 +2,25 @@ import HeaderBuilder from "./HeaderBuilder"
 import SidebarBuilder from "../Sidebar/SidebarBuilder"
 
 it("can create config and return correct config", () => {
-  const initialConfig = {
+  const header = HeaderBuilder()
+  expect(header.getConfig()).toEqual({})
+
+  const xsConfig = {
     id: "header",
     clipped: true,
     position: "sticky" as const,
   }
-  const header = HeaderBuilder(initialConfig)
-  expect(header.getConfig()).toEqual({
-    xs: initialConfig,
-  })
-
   const mdConfig = {
     id: "header",
     clipped: false,
     position: "fixed" as const,
   }
-  header.createConfig("md", mdConfig)
+  header
+    .create("header")
+    .registerConfig("xs", xsConfig)
+    .registerConfig("md", mdConfig)
   expect(header.getConfig()).toEqual({
-    xs: initialConfig,
+    xs: xsConfig,
     md: mdConfig,
   })
   expect(header.getBreakpointConfig("md")).toEqual(mdConfig)
@@ -31,34 +32,35 @@ it("can create config and return correct config", () => {
 })
 
 it("return correct result style by mapping all possible breakpoints with related effect", () => {
-  const header = HeaderBuilder({
-    id: "header",
-    clipped: true,
-    position: "sticky",
-  })
-  header.createConfig("md", {
-    id: "header",
-    clipped: false,
-    position: "sticky",
-  })
+  const header = HeaderBuilder()
+
+  header
+    .create("header")
+    .registerConfig("xs", {
+      clipped: true,
+      position: "sticky",
+    })
+    .registerConfig("md", {
+      clipped: false,
+      position: "sticky",
+    })
 
   const sidebar = SidebarBuilder()
-  sidebar.createPersistentSidebarConfig("xs", {
-    id: "sidebar-1",
-    anchor: "left",
-    width: 256,
-    collapsible: true,
-    collapsedWidth: 80,
-    persistentBehavior: "fit",
-  })
-  sidebar.createPersistentSidebarConfig("xl", {
-    id: "sidebar-1",
-    anchor: "left",
-    width: "30%",
-    collapsible: false,
-    collapsedWidth: 80,
-    persistentBehavior: "fit",
-  })
+  sidebar
+    .create("sidebar-1")
+    .registerPersistentSidebarConfig("xs", {
+      anchor: "left",
+      width: 256,
+      collapsible: true,
+      collapsedWidth: 80,
+      persistentBehavior: "fit",
+    })
+    .registerPersistentSidebarConfig("xl", {
+      anchor: "left",
+      width: "30%",
+      collapsible: false,
+      persistentBehavior: "fit",
+    })
 
   expect(
     header.getResultStyle({ sidebar: { "sidebar-1": { open: true } } }, sidebar)

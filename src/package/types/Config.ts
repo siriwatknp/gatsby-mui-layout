@@ -10,7 +10,7 @@ export interface EdgeSidebarConfig {
   id: string
   anchor: DrawerAnchor
   collapsible: boolean
-  collapsedWidth: number | string
+  collapsedWidth?: number | string
   width: number | string
 }
 

@@ -7,6 +7,7 @@ import {
   ISidebarEffectCreator,
   ISidebarStateEffectCreator,
   ISidebarBuilder,
+  ISidebarRegistry,
 } from "../../../types"
 
 export const isUniqueSidebars = (sidebars: SidebarConfig[]): boolean => {
@@ -60,17 +61,32 @@ export default (): ISidebarBuilder => {
     }
   }
   return {
-    createPersistentSidebarConfig: function(breakpoint, config) {
-      addConfig(breakpoint, config, createPersistentSidebarEffect)
-    },
-    createTemporarySidebarConfig: function(breakpoint, config) {
-      // todo: change effect creator to createTemporarySidebarEffect
-      addConfig(breakpoint, config, createPersistentSidebarEffect)
+    create: function(id: string) {
+      const Registry = (): ISidebarRegistry => ({
+        registerPersistentSidebarConfig(breakpoint, config) {
+          addConfig(
+            breakpoint,
+            { ...config, id },
+            createPersistentSidebarEffect
+          )
+          return this
+        },
+        registerTemporarySidebarConfig(breakpoint, config) {
+          addConfig(
+            breakpoint,
+            { ...config, id },
+            createPersistentSidebarEffect
+          )
+          return this
+        },
+      })
+      return Registry()
     },
     getSidebarIds: () => sidebarIds,
     getConfig: () => map,
     getBreakpointConfig: breakpoint => pickNearestBreakpoint(map, breakpoint),
-    getBreakpointEffects: breakpoint =>
+    getBreakpointEffect: breakpoint =>
       pickNearestBreakpoint(effect, breakpoint),
+    getResultStyle: () => ({}),
   }
 }

@@ -17,67 +17,28 @@ const CollapseBtn = ({ sidebarId }: { sidebarId: string }) => {
 const IndexPage = () => {
   const scheme = Layout()
   scheme.configureHeader(builder => {
-    // builder.createHeader('appHeader')
-    //   .createConfig('xs', {
-    //     position: "fixed",
-    //     clipped: false,
-    //   })
-    //   .createConfig('md', {
-    //     position: "sticky",
-    //     clipped: true,
-    //   })
-    //   .cloneConfig({ from: 'md', to: 'lg' }, config => ({
-    //     ...config,
-    //     clipped: false,
-    //   }))
-
-    builder.createConfig("xs", {
-      id: "header",
+    builder.create("appHeader").registerConfig("xs", {
       position: "fixed",
       clipped: false,
     })
   })
   scheme.configureSidebar(builder => {
-    // builder
-    //   .createSidebar("primarySidebar")
-    //   .createTemporarySidebarConfig("xs", {
-    //     anchor: "left",
-    //   })
-    //   .createPersistentSidebarConfig("sm", {
-    //     anchor: "left",
-    //     width: 256,
-    //     persistentBehavior: "fit",
-    //     collapsible: true,
-    //     collapsedWidth: 80,
-    //   })
-    //
-    // builder
-    //   .createSidebar("secondarySidebar")
-    //   .createPersistentSidebarConfig("xs", {
-    //     anchor: "right",
-    //     width: "30%",
-    //     persistentBehavior: {
-    //       appHeader: "fit",
-    //     },
-    //     collapsible: true,
-    //     collapsedWidth: 80,
-    //   })
-    builder.createPersistentSidebarConfig("sm", {
-      id: "primarySidebar",
-      anchor: "left",
-      width: 256,
-      persistentBehavior: "fit",
-      collapsible: true,
-      collapsedWidth: 80,
-    })
-    builder.createPersistentSidebarConfig("md", {
-      id: "primarySidebar",
-      anchor: "left",
-      width: "30%",
-      persistentBehavior: "fit",
-      collapsible: true,
-      collapsedWidth: 80,
-    })
+    builder
+      .create("primarySidebar")
+      .registerPersistentSidebarConfig("sm", {
+        anchor: "left",
+        width: 256,
+        persistentBehavior: "fit",
+        collapsible: true,
+        collapsedWidth: 80,
+      })
+      .registerPersistentSidebarConfig("md", {
+        anchor: "left",
+        width: "30%",
+        persistentBehavior: "fit",
+        collapsible: true,
+        collapsedWidth: 80,
+      })
   })
   return (
     <StylesProvider injectFirst>

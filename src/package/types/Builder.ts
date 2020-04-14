@@ -10,25 +10,37 @@ import { IHeaderEffect, ISidebarStateEffectCreator } from "./Model"
 import { State } from "./Context"
 import { ResultStyle } from "./InlineStyle"
 
+export interface IRegistry<ConfigType> {
+  registerConfig: (
+    breakpoint: Breakpoint,
+    config: Omit<ConfigType, "id">
+  ) => IRegistry<ConfigType>
+}
+
 export interface IHeaderBuilder {
-  createConfig: (breakpoint: Breakpoint, config: HeaderConfig) => void
+  create: (id: string) => IRegistry<HeaderConfig>
   getConfig: () => MapBreakpoint<HeaderConfig>
   getBreakpointConfig: (breakpoint: Breakpoint) => HeaderConfig
   getBreakpointEffect: (breakpoint: Breakpoint) => IHeaderEffect
   getResultStyle: (state: State, sidebar: ISidebarBuilder) => ResultStyle
 }
 
+export interface ISidebarRegistry {
+  registerPersistentSidebarConfig: (
+    breakpoint: Breakpoint,
+    config: Omit<PersistentSidebarConfig, "id">
+  ) => ISidebarRegistry
+  registerTemporarySidebarConfig: (
+    breakpoint: Breakpoint,
+    config: Omit<TemporarySidebarConfig, "id">
+  ) => ISidebarRegistry
+}
+
 export interface ISidebarBuilder {
-  createPersistentSidebarConfig: (
-    breakpoint: Breakpoint,
-    config: PersistentSidebarConfig
-  ) => void
-  createTemporarySidebarConfig: (
-    breakpoint: Breakpoint,
-    config: TemporarySidebarConfig
-  ) => void
+  create: (id: string) => ISidebarRegistry
   getSidebarIds: () => string[]
   getConfig: () => MapBreakpoint<SidebarConfig[]>
   getBreakpointConfig: (breakpoint: Breakpoint) => SidebarConfig[]
-  getBreakpointEffects: (breakpoint: Breakpoint) => ISidebarStateEffectCreator[]
+  getBreakpointEffect: (breakpoint: Breakpoint) => ISidebarStateEffectCreator[]
+  getResultStyle: (state: State, header: IHeaderBuilder) => ResultStyle
 }
