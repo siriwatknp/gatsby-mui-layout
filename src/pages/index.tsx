@@ -24,15 +24,15 @@ const IndexPage = () => {
   })
   scheme.configureSidebar(builder => {
     builder
-      .create("primarySidebar")
-      .registerPersistentSidebarConfig("sm", {
+      .createEdgeSidebar("primarySidebar")
+      .registerPersistentConfig("sm", {
         anchor: "left",
         width: 256,
         persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
       })
-      .registerPersistentSidebarConfig("md", {
+      .registerPersistentConfig("md", {
         anchor: "left",
         width: "30%",
         persistentBehavior: "fit",
@@ -52,6 +52,8 @@ const IndexPage = () => {
             Hello
           </Toolbar>
         </Header>
+        <Sidebar.Drawer id="primarySidebar" />
+        <Sidebar.SwipableDrawer id="secondarySidebar" />
       </Root>
     </StylesProvider>
   )

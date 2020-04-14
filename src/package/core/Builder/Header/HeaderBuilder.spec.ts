@@ -47,15 +47,15 @@ it("return correct result style by mapping all possible breakpoints with related
 
   const sidebar = SidebarBuilder()
   sidebar
-    .create("sidebar-1")
-    .registerPersistentSidebarConfig("xs", {
+    .createEdgeSidebar("sidebar-1")
+    .registerPersistentConfig("xs", {
       anchor: "left",
       width: 256,
       collapsible: true,
       collapsedWidth: 80,
       persistentBehavior: "fit",
     })
-    .registerPersistentSidebarConfig("xl", {
+    .registerPersistentConfig("xl", {
       anchor: "left",
       width: "30%",
       collapsible: false,

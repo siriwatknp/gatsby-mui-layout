@@ -1,8 +1,8 @@
-import createModel from "./BaseSidebarModel"
-import { EdgeSidebarConfig } from "../../types"
+import createModel from "./EdgeSidebarModel"
+import { CollapsibleSidebarConfig } from "../../../types"
 
-describe("BaseSidebarModel", () => {
-  let baseConfig: EdgeSidebarConfig
+describe("EdgeSidebarModel", () => {
+  let baseConfig: CollapsibleSidebarConfig
   beforeEach(() => {
     baseConfig = {
       id: "s1",
@@ -15,7 +15,7 @@ describe("BaseSidebarModel", () => {
   it("return the width before collapsed", () => {
     let model = createModel(baseConfig)
     expect(model).toEqual({
-      currentWidth: "30%",
+      width: "30%",
     })
   })
 
@@ -24,7 +24,7 @@ describe("BaseSidebarModel", () => {
       sidebar: { s1: { collapsed: true } },
     })
     expect(model).toEqual({
-      currentWidth: 80,
+      width: 80,
     })
   })
 })

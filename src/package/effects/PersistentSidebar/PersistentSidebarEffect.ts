@@ -1,7 +1,7 @@
 import upperFirst from "../../utils/upperFirst"
-import createModel from "../BaseSidebar"
-import createWidthInterface from "../Width"
-import createMarginInterface from "../Margin"
+import createEdgeModel from "../../models/Sidebar/Edge"
+import createWidthInterface from "../../models/Width"
+import createMarginInterface from "../../models/Margin"
 import {
   PersistentSidebarConfig,
   State,
@@ -21,7 +21,7 @@ export default (
   state?: State
 ): ISidebarEffect => {
   const { anchor } = config
-  const { currentWidth } = createModel(config, state)
+  const { width: currentWidth } = createEdgeModel(config, state)
 
   const marginAttr = `margin${upperFirst(anchor)}`
   const getFlexiblePersistentBehaviorMarginValue = () => {

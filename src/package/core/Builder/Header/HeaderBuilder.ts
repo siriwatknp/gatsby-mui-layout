@@ -1,5 +1,6 @@
 import { pickNearestBreakpoint, combineBreakpoints } from "../../../utils"
-import createHeaderModel, { createHeaderEffect } from "../../../models/Header"
+import createHeaderModel from "../../../models/Header"
+import createHeaderEffect from "../../../effects/Header"
 import {
   HeaderConfig,
   IHeaderBuilder,

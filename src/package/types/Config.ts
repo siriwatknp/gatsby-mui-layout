@@ -6,7 +6,7 @@ export type InsetBehavior = "fit"
 
 export type DrawerAnchor = "left" | "right"
 
-export interface EdgeSidebarConfig {
+export interface CollapsibleSidebarConfig {
   id: string
   anchor: DrawerAnchor
   collapsible: boolean
@@ -14,7 +14,9 @@ export interface EdgeSidebarConfig {
   width: number | string
 }
 
-export interface PersistentSidebarConfig extends EdgeSidebarConfig {
+export interface PermanentSidebarConfig extends CollapsibleSidebarConfig {}
+
+export interface PersistentSidebarConfig extends CollapsibleSidebarConfig {
   persistentBehavior: AppendDictionary<PersistentBehavior>
 }
 
@@ -26,8 +28,10 @@ export interface TemporarySidebarConfig {
   id: string
 }
 
+export type EdgeSidebarConfig = PersistentSidebarConfig | PermanentSidebarConfig
+
 export type SidebarConfig =
-  | PersistentSidebarConfig
+  | EdgeSidebarConfig
   | TemporarySidebarConfig
   | InsetSidebarConfig
 

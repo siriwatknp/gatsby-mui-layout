@@ -1,17 +1,12 @@
 import SidebarBuilder, { isUniqueSidebars } from "./SidebarBuilder"
+import HeaderBuilder from "../Header/HeaderBuilder"
 
 it("can check unique sidebars", () => {
   expect(
     isUniqueSidebars([
-      {
-        id: "sidebar-1",
-      },
-      {
-        id: "sidebar-1",
-      },
-      {
-        id: "sidebar-2",
-      },
+      { id: "sidebar-1" },
+      { id: "sidebar-1" },
+      { id: "sidebar-2" },
     ])
   ).toBeFalsy()
 })
@@ -19,18 +14,40 @@ it("can check unique sidebars", () => {
 it("can create config and get the correct config", () => {
   const sidebar = SidebarBuilder()
   sidebar
-    .create("sidebar-1")
-    .registerPersistentSidebarConfig("xs", {
+    .createEdgeSidebar("primarySidebar")
+    .registerPersistentConfig("xs", {
       anchor: "left",
       width: 256,
       collapsible: true,
       collapsedWidth: 80,
       persistentBehavior: "flexible",
     })
-    .registerPersistentSidebarConfig("md", {
+    .registerPersistentConfig("md", {
       anchor: "left",
       width: "30%",
       collapsible: false,
       persistentBehavior: "fit",
     })
+
+  const header = HeaderBuilder()
+  header.create("header").registerConfig("xs", {
+    clipped: false,
+    position: "sticky",
+  })
+
+  expect(
+    sidebar.getResultStyle(
+      {
+        sidebar: {
+          primarySidebar: { open: true, collapsed: false },
+        },
+      },
+      header
+    )
+  ).toStrictEqual({
+    primarySidebar: {
+      xs: { width: 256 },
+      md: { width: "30%" },
+    },
+  })
 })

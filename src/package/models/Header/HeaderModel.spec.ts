@@ -1,5 +1,5 @@
 import createModel from "./HeaderModel"
-import { createPersistentSidebarEffect } from "../PersistentSidebar"
+import { createPersistentSidebarEffect } from "../../effects/PersistentSidebar"
 import { HeaderConfig, PersistentSidebarConfig, State } from "../../types"
 
 describe("HeaderModel", () => {

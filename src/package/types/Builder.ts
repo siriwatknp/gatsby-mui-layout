@@ -8,7 +8,7 @@ import {
 import { MapBreakpoint } from "./Utils"
 import { IHeaderEffect, ISidebarStateEffectCreator } from "./Model"
 import { State } from "./Context"
-import { ResultStyle } from "./InlineStyle"
+import { ResultStyle, SidebarResultStyle } from "./InlineStyle"
 
 export interface IRegistry<ConfigType> {
   registerConfig: (
@@ -25,22 +25,18 @@ export interface IHeaderBuilder {
   getResultStyle: (state: State, sidebar: ISidebarBuilder) => ResultStyle
 }
 
-export interface ISidebarRegistry {
-  registerPersistentSidebarConfig: (
+export interface IEdgeSidebarRegistry {
+  registerPersistentConfig: (
     breakpoint: Breakpoint,
     config: Omit<PersistentSidebarConfig, "id">
-  ) => ISidebarRegistry
-  registerTemporarySidebarConfig: (
-    breakpoint: Breakpoint,
-    config: Omit<TemporarySidebarConfig, "id">
-  ) => ISidebarRegistry
+  ) => IEdgeSidebarRegistry
 }
 
 export interface ISidebarBuilder {
-  create: (id: string) => ISidebarRegistry
+  createEdgeSidebar: (id: string) => IEdgeSidebarRegistry
   getSidebarIds: () => string[]
   getConfig: () => MapBreakpoint<SidebarConfig[]>
   getBreakpointConfig: (breakpoint: Breakpoint) => SidebarConfig[]
   getBreakpointEffect: (breakpoint: Breakpoint) => ISidebarStateEffectCreator[]
-  getResultStyle: (state: State, header: IHeaderBuilder) => ResultStyle
+  getResultStyle: (state: State, header: IHeaderBuilder) => SidebarResultStyle
 }

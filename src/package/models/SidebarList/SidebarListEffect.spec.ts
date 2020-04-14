@@ -1,5 +1,5 @@
 import createEffect from "./SidebarListEffect"
-import { createPersistentSidebarEffect } from "../PersistentSidebar"
+import { createPersistentSidebarEffect } from "../../effects/PersistentSidebar"
 
 describe("SidebarListEffect", () => {
   it("return correct style", () => {

@@ -1,4 +1,4 @@
-import createModel from "./HeaderEffect"
+import createModel from "../../effects/Header/HeaderEffect"
 import { ISidebarEffect, HeaderConfig, IMargin, IWidth } from "../../types"
 
 export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
