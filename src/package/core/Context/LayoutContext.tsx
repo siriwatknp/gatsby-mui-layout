@@ -1,9 +1,9 @@
 import React from "react"
 import merge from "deepmerge"
 import { useTheme } from "@material-ui/core/styles"
-import { createBreakpointStyles } from "../../utils"
-import { ILayoutBuilder } from "../Builder"
-import { State, ResultStyle } from "../../types"
+import { createBreakpointStyles, createDisplayNone } from "../../utils"
+import { ComponentStyle, ILayoutBuilder } from "../Builder"
+import { State, SidebarVariant } from "../../types"
 
 const Context = React.createContext(null)
 Context.displayName = "MuiLayoutCtx"
@@ -17,9 +17,7 @@ interface ISidebarTrigger {
 }
 type ContextValue = {
   state: State
-  styles: {
-    header: ResultStyle
-  }
+  styles: ComponentStyle
   setOpen: ISidebarTrigger
   setCollapsed: ISidebarTrigger
 }
@@ -44,6 +42,16 @@ export const useLayoutCtx = (): ContextValue => {
     throw new Error("useLayoutCtx must be rendered under LayoutProvider")
   }
   return ctx
+}
+
+export const useSidebar = (id: string, variant: keyof SidebarVariant) => {
+  const { styles, state } = useLayoutCtx()
+  const { breakpoints } = useTheme()
+  const variantStyle = styles.sidebar[id][variant]
+  return {
+    state: state.sidebar[id],
+    styles: createBreakpointStyles(variantStyle, breakpoints),
+  }
 }
 
 export const useHeader = () => {

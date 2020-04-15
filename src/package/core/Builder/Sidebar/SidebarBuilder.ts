@@ -1,7 +1,8 @@
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 import createEdgeSidebarModel from "../../../models/Sidebar/Edge"
 import { createPersistentSidebarEffect } from "../../../effects/PersistentSidebar"
 import { combineBreakpoints, pickNearestBreakpoint } from "../../../utils"
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
+import { isPersistentSidebarConfig } from "../../../utils/sidebarChecker"
 import {
   SidebarConfig,
   MapBreakpoint,
@@ -11,7 +12,6 @@ import {
   IEdgeSidebarRegistry,
   SidebarResultStyle,
   Dictionary,
-  EdgeSidebarConfig,
 } from "../../../types"
 
 export const isUniqueSidebars = (sidebars: SidebarConfig[]): boolean => {
@@ -28,12 +28,6 @@ export const isUniqueSidebars = (sidebars: SidebarConfig[]): boolean => {
     }
   })
   return isUnique
-}
-
-const isEdgeSidebarConfig = (
-  config: SidebarConfig
-): config is EdgeSidebarConfig => {
-  return typeof (config as EdgeSidebarConfig).collapsible === "boolean"
 }
 
 const createStateEffect = (
@@ -79,6 +73,7 @@ export default (): ISidebarBuilder => {
     }
   }
   return {
+    // todo: if no "xs" breakpoint config => error
     createEdgeSidebar: function(id: string) {
       const Registry = (): IEdgeSidebarRegistry => ({
         registerPersistentConfig(breakpoint, config) {
@@ -102,7 +97,9 @@ export default (): ISidebarBuilder => {
       const result: SidebarResultStyle = {}
 
       Object.entries(mapById).forEach(([sidebarId, breakpointConfigMap]) => {
-        result[sidebarId] = {}
+        result[sidebarId] = {
+          persistent: {},
+        }
         const breakpoints = combineBreakpoints(
           breakpointConfigMap,
           header.getConfig()
@@ -113,8 +110,8 @@ export default (): ISidebarBuilder => {
             bp
           )
           const headerEffect = header.getBreakpointEffect(bp)
-          if (isEdgeSidebarConfig(config) && headerEffect) {
-            result[sidebarId][bp] = {
+          if (isPersistentSidebarConfig(config) && headerEffect) {
+            result[sidebarId].persistent[bp] = {
               ...createEdgeSidebarModel(config, state),
               ...headerEffect.getEdgeSidebarZIndex(sidebarId),
             }

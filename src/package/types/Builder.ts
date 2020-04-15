@@ -5,7 +5,7 @@ import {
   SidebarConfig,
   TemporarySidebarConfig,
 } from "./Config"
-import { MapBreakpoint } from "./Utils"
+import { Dictionary, MapBreakpoint } from "./Utils"
 import { IHeaderEffect, ISidebarStateEffectCreator } from "./Model"
 import { State } from "./Context"
 import { ResultStyle, SidebarResultStyle } from "./InlineStyle"

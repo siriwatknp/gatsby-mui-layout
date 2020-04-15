@@ -2,6 +2,23 @@ import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
 import pickNearestBreakpoint from "./pickNearestBreakpoint"
 import createBreakpointStyles from "./createBreakpointStyles"
 import combineBreakpoints from "./combineBreakpoints"
+import createDisplayNone from "./createDisplayNone"
+
+const breakpoints = createBreakpoints({})
+
+describe("createDisplayNone", () => {
+  it("create media queries with display none", () => {
+    expect(createDisplayNone()).toEqual({})
+    expect(createDisplayNone(["xs", "lg"], breakpoints)).toStrictEqual({
+      "@media (min-width:0px) and (max-width:599.95px)": {
+        display: "none",
+      },
+      "@media (min-width:1280px) and (max-width:1919.95px)": {
+        display: "none",
+      },
+    })
+  })
+})
 
 describe("combineBreakpoints", () => {
   it("combine correctly", () => {
@@ -31,8 +48,6 @@ describe("pickNearestBreakpoint", () => {
     expect(pickNearestBreakpoint(value, "lg")).toEqual("md")
   })
 })
-
-const breakpoints = createBreakpoints({})
 
 describe("createBreakpointStyles", () => {
   it("turns into media queries object", () => {

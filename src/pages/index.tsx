@@ -1,15 +1,34 @@
 import React from "react"
 import { StylesProvider } from "@material-ui/core/styles"
 import Toolbar from "@material-ui/core/Toolbar"
-import { Root, Header } from "../package/components"
+import {
+  HeaderMockUp,
+  NavHeaderMockUp,
+  NavContentMockUp,
+  ContentMockUp,
+  FooterMockUp,
+  // @ts-ignore
+} from "@mui-treasury/mockup/layout"
+import { Root, Header, DrawerSidebar } from "../package/components"
 import Layout, { useLayoutCtx } from "../package/core"
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
-const CollapseBtn = ({ sidebarId }: { sidebarId: string }) => {
+const TriggerBtn = ({ sidebarId }: { sidebarId: string }) => {
   const { setOpen, state } = useLayoutCtx()
   const open = state.sidebar.primarySidebar.open
   return (
     <button onClick={() => setOpen(sidebarId, !open)}>
       {open ? "Close" : "Open"}
+    </button>
+  )
+}
+
+const CollapsedBtn = ({ sidebarId }: { sidebarId: string }) => {
+  const { setCollapsed, state } = useLayoutCtx()
+  const { collapsed } = state.sidebar.primarySidebar
+  return (
+    <button onClick={() => setCollapsed(sidebarId, !collapsed)}>
+      {collapsed ? "Expand" : "Shrink"}
     </button>
   )
 }
@@ -25,7 +44,7 @@ const IndexPage = () => {
   scheme.configureSidebar(builder => {
     builder
       .createEdgeSidebar("primarySidebar")
-      .registerPersistentConfig("sm", {
+      .registerPersistentConfig("xs", {
         anchor: "left",
         width: 256,
         persistentBehavior: "fit",
@@ -48,12 +67,16 @@ const IndexPage = () => {
       >
         <Header>
           <Toolbar>
-            <CollapseBtn sidebarId={"primarySidebar"} />
+            <TriggerBtn sidebarId={"primarySidebar"} />
             Hello
           </Toolbar>
         </Header>
-        <Sidebar.Drawer id="primarySidebar" />
-        <Sidebar.SwipableDrawer id="secondarySidebar" />
+        <DrawerSidebar id="primarySidebar" hiddenBreakpoints={["xs"]}>
+          <div>
+            <NavContentMockUp />
+            <CollapsedBtn sidebarId={"primarySidebar"} />
+          </div>
+        </DrawerSidebar>
       </Root>
     </StylesProvider>
   )

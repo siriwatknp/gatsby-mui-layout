@@ -5,20 +5,22 @@ import {
   ISidebarBuilder,
   State,
   ResultStyle,
+  SidebarResultStyle,
 } from "../../types"
 
 interface BuilderCallback<T> {
   (builder: T): void
 }
 
+export type ComponentStyle = {
+  header: ResultStyle
+  sidebar: SidebarResultStyle
+}
+
 export interface ILayoutBuilder {
   configureHeader: (callback: BuilderCallback<IHeaderBuilder>) => void
   configureSidebar: (callback: BuilderCallback<ISidebarBuilder>) => void
-  getComponentStyle: (
-    state: State
-  ) => {
-    header: ResultStyle
-  }
+  getComponentStyle: (state: State) => ComponentStyle
   getInitialState: () => State
 }
 
@@ -35,6 +37,7 @@ export default (): ILayoutBuilder => {
     },
     getComponentStyle: (state: State) => ({
       header: header.getResultStyle(state, sidebar),
+      sidebar: sidebar.getResultStyle(state, header),
     }),
     getInitialState: () => {
       const sidebarIds = sidebar.getSidebarIds()

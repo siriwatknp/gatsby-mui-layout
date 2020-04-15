@@ -46,8 +46,10 @@ it("can create config and get the correct config", () => {
     )
   ).toStrictEqual({
     primarySidebar: {
-      xs: { width: 256 },
-      md: { width: "30%" },
+      persistent: {
+        xs: { width: 256 },
+        md: { width: "30%" },
+      },
     },
   })
 })
