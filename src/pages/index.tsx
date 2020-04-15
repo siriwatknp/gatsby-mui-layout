@@ -36,15 +36,21 @@ const CollapsedBtn = ({ sidebarId }: { sidebarId: string }) => {
 const IndexPage = () => {
   const scheme = Layout()
   scheme.configureHeader(builder => {
-    builder.create("appHeader").registerConfig("xs", {
-      position: "fixed",
-      clipped: false,
-    })
+    builder
+      .create("appHeader")
+      .registerConfig("xs", {
+        position: "fixed",
+        clipped: false,
+      })
+      .registerConfig("md", {
+        position: "relative",
+        clipped: false,
+      })
   })
   scheme.configureSidebar(builder => {
     builder
       .createEdgeSidebar("primarySidebar")
-      .registerPersistentConfig("xs", {
+      .registerPersistentConfig("sm", {
         anchor: "left",
         width: 256,
         persistentBehavior: "fit",
@@ -54,9 +60,15 @@ const IndexPage = () => {
       .registerPersistentConfig("md", {
         anchor: "left",
         width: "30%",
-        persistentBehavior: "fit",
+        persistentBehavior: "flexible",
         collapsible: true,
         collapsedWidth: 80,
+      })
+      .registerPermanentConfig("lg", {
+        anchor: "left",
+        width: "50%",
+        collapsible: true,
+        collapsedWidth: "12%",
       })
   })
   return (

@@ -1,11 +1,11 @@
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 import {
   HeaderConfig,
+  PermanentSidebarConfig,
   PersistentSidebarConfig,
   SidebarConfig,
-  TemporarySidebarConfig,
 } from "./Config"
-import { Dictionary, MapBreakpoint } from "./Utils"
+import { MapBreakpoint } from "./Utils"
 import { IHeaderEffect, ISidebarStateEffectCreator } from "./Model"
 import { State } from "./Context"
 import { ResultStyle, SidebarResultStyle } from "./InlineStyle"
@@ -29,6 +29,10 @@ export interface IEdgeSidebarRegistry {
   registerPersistentConfig: (
     breakpoint: Breakpoint,
     config: Omit<PersistentSidebarConfig, "id">
+  ) => IEdgeSidebarRegistry
+  registerPermanentConfig: (
+    breakpoint: Breakpoint,
+    config: Omit<PermanentSidebarConfig, "id">
   ) => IEdgeSidebarRegistry
 }
 

@@ -1,8 +1,12 @@
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 import createEdgeSidebarModel from "../../../models/Sidebar/Edge"
 import { createPersistentSidebarEffect } from "../../../effects/PersistentSidebar"
+import { createPermanentSidebarEffect } from "../../../effects/PermanentSidebar"
 import { combineBreakpoints, pickNearestBreakpoint } from "../../../utils"
-import { isPersistentSidebarConfig } from "../../../utils/sidebarChecker"
+import {
+  isPermanentSidebarConfig,
+  isPersistentSidebarConfig,
+} from "../../../utils/sidebarChecker"
 import {
   SidebarConfig,
   MapBreakpoint,
@@ -84,6 +88,10 @@ export default (): ISidebarBuilder => {
           )
           return this
         },
+        registerPermanentConfig(breakpoint, config) {
+          addConfig(breakpoint, { ...config, id }, createPermanentSidebarEffect)
+          return this
+        },
       })
       return Registry()
     },
@@ -99,6 +107,7 @@ export default (): ISidebarBuilder => {
       Object.entries(mapById).forEach(([sidebarId, breakpointConfigMap]) => {
         result[sidebarId] = {
           persistent: {},
+          permanent: {},
         }
         const breakpoints = combineBreakpoints(
           breakpointConfigMap,
@@ -109,11 +118,18 @@ export default (): ISidebarBuilder => {
             breakpointConfigMap,
             bp
           )
-          const headerEffect = header.getBreakpointEffect(bp)
-          if (isPersistentSidebarConfig(config) && headerEffect) {
-            result[sidebarId].persistent[bp] = {
-              ...createEdgeSidebarModel(config, state),
-              ...headerEffect.getEdgeSidebarZIndex(sidebarId),
+          if (config) {
+            const headerEffect = header.getBreakpointEffect(bp)
+            if (isPersistentSidebarConfig(config) && headerEffect) {
+              result[sidebarId].persistent[bp] = {
+                ...createEdgeSidebarModel(config, state),
+                ...headerEffect.getEdgeSidebarZIndex(sidebarId),
+              }
+            } else if (isPermanentSidebarConfig(config) && headerEffect) {
+              result[sidebarId].permanent[bp] = {
+                ...createEdgeSidebarModel(config, state),
+                ...headerEffect.getEdgeSidebarZIndex(sidebarId),
+              }
             }
           }
         })

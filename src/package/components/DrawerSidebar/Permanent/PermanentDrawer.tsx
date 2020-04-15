@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Drawer, { DrawerProps } from "@material-ui/core/Drawer"
+import Drawer, { DrawerProps } from "@material-ui/core/Drawer/Drawer"
 import { MediaQueries } from "../../../utils/createBreakpointStyles"
 import { SidebarState } from "../../../types"
 
@@ -14,22 +14,21 @@ const StyledDrawer = styled(Drawer)<{
   [`& .${CLS}`]: styles,
 }))
 
-export type PersistentDrawerSidebarProps = {
+export type PermanentDrawerSidebarProps = {
   state: SidebarState
   styles: MediaQueries
   hiddenStyles?: MediaQueries
 } & DrawerProps
 
-const PersistentDrawerSidebar = ({
+const PermanentDrawer = ({
   PaperProps = {},
   state,
   styles,
   hiddenStyles,
   ...props
-}: PersistentDrawerSidebarProps) => {
+}: PermanentDrawerSidebarProps) => {
   return (
     <StyledDrawer
-      open={state.open}
       PaperProps={{
         ...PaperProps,
         className: `${CLS} ${PaperProps.className}`,
@@ -37,9 +36,9 @@ const PersistentDrawerSidebar = ({
       {...props}
       styles={styles}
       hiddenStyles={hiddenStyles}
-      variant="persistent"
+      variant="permanent"
     />
   )
 }
 
-export default PersistentDrawerSidebar
+export default PermanentDrawer

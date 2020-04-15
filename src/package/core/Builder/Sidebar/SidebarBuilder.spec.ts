@@ -28,6 +28,11 @@ it("can create config and get the correct config", () => {
       collapsible: false,
       persistentBehavior: "fit",
     })
+    .registerPermanentConfig("lg", {
+      anchor: "left",
+      width: "50%",
+      collapsible: false,
+    })
 
   const header = HeaderBuilder()
   header.create("header").registerConfig("xs", {
@@ -46,9 +51,49 @@ it("can create config and get the correct config", () => {
     )
   ).toStrictEqual({
     primarySidebar: {
+      permanent: {
+        lg: { width: "50%" },
+      },
       persistent: {
         xs: { width: 256 },
         md: { width: "30%" },
+      },
+    },
+  })
+})
+
+it("return empty if no config found", () => {
+  const sidebar = SidebarBuilder()
+  sidebar.createEdgeSidebar("primarySidebar").registerPersistentConfig("md", {
+    anchor: "left",
+    width: "30%",
+    collapsible: true,
+    collapsedWidth: "12%",
+    persistentBehavior: "fit",
+  })
+
+  const header = HeaderBuilder()
+  header.create("header").registerConfig("xs", {
+    clipped: false,
+    position: "sticky",
+  })
+
+  expect(
+    sidebar.getResultStyle(
+      {
+        sidebar: {
+          primarySidebar: { open: true, collapsed: true },
+        },
+      },
+      header
+    )
+  ).toStrictEqual({
+    primarySidebar: {
+      permanent: {},
+      persistent: {
+        md: {
+          width: "12%",
+        },
       },
     },
   })

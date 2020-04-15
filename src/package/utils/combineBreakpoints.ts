@@ -1,5 +1,6 @@
-import { MapBreakpoint } from "../types"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
+import { MapBreakpoint } from "../types"
+import { sortBreakpoints } from "./createHiddenStyles"
 
 export default (...args: MapBreakpoint<{}>[]): Breakpoint[] => {
   let result: Breakpoint[] = []
@@ -11,5 +12,5 @@ export default (...args: MapBreakpoint<{}>[]): Breakpoint[] => {
       }
     })
   })
-  return result
+  return sortBreakpoints(result)
 }

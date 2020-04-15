@@ -1,4 +1,8 @@
-import { EdgeSidebarConfig, PersistentSidebarConfig, SidebarConfig } from "../types"
+import {
+  EdgeSidebarConfig,
+  PersistentSidebarConfig,
+  SidebarConfig,
+} from "../types"
 
 export const isEdgeSidebarConfig = (
   config: SidebarConfig
@@ -11,3 +15,5 @@ export const isPersistentSidebarConfig = (
 ): config is PersistentSidebarConfig => {
   return !!(config as PersistentSidebarConfig).persistentBehavior
 }
+
+export const isPermanentSidebarConfig = isEdgeSidebarConfig

@@ -1,10 +1,12 @@
 export type SidebarState = {
-  [key: string]: {
-    collapsed?: boolean
-    open?: boolean
-  }
+  collapsed?: boolean
+  open?: boolean
+}
+
+export type SidebarStateById = {
+  [key: string]: SidebarState
 }
 
 export type State = {
-  sidebar: SidebarState
+  sidebar: SidebarStateById
 }

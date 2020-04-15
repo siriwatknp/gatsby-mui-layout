@@ -1,9 +1,9 @@
 import React from "react"
 import merge from "deepmerge"
 import { useTheme } from "@material-ui/core/styles"
-import { createBreakpointStyles, createDisplayNone } from "../../utils"
+import { createBreakpointStyles } from "../../utils"
 import { ComponentStyle, ILayoutBuilder } from "../Builder"
-import { State, SidebarVariant } from "../../types"
+import { State } from "../../types"
 
 const Context = React.createContext(null)
 Context.displayName = "MuiLayoutCtx"
@@ -44,18 +44,17 @@ export const useLayoutCtx = (): ContextValue => {
   return ctx
 }
 
-export const useSidebar = (id: string, variant: keyof SidebarVariant) => {
+export const useSidebar = (id: string) => {
   const { styles, state } = useLayoutCtx()
-  const { breakpoints } = useTheme()
-  const variantStyle = styles.sidebar[id][variant]
   return {
     state: state.sidebar[id],
-    styles: createBreakpointStyles(variantStyle, breakpoints),
+    styles: styles.sidebar[id],
   }
 }
 
 export const useHeader = () => {
   const { styles } = useLayoutCtx()
+  console.log('styles', styles);
   const { breakpoints } = useTheme()
   return {
     styles: createBreakpointStyles(styles.header, breakpoints),

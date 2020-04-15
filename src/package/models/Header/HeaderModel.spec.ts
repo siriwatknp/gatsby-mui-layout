@@ -30,6 +30,7 @@ describe("HeaderModel", () => {
     expect(model.getStyle()).toEqual({
       width: "calc(100% - 256px)",
       marginLeft: 256,
+      position: 'fixed',
     })
   })
 
@@ -39,6 +40,10 @@ describe("HeaderModel", () => {
     const model = createModel(headerConfig, [sidebarEffect])
     expect(model.getStyle()).toEqual({
       zIndex: 1210,
+      marginLeft: 0,
+      marginRight: 0,
+      width: "100%",
+      position: 'fixed',
     })
   })
 })

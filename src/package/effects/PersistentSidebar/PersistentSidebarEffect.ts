@@ -1,4 +1,4 @@
-import upperFirst from "../../utils/upperFirst"
+import { upperFirst, getFlexBehaviorValue } from "../../utils"
 import createEdgeModel from "../../models/Sidebar/Edge"
 import createWidthInterface from "../../models/Width"
 import createMarginInterface from "../../models/Margin"
@@ -11,11 +11,6 @@ import {
   ISidebarEffect,
 } from "../../types"
 
-const attachOperator = (value: string | number, operator: 1 | -1) =>
-  typeof value === "number"
-    ? operator * value
-    : `${operator.toString().substr(0, 1)}${value}`
-
 export default (
   config: PersistentSidebarConfig,
   state?: State
@@ -24,11 +19,6 @@ export default (
   const { width: currentWidth } = createEdgeModel(config, state)
 
   const marginAttr = `margin${upperFirst(anchor)}`
-  const getFlexiblePersistentBehaviorMarginValue = () => {
-    if (anchor === "left") return attachOperator(currentWidth, +1)
-    if (anchor === "right") return attachOperator(currentWidth, -1)
-    return 0
-  }
 
   const isBehavior = (value: PersistentBehavior, objectId: string) => {
     if (typeof config.persistentBehavior === "object") {
@@ -62,7 +52,7 @@ export default (
           // for flexible, only marginLeft works. You can try using marginRight.
           // May be it is because normally browser is LTR
           return {
-            marginLeft: getFlexiblePersistentBehaviorMarginValue(),
+            marginLeft: getFlexBehaviorValue(config.anchor, currentWidth),
           }
         }
         return { [marginAttr]: 0 }

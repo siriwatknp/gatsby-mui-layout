@@ -3,11 +3,28 @@ import pickNearestBreakpoint from "./pickNearestBreakpoint"
 import createBreakpointStyles from "./createBreakpointStyles"
 import combineBreakpoints from "./combineBreakpoints"
 import createDisplayNone from "./createDisplayNone"
+import createHiddenStyles, {
+  sortBreakpoints,
+  getVisibleRange,
+  getBreakpointUpper,
+  getBreakpointBelow,
+  getVisibleRangeFromSiblings,
+} from "./createHiddenStyles"
+import getFlexBehaviorValue from "./getFlexBehaviorValue"
 
 const breakpoints = createBreakpoints({})
 
+describe("getFlexBehaviorValue", () => {
+  it("return correct value", () => {
+    expect(getFlexBehaviorValue("left", 300)).toEqual(300)
+    expect(getFlexBehaviorValue("left", "30%")).toEqual("30%")
+    expect(getFlexBehaviorValue("right", "40rem")).toEqual("-40rem")
+    expect(getFlexBehaviorValue("right", 256)).toEqual(-256)
+  })
+})
+
 describe("createDisplayNone", () => {
-  it("create media queries with display none", () => {
+  it("create display none below first", () => {
     expect(createDisplayNone()).toEqual({})
     expect(createDisplayNone(["xs", "lg"], breakpoints)).toStrictEqual({
       "@media (min-width:0px) and (max-width:599.95px)": {
@@ -20,11 +37,63 @@ describe("createDisplayNone", () => {
   })
 })
 
+describe("createHiddenStyles", () => {
+  it("sortBreakpoints", () => {
+    expect(sortBreakpoints(["lg", "sm", "xs", "md"])).toEqual([
+      "xs",
+      "sm",
+      "md",
+      "lg",
+    ])
+  })
+
+  it("getVisibleRange", () => {
+    expect(getVisibleRange(["sm", "xl"])).toEqual(["sm", "md", "lg", "xl"])
+  })
+
+  it("getBreakpointUpper", () => {
+    expect(getBreakpointUpper("xs")).toEqual("sm")
+    expect(getBreakpointUpper("xl")).toBeUndefined()
+  })
+
+  it("getBreakpointBelow", () => {
+    expect(getBreakpointBelow("md")).toEqual("sm")
+    expect(getBreakpointBelow("xs")).toBeUndefined()
+  })
+
+  it("getVisibleRangeFromSiblings", () => {
+    expect(getVisibleRangeFromSiblings({ xs: {}, md: {} }, [])).toEqual([
+      "xs",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+    ])
+    expect(
+      getVisibleRangeFromSiblings({ sm: {}, md: {} }, [{ xl: {} }])
+    ).toEqual(["sm", "md", "lg"])
+  })
+
+  it("create media queries with display none", () => {
+    expect(createHiddenStyles()).toEqual({})
+    expect(
+      createHiddenStyles({ xs: {}, md: {} }, [], breakpoints)
+    ).toStrictEqual({})
+    expect(
+      createHiddenStyles({ xs: {}, md: {} }, [{ xl: {} }], breakpoints)
+    ).toStrictEqual({
+      "@media (min-width:1920px)": {
+        display: "none",
+      },
+    })
+  })
+})
+
 describe("combineBreakpoints", () => {
   it("combine correctly", () => {
     expect(
       combineBreakpoints({ xs: "", lg: "" }, { md: "", lg: "" }, { sm: "" })
-    ).toEqual(["xs", "lg", "md", "sm"])
+    ).toEqual(["xs", "sm", "md", "lg"])
   })
 })
 

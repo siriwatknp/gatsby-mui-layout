@@ -67,14 +67,20 @@ it("return correct result style by mapping all possible breakpoints with related
   ).toStrictEqual({
     xs: {
       zIndex: 1210,
+      marginLeft: 0,
+      marginRight: 0,
+      width: '100%',
+      position: 'sticky',
     },
     md: {
       width: "calc(100% - 256px)",
       marginLeft: 256,
+      position: 'sticky',
     },
     xl: {
       marginLeft: "calc(30%)",
       width: "calc(100% - (30%))",
+      position: 'sticky',
     },
   })
 })
