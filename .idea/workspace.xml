@@ -2,32 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/effects/PermanentSidebar/PermanentSidebarEffect.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/effects/PermanentSidebar/PermanentSidebarEffect.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/effects/PermanentSidebar/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/utils/createHiddenStyles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/utils/getFlexBehaviorValue.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent/PersistentDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent/PersistentDrawerSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Builder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/Context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Context.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/combineBreakpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/combineBreakpoints.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/sidebarChecker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/sidebarChecker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Utils.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -219,7 +199,7 @@
       <workItem from="1586530023491" duration="21475000" />
       <workItem from="1586579855987" duration="226000" />
       <workItem from="1586580186913" duration="75659000" />
-      <workItem from="1586916322167" duration="18998000" />
+      <workItem from="1586916322167" duration="21440000" />
     </task>
     <servers />
   </component>

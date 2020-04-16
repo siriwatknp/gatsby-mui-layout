@@ -15,10 +15,10 @@ export type ZIndexStyle = {
 
 export type ResultStyle = MapBreakpoint<Dictionary<string | number>>
 
-export type SidebarVariant = {
+export type SidebarVariantStyle = {
   persistent: ResultStyle
   permanent: ResultStyle
 }
 
-export type SidebarResultStyle = Dictionary<SidebarVariant>
+export type SidebarResultStyle = Dictionary<SidebarVariantStyle>
 
