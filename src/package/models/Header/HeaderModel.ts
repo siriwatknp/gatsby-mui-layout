@@ -33,6 +33,7 @@ export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
       )
     }
   )
+
   const marginStyle =
     marginInterfaces.length > 0
       ? marginInterfaces

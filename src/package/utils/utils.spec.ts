@@ -86,6 +86,22 @@ describe("createHiddenStyles", () => {
         display: "none",
       },
     })
+    expect(
+      createHiddenStyles({ xs: {} }, [{ sm: {}, md: {}}, { xl: {} }], breakpoints)
+    ).toStrictEqual({
+      "@media (min-width:600px) and (max-width:959.95px)": {
+        display: 'none',
+      },
+      "@media (min-width:960px) and (max-width:1279.95px)": {
+        display: 'none',
+      },
+      "@media (min-width:1280px) and (max-width:1919.95px)": {
+        display: 'none',
+      },
+      "@media (min-width:1920px)": {
+        display: "none",
+      },
+    })
   })
 })
 

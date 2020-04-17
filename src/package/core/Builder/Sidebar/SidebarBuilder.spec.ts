@@ -51,6 +51,7 @@ it("can create config and get the correct config", () => {
     )
   ).toStrictEqual({
     primarySidebar: {
+      temporary: {},
       permanent: {
         lg: { width: "50%" },
       },
@@ -89,6 +90,7 @@ it("return empty if no config found", () => {
     )
   ).toStrictEqual({
     primarySidebar: {
+      temporary: {},
       permanent: {},
       persistent: {
         md: {

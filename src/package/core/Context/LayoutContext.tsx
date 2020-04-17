@@ -2,8 +2,8 @@ import React from "react"
 import merge from "deepmerge"
 import { useTheme } from "@material-ui/core/styles"
 import { createBreakpointStyles } from "../../utils"
-import { ComponentStyle, ILayoutBuilder } from "../Builder"
-import { State } from "../../types"
+import { ILayoutBuilder } from "../Builder"
+import { ContextValue, State } from "../../types"
 
 const Context = React.createContext(null)
 Context.displayName = "MuiLayoutCtx"
@@ -12,15 +12,6 @@ type SidebarPayload = { id: string; value: boolean }
 type Action =
   | { type: "SET_OPEN"; payload: SidebarPayload }
   | { type: "SET_COLLAPSED"; payload: SidebarPayload }
-interface ISidebarTrigger {
-  (id: string, value: boolean): void
-}
-type ContextValue = {
-  state: State
-  styles: ComponentStyle
-  setOpen: ISidebarTrigger
-  setCollapsed: ISidebarTrigger
-}
 
 const reducer = (state: State, action: Action) => {
   const newState = Object.assign({}, state)
@@ -45,16 +36,16 @@ export const useLayoutCtx = (): ContextValue => {
 }
 
 export const useSidebar = (id: string) => {
-  const { styles, state } = useLayoutCtx()
+  const { styles, state, ...props } = useLayoutCtx()
   return {
     state: state.sidebar[id],
     styles: styles.sidebar[id],
+    ...props
   }
 }
 
 export const useHeader = () => {
   const { styles } = useLayoutCtx()
-  console.log('styles', styles);
   const { breakpoints } = useTheme()
   return {
     styles: createBreakpointStyles(styles.header, breakpoints),

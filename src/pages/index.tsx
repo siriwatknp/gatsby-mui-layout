@@ -50,6 +50,10 @@ const IndexPage = () => {
   scheme.configureSidebar(builder => {
     builder
       .createEdgeSidebar("primarySidebar")
+      .registerTemporaryConfig("xs", {
+        anchor: "left",
+        width: "auto"
+      })
       .registerPersistentConfig("sm", {
         anchor: "left",
         width: 256,
@@ -83,7 +87,7 @@ const IndexPage = () => {
             Hello
           </Toolbar>
         </Header>
-        <DrawerSidebar id="primarySidebar" hiddenBreakpoints={["xs"]}>
+        <DrawerSidebar id="primarySidebar">
           <div>
             <NavContentMockUp />
             <CollapsedBtn sidebarId={"primarySidebar"} />

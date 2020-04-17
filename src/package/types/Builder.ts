@@ -4,6 +4,7 @@ import {
   PermanentSidebarConfig,
   PersistentSidebarConfig,
   SidebarConfig,
+  TemporarySidebarConfig,
 } from "./Config"
 import { MapBreakpoint } from "./Utils"
 import { IHeaderEffect, ISidebarStateEffectCreator } from "./Model"
@@ -28,11 +29,15 @@ export interface IHeaderBuilder {
 export interface IEdgeSidebarRegistry {
   registerPersistentConfig: (
     breakpoint: Breakpoint,
-    config: Omit<PersistentSidebarConfig, "id">
+    config: Omit<PersistentSidebarConfig, "id" | "variant">
   ) => IEdgeSidebarRegistry
   registerPermanentConfig: (
     breakpoint: Breakpoint,
-    config: Omit<PermanentSidebarConfig, "id">
+    config: Omit<PermanentSidebarConfig, "id" | "variant">
+  ) => IEdgeSidebarRegistry
+  registerTemporaryConfig: (
+    breakpoint: Breakpoint,
+    config: Omit<TemporarySidebarConfig, "id" | "variant">
   ) => IEdgeSidebarRegistry
 }
 

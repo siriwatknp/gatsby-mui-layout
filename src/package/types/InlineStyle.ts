@@ -18,6 +18,7 @@ export type ResultStyle = MapBreakpoint<Dictionary<string | number>>
 export type SidebarVariantStyle = {
   persistent: ResultStyle
   permanent: ResultStyle
+  temporary: ResultStyle
 }
 
 export type SidebarResultStyle = Dictionary<SidebarVariantStyle>

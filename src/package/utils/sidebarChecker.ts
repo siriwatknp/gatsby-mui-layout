@@ -1,7 +1,7 @@
 import {
-  EdgeSidebarConfig,
+  EdgeSidebarConfig, PermanentSidebarConfig,
   PersistentSidebarConfig,
-  SidebarConfig,
+  SidebarConfig, TemporarySidebarConfig,
 } from "../types"
 
 export const isEdgeSidebarConfig = (
@@ -13,7 +13,17 @@ export const isEdgeSidebarConfig = (
 export const isPersistentSidebarConfig = (
   config: SidebarConfig
 ): config is PersistentSidebarConfig => {
-  return !!(config as PersistentSidebarConfig).persistentBehavior
+  return (config as PersistentSidebarConfig).variant === "persistent"
 }
 
-export const isPermanentSidebarConfig = isEdgeSidebarConfig
+export const isPermanentSidebarConfig = (
+  config: SidebarConfig
+): config is PermanentSidebarConfig => {
+  return (config as PermanentSidebarConfig).variant === "permanent"
+}
+
+export const isTemporarySidebarConfig = (
+  config: SidebarConfig
+): config is TemporarySidebarConfig => {
+  return (config as TemporarySidebarConfig).variant === "temporary"
+}

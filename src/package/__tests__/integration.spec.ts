@@ -6,6 +6,10 @@ describe("Header + Sidebar", () => {
     const sidebar = SidebarBuilder()
     sidebar
       .createEdgeSidebar("primarySidebar")
+      .registerTemporaryConfig("xs", {
+        anchor: "left",
+        width: "auto",
+      })
       .registerPersistentConfig("sm", {
         anchor: "left",
         width: 256,
@@ -47,6 +51,11 @@ describe("Header + Sidebar", () => {
 
     expect(sidebar.getResultStyle(state, header)).toStrictEqual({
       primarySidebar: {
+        temporary: {
+          xs: {
+            width: "auto",
+          },
+        },
         permanent: {
           lg: { width: "50%" },
         },
@@ -58,6 +67,9 @@ describe("Header + Sidebar", () => {
     })
 
     expect(header.getResultStyle(state, sidebar)).toStrictEqual({
+      xs: {
+        position: "fixed",
+      },
       sm: {
         marginLeft: 256,
         width: "calc(100% - 256px)",

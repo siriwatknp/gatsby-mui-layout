@@ -6,6 +6,7 @@ import { combineBreakpoints, pickNearestBreakpoint } from "../../../utils"
 import {
   isPermanentSidebarConfig,
   isPersistentSidebarConfig,
+  isTemporarySidebarConfig,
 } from "../../../utils/sidebarChecker"
 import {
   SidebarConfig,
@@ -48,7 +49,7 @@ export default (): ISidebarBuilder => {
   const addConfig = (
     breakpoint: Breakpoint,
     config: SidebarConfig,
-    effectCreator: ISidebarEffectCreator
+    effectCreator?: ISidebarEffectCreator
   ): void => {
     if (!sidebarIds.includes(config.id)) {
       sidebarIds.push(config.id)
@@ -68,7 +69,9 @@ export default (): ISidebarBuilder => {
     if (!effect[breakpoint]) {
       effect[breakpoint] = []
     }
-    effect[breakpoint].push(createStateEffect(effectCreator, config))
+    if (effectCreator) {
+      effect[breakpoint].push(createStateEffect(effectCreator, config))
+    }
 
     if (!isUniqueSidebars(mapByBreakpoint[breakpoint])) {
       throw new Error(
@@ -77,19 +80,26 @@ export default (): ISidebarBuilder => {
     }
   }
   return {
-    // todo: if no "xs" breakpoint config => error
     createEdgeSidebar: function(id: string) {
       const Registry = (): IEdgeSidebarRegistry => ({
         registerPersistentConfig(breakpoint, config) {
           addConfig(
             breakpoint,
-            { ...config, id },
+            { ...config, id, variant: "persistent" },
             createPersistentSidebarEffect
           )
           return this
         },
         registerPermanentConfig(breakpoint, config) {
-          addConfig(breakpoint, { ...config, id }, createPermanentSidebarEffect)
+          addConfig(
+            breakpoint,
+            { ...config, id, variant: "permanent" },
+            createPermanentSidebarEffect
+          )
+          return this
+        },
+        registerTemporaryConfig(breakpoint, config) {
+          addConfig(breakpoint, { ...config, id, variant: "temporary" })
           return this
         },
       })
@@ -108,6 +118,7 @@ export default (): ISidebarBuilder => {
         result[sidebarId] = {
           persistent: {},
           permanent: {},
+          temporary: {},
         }
         const breakpoints = combineBreakpoints(
           breakpointConfigMap,
@@ -129,6 +140,10 @@ export default (): ISidebarBuilder => {
               result[sidebarId].permanent[bp] = {
                 ...createEdgeSidebarModel(config, state),
                 ...headerEffect.getEdgeSidebarZIndex(sidebarId),
+              }
+            } else if (isTemporarySidebarConfig(config)) {
+              result[sidebarId].temporary[bp] = {
+                width: config.width,
               }
             }
           }
