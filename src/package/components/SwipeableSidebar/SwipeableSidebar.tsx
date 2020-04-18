@@ -1,50 +1,42 @@
 import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import makeStyles from "@material-ui/core/styles/makeStyles"
-import { DrawerProps } from "@material-ui/core/Drawer"
+import { SwipeableDrawerProps } from "@material-ui/core/SwipeableDrawer"
 import { useSidebar, SidebarProvider } from "../../core/Context"
 import PersistentSwipeableDrawer from "./Persistent"
 import PermanentSwipeableDrawer from "./Permanent"
 import TemporarySwipeableDrawer from "./Temporary"
-import {
-  createBreakpointStyles,
-  createDisplayNone,
-  createHiddenStyles,
-  getSidebarAnchor,
-} from "../../utils"
-
-const useStyles = makeStyles(
-  ({ breakpoints }) => ({
-    root: ({ hiddenBreakpoints }: { hiddenBreakpoints?: Breakpoint[] }) =>
-      createDisplayNone(hiddenBreakpoints, breakpoints),
-  }),
-  { name: "DrawerSidebar" }
-)
+import { createBreakpointStyles, createHiddenStyles } from "../../utils"
 
 const SwipeableSidebar = ({
-  hiddenBreakpoints = [],
+  onClose,
+  onOpen,
   ...props
-}: DrawerProps & {
+}: Omit<SwipeableDrawerProps, "variant" | "open" | "onClose" | "onOpen"> & {
   id: string
-  hiddenBreakpoints?: Breakpoint[]
+  onClose?: SwipeableDrawerProps["onClose"]
+  onOpen?: SwipeableDrawerProps["onOpen"]
 }) => {
   const { breakpoints } = useTheme()
-  const classes = useStyles({ hiddenBreakpoints, ...props })
   const {
     styles: { permanent, persistent, temporary },
     state,
-    config,
+    anchor,
     setOpen,
   } = useSidebar(props.id)
-  const anchor = getSidebarAnchor(config)
+  const wrappedOnOpen: SwipeableDrawerProps["onOpen"] = (...args) => {
+    if (typeof onOpen === "function") onOpen(...args)
+    setOpen(props.id, true)
+  }
+  const wrappedOnClose: SwipeableDrawerProps["onClose"] = (...args) => {
+    if (typeof onOpen === "function") onClose(...args)
+    setOpen(props.id, false)
+  }
   const commonProps = {
     ...props,
     anchor,
-    classes,
-    state,
-    onOpen: () => setOpen(props.id, true),
-    onClose: () => setOpen(props.id, false),
+    open: state.open,
+    onOpen: wrappedOnOpen,
+    onClose: wrappedOnClose,
   }
 
   return (

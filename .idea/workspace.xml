@@ -2,20 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/PersistentDrawerSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/TemporaryDrawerSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent/PersistentDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent/PersistentDrawerSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Temporary/TemporaryDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Temporary/TemporaryDrawerSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/PermanentDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/PersistentDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/PersistentDrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/TemporaryDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/TemporaryDrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

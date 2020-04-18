@@ -1,6 +1,4 @@
 import React from "react"
-import { createDrawerSidebar } from "../../Shared/SharedSidebar"
+import { createDrawerVariant } from "../../Shared/SharedSidebar"
 
-export default createDrawerSidebar("temporary", ({ id, setOpen }) => ({
-  onClose: () => setOpen(id, false),
-}))
+export default createDrawerVariant("temporary")

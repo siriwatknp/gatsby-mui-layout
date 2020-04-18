@@ -1,7 +1,5 @@
 import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import makeStyles from "@material-ui/core/styles/makeStyles"
 import { DrawerProps } from "@material-ui/core/Drawer"
 import { useSidebar, SidebarProvider } from "../../core/Context"
 import PersistentDrawer from "./Persistent"
@@ -9,39 +7,31 @@ import PermanentDrawer from "./Permanent"
 import TemporaryDrawer from "./Temporary"
 import {
   createBreakpointStyles,
-  createDisplayNone,
   createHiddenStyles,
-  getSidebarAnchor,
 } from "../../utils"
 
-const useStyles = makeStyles(
-  ({ breakpoints }) => ({
-    root: ({ hiddenBreakpoints }: { hiddenBreakpoints?: Breakpoint[] }) =>
-      createDisplayNone(hiddenBreakpoints, breakpoints),
-  }),
-  { name: "DrawerSidebar" }
-)
-
 const DrawerSidebar = ({
-  hiddenBreakpoints = [],
+  onClose,
   ...props
-}: DrawerProps & {
+}: Omit<DrawerProps, "variant"> & {
   id: string
-  hiddenBreakpoints?: Breakpoint[]
 }) => {
   const { breakpoints } = useTheme()
-  const classes = useStyles({ hiddenBreakpoints, ...props })
   const {
+    anchor,
     styles: { permanent, persistent, temporary },
     state,
-    config,
+    setOpen,
   } = useSidebar(props.id)
-  const anchor = getSidebarAnchor(config)
+  const wrappedOnClose: DrawerProps["onClose"] = (...args) => {
+    if (typeof onClose === "function") onClose(...args)
+    setOpen(props.id, false)
+  }
   const commonProps = {
     ...props,
     anchor,
-    classes,
-    state,
+    open: state.open,
+    onClose: wrappedOnClose,
   }
 
   return (

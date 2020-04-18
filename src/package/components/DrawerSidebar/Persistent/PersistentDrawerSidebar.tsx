@@ -1,4 +1,4 @@
 import React from "react"
-import { createDrawerSidebar } from "../../Shared/SharedSidebar"
+import { createDrawerVariant } from "../../Shared/SharedSidebar"
 
-export default createDrawerSidebar("persistent")
+export default createDrawerVariant("persistent")

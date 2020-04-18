@@ -1,6 +1,5 @@
 import React from "react"
 import { StylesProvider } from "@material-ui/core/styles"
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
 import Toolbar from "@material-ui/core/Toolbar"
 import {
   HeaderMockUp,
@@ -62,19 +61,6 @@ const IndexPage = () => {
         collapsedWidth: "12%",
       })
   })
-  const [open, setOpen] = React.useState(false)
-  return (
-    <StylesProvider injectFirst>
-      <SwipeableDrawer
-        variant={'persistent'}
-        open={false}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
-      >
-        <NavContentMockUp />
-      </SwipeableDrawer>
-    </StylesProvider>
-  )
   return (
     <StylesProvider injectFirst>
       <Root

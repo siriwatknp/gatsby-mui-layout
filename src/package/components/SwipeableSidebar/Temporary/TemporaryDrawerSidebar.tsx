@@ -1,4 +1,4 @@
 import React from "react"
-import { createSwipeableDrawerSidebar } from "../../Shared/SharedSidebar"
+import { createSwipeableVariant } from "../../Shared/SharedSidebar"
 
-export default createSwipeableDrawerSidebar("temporary")
+export default createSwipeableVariant("temporary")

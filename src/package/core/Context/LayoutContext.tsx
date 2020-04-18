@@ -32,10 +32,8 @@ export const useSidebarCta = (sidebarId: string, consumer?: string) => {
   const { breakpoints } = useTheme<Theme>()
   const { id = sidebarId } = useSidebarCtx()
   const props = useSidebar(id, consumer)
-  const anchor = getSidebarAnchor(props.config)
   return {
     id,
-    anchor,
     breakpoints,
     ...props,
   }
@@ -54,7 +52,9 @@ export const useSidebar = (id: string, consumer?: string) => {
     throw new Error(`You must specify a sidebar id to <${consumer} />`)
   }
   const { styles, state, config, ...props } = useLayoutCtx()
+  const anchor = getSidebarAnchor(config.sidebarById[id])
   return {
+    anchor,
     state: state.sidebar[id],
     styles: styles.sidebar[id],
     config: config.sidebarById[id],
