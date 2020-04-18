@@ -1,3 +1,4 @@
+import each from 'jest-each';
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
 import pickNearestBreakpoint from "./pickNearestBreakpoint"
 import createBreakpointStyles from "./createBreakpointStyles"
@@ -5,21 +6,20 @@ import combineBreakpoints from "./combineBreakpoints"
 import createDisplayNone from "./createDisplayNone"
 import createHiddenStyles, {
   sortBreakpoints,
-  getVisibleRange,
-  getBreakpointUpper,
-  getBreakpointBelow,
-  getVisibleRangeFromSiblings,
+  getHiddenRange,
 } from "./createHiddenStyles"
 import getFlexBehaviorValue from "./getFlexBehaviorValue"
 
 const breakpoints = createBreakpoints({})
 
 describe("getFlexBehaviorValue", () => {
-  it("return correct value", () => {
-    expect(getFlexBehaviorValue("left", 300)).toEqual(300)
-    expect(getFlexBehaviorValue("left", "30%")).toEqual("30%")
-    expect(getFlexBehaviorValue("right", "40rem")).toEqual("-40rem")
-    expect(getFlexBehaviorValue("right", 256)).toEqual(-256)
+  each([
+    ["left", 300, 300],
+    ["left", '30%', '30%'],
+    ["right", '40rem', '-40rem'],
+    ['right', 256, -256]
+  ]).test('return %s when addding %s and %s', (anchor, currentWidth, result) => {
+    expect(getFlexBehaviorValue(anchor, currentWidth)).toEqual(result)
   })
 })
 
@@ -47,31 +47,37 @@ describe("createHiddenStyles", () => {
     ])
   })
 
-  it("getVisibleRange", () => {
-    expect(getVisibleRange(["sm", "xl"])).toEqual(["sm", "md", "lg", "xl"])
-  })
-
-  it("getBreakpointUpper", () => {
-    expect(getBreakpointUpper("xs")).toEqual("sm")
-    expect(getBreakpointUpper("xl")).toBeUndefined()
-  })
-
-  it("getBreakpointBelow", () => {
-    expect(getBreakpointBelow("md")).toEqual("sm")
-    expect(getBreakpointBelow("xs")).toBeUndefined()
-  })
-
-  it("getVisibleRangeFromSiblings", () => {
-    expect(getVisibleRangeFromSiblings({ xs: {}, md: {} }, [])).toEqual([
-      "xs",
-      "sm",
-      "md",
+  it("getHiddenRange", () => {
+    expect(getHiddenRange({ sm: {}, md: {} }, [])).toEqual(["xs"])
+    expect(getHiddenRange({ sm: {}, md: {} }, [{ xl: {} }])).toEqual(["xs", "xl"])
+    expect(
+      getHiddenRange({ xs: {} }, [{ sm: {}, md: {} }, { xl: {} }])
+    ).toEqual(["sm", "md", "lg", "xl"])
+    expect(getHiddenRange({ xs: {}, sm: {} }, [{ lg: {} }])).toEqual([
       "lg",
       "xl",
     ])
-    expect(
-      getVisibleRangeFromSiblings({ sm: {}, md: {} }, [{ xl: {} }])
-    ).toEqual(["sm", "md", "lg"])
+    expect(getHiddenRange({ xs: {}, sm: {}, xl: {} }, [{ md: {} }])).toEqual([
+      "md",
+      "lg",
+    ])
+    expect(getHiddenRange({ lg: {} }, [{ sm: {} }])).toEqual([
+      "xs",
+      "sm",
+      "md"
+    ])
+    expect(getHiddenRange({ md: {} }, [ {sm:{}}, { xl: {}}])).toEqual(
+      ["xs", "sm", 'xl']
+    )
+    expect(getHiddenRange({ sm: {}, lg: {} }, [ {xs:{}}, { md: {}}, { xl: {}}])).toEqual(
+      ["xs", "md", 'xl']
+    )
+    expect(getHiddenRange({ xs: {}, md: {} }, [ {sm:{}}, { xl: {}}])).toEqual(
+      ["sm", 'xl']
+    )
+    expect(getHiddenRange({ md: {}, xl: {} }, [ {xs:{}}, { lg: {}}])).toEqual(
+      ["xs", 'sm', 'lg']
+    )
   })
 
   it("create media queries with display none", () => {
@@ -87,18 +93,36 @@ describe("createHiddenStyles", () => {
       },
     })
     expect(
-      createHiddenStyles({ xs: {} }, [{ sm: {}, md: {}}, { xl: {} }], breakpoints)
+      createHiddenStyles(
+        { xs: {} },
+        [{ sm: {}, md: {} }, { xl: {} }],
+        breakpoints
+      )
     ).toStrictEqual({
       "@media (min-width:600px) and (max-width:959.95px)": {
-        display: 'none',
+        display: "none",
       },
       "@media (min-width:960px) and (max-width:1279.95px)": {
-        display: 'none',
+        display: "none",
       },
       "@media (min-width:1280px) and (max-width:1919.95px)": {
-        display: 'none',
+        display: "none",
       },
       "@media (min-width:1920px)": {
+        display: "none",
+      },
+    })
+    expect(
+      createHiddenStyles(
+        { xs: {}, xl: {} },
+        [{ md: {} }],
+        breakpoints
+      )
+    ).toStrictEqual({
+      "@media (min-width:960px) and (max-width:1279.95px)": {
+        display: "none",
+      },
+      "@media (min-width:1280px) and (max-width:1919.95px)": {
         display: "none",
       },
     })

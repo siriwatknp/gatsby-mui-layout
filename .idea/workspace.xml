@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Temporary/TemporaryDrawerSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Temporary/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Builder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/Context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Context.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/sidebarChecker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/sidebarChecker.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/createHiddenStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/createHiddenStyles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
@@ -87,7 +76,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.All Tests">
+  <component name="RunManager" selected="Jest.createHiddenStyles.getHiddenRange">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -127,34 +116,6 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="PersistentSidebarModel (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <jest-options value="--watchAll" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/package/models/PersistentSidebar/PersistentSidebarModel.spec.ts" />
-      <test-names>
-        <test-name value="PersistentSidebarModel" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="PersistentSidebarModel" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <jest-options value="--watchAll" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/package/models/PersistentSidebar/PersistentSidebarModel.spec.js" />
-      <test-names>
-        <test-name value="PersistentSidebarModel" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerJest">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -178,21 +139,51 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="createHiddenStyles.create media queries with display none" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <jest-options value="--watchAll" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/package/utils/utils.spec.ts" />
+      <test-names>
+        <test-name value="createHiddenStyles" />
+        <test-name value="create media queries with display none" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="createHiddenStyles.getHiddenRange" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <jest-options value="--watchAll" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/package/utils/utils.spec.ts" />
+      <test-names>
+        <test-name value="createHiddenStyles" />
+        <test-name value="getHiddenRange" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Jest.All Tests" />
       <item itemvalue="Jest.createBreakpointStyles" />
-      <item itemvalue="Jest.PersistentSidebarModel" />
-      <item itemvalue="Jest.PersistentSidebarModel (1)" />
       <item itemvalue="Jest.BaseSidebarModel" />
       <item itemvalue="Jest.HeaderModel.return correct style" />
+      <item itemvalue="Jest.createHiddenStyles.getHiddenRange" />
+      <item itemvalue="Jest.createHiddenStyles.create media queries with display none" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.createHiddenStyles.getHiddenRange" />
+        <item itemvalue="Jest.createHiddenStyles.create media queries with display none" />
         <item itemvalue="Jest.HeaderModel.return correct style" />
         <item itemvalue="Jest.createBreakpointStyles" />
         <item itemvalue="Jest.BaseSidebarModel" />
-        <item itemvalue="Jest.PersistentSidebarModel (1)" />
-        <item itemvalue="Jest.PersistentSidebarModel" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +202,8 @@
       <workItem from="1586579855987" duration="226000" />
       <workItem from="1586580186913" duration="75659000" />
       <workItem from="1586916322167" duration="21687000" />
-      <workItem from="1587083415994" duration="4520000" />
+      <workItem from="1587083415994" duration="4897000" />
+      <workItem from="1587133021968" duration="15651000" />
     </task>
     <servers />
   </component>

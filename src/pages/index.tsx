@@ -56,7 +56,7 @@ const IndexPage = () => {
       })
       .registerPersistentConfig("sm", {
         anchor: "left",
-        width: 256,
+        width: "auto",
         persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
