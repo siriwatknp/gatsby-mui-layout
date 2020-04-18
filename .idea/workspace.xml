@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/components/CTA/CollapseBtn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/types/Component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/PersistentDrawerSidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/TemporaryDrawerSidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent/PersistentDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent/PersistentDrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Temporary/TemporaryDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Temporary/TemporaryDrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +43,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/package/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/package/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -52,18 +59,19 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/package/utils" />
-    </key>
-    <key name="es6.move.members.recent.items">
-      <recent name="$PROJECT_DIR$/src/package/types/Builder.ts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/package/effects" />
       <recent name="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent" />
       <recent name="$PROJECT_DIR$/src/package/components/DrawerSidebar" />
       <recent name="$PROJECT_DIR$/src/package/effects/Header" />
       <recent name="$PROJECT_DIR$/src/package/models/Sidebar/Edge" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/package/types/Builder.ts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/package/components" />
+      <recent name="$PROJECT_DIR$/src/package/utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -205,7 +213,7 @@
       <workItem from="1586580186913" duration="75659000" />
       <workItem from="1586916322167" duration="21687000" />
       <workItem from="1587083415994" duration="4897000" />
-      <workItem from="1587133021968" duration="28959000" />
+      <workItem from="1587133021968" duration="32813000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,6 @@
 import React from "react"
 import { StylesProvider } from "@material-ui/core/styles"
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
 import Toolbar from "@material-ui/core/Toolbar"
 import {
   HeaderMockUp,
@@ -13,30 +14,11 @@ import {
   Root,
   Header,
   DrawerSidebar,
+  SwipeableSidebar,
   SidebarTrigger,
   CollapseBtn,
 } from "../package/components"
-import Layout, { useLayoutCtx } from "../package/core"
-
-const TriggerBtn = ({ sidebarId }: { sidebarId: string }) => {
-  const { setOpen, state } = useLayoutCtx()
-  const open = state.sidebar.primarySidebar.open
-  return (
-    <button onClick={() => setOpen(sidebarId, !open)}>
-      {open ? "Close" : "Open"}
-    </button>
-  )
-}
-
-const CollapsedBtn = ({ sidebarId }: { sidebarId: string }) => {
-  const { setCollapsed, state } = useLayoutCtx()
-  const { collapsed } = state.sidebar.primarySidebar
-  return (
-    <button onClick={() => setCollapsed(sidebarId, !collapsed)}>
-      {collapsed ? "Expand" : "Shrink"}
-    </button>
-  )
-}
+import Layout from "../package/core"
 
 const IndexPage = () => {
   const scheme = Layout()
@@ -80,6 +62,19 @@ const IndexPage = () => {
         collapsedWidth: "12%",
       })
   })
+  const [open, setOpen] = React.useState(false)
+  return (
+    <StylesProvider injectFirst>
+      <SwipeableDrawer
+        variant={'persistent'}
+        open={false}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+      >
+        <NavContentMockUp />
+      </SwipeableDrawer>
+    </StylesProvider>
+  )
   return (
     <StylesProvider injectFirst>
       <Root
@@ -92,12 +87,12 @@ const IndexPage = () => {
             Hello
           </Toolbar>
         </Header>
-        <DrawerSidebar id="primarySidebar">
+        <SwipeableSidebar id="primarySidebar">
           <div>
             <NavContentMockUp />
           </div>
           <CollapseBtn />
-        </DrawerSidebar>
+        </SwipeableSidebar>
       </Root>
     </StylesProvider>
   )
