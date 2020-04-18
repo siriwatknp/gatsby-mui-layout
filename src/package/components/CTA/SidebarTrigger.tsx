@@ -1,13 +1,12 @@
 import React from "react"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import IconButton, { IconButtonProps } from "@material-ui/core/IconButton"
-import { SvgIconProps } from "@material-ui/core/SvgIcon"
 import ArrowLeft from "@material-ui/icons/KeyboardArrowLeftRounded"
 import ArrowRight from "@material-ui/icons/KeyboardArrowRightRounded"
 import MenuRounded from "@material-ui/icons/MenuRounded"
-import { useSidebarCtx, useSidebar } from "../../core/Context"
-import { createHiddenStyles, getSidebarAnchor } from "../../utils"
-import { DrawerAnchor } from "../../types"
+import { useSidebarCta } from "../../core/Context"
+import { createHiddenStyles } from "../../utils"
+import { CtaProps } from "../../types"
 import createHiddenProxyComponent from "../Shared/HiddenProxy"
 
 const useStyles = makeStyles(
@@ -24,46 +23,26 @@ const StyledProxyIconBtn = createHiddenProxyComponent<IconButtonProps>(
   IconButton
 )
 
-interface FunctionChildren {
-  (props: {
-    open?: boolean
-    collapsed?: boolean
-    anchor: DrawerAnchor
-  }): React.ReactNode
-}
-
 const SidebarTrigger = ({
   children,
   sidebarId,
   onClick,
   SvgIconProps,
   ...props
-}: IconButtonProps & {
-  children?: FunctionChildren
-  sidebarId?: string
-  onClick?: Function
-  SvgIconProps?: SvgIconProps
-}) => {
-  const { breakpoints } = useTheme()
+}: IconButtonProps & CtaProps) => {
   const classes = useStyles(props)
-  const { id = sidebarId } = useSidebarCtx()
   const {
+    id,
+    anchor,
+    breakpoints,
     state,
     setOpen,
-    config,
     styles: { permanent, persistent, temporary },
-  } = useSidebar(id, "SidebarTrigger")
-  const anchor = getSidebarAnchor(config)
+  } = useSidebarCta(sidebarId, "SidebarTrigger")
   const getArrow = () => {
-    if (!state.open) {
-      return <MenuRounded {...SvgIconProps} />
-    }
-    if (anchor === "left") {
-      return <ArrowLeft {...SvgIconProps} />
-    }
-    if (anchor === "right") {
-      return <ArrowRight {...SvgIconProps} />
-    }
+    if (!state.open) return <MenuRounded {...SvgIconProps} />
+    if (anchor === "left") return <ArrowLeft {...SvgIconProps} />
+    if (anchor === "right") return <ArrowRight {...SvgIconProps} />
     return null
   }
   const hiddenStyles = createHiddenStyles(

@@ -9,7 +9,13 @@ import {
   FooterMockUp,
   // @ts-ignore
 } from "@mui-treasury/mockup/layout"
-import { Root, Header, DrawerSidebar, SidebarTrigger } from "../package/components"
+import {
+  Root,
+  Header,
+  DrawerSidebar,
+  SidebarTrigger,
+  CollapseBtn,
+} from "../package/components"
 import Layout, { useLayoutCtx } from "../package/core"
 
 const TriggerBtn = ({ sidebarId }: { sidebarId: string }) => {
@@ -51,7 +57,7 @@ const IndexPage = () => {
       .createEdgeSidebar("primarySidebar")
       .registerTemporaryConfig("xs", {
         anchor: "left",
-        width: "auto"
+        width: "auto",
       })
       .registerPersistentConfig("sm", {
         anchor: "left",
@@ -89,8 +95,8 @@ const IndexPage = () => {
         <DrawerSidebar id="primarySidebar">
           <div>
             <NavContentMockUp />
-            <CollapsedBtn sidebarId={"primarySidebar"} />
           </div>
+          <CollapseBtn />
         </DrawerSidebar>
       </Root>
     </StylesProvider>

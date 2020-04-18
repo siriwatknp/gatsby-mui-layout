@@ -1,9 +1,10 @@
 import React from "react"
 import merge from "deepmerge"
-import { useTheme } from "@material-ui/core/styles"
-import { createBreakpointStyles } from "../../utils"
+import { useTheme, Theme } from "@material-ui/core/styles"
+import { createBreakpointStyles, getSidebarAnchor } from "../../utils"
 import { ILayoutBuilder } from "../Builder"
 import { ContextValue, State } from "../../types"
+import { useSidebarCtx } from "./SidebarContext"
 
 const Context = React.createContext<ContextValue>(null)
 Context.displayName = "MuiLayoutCtx"
@@ -27,6 +28,19 @@ const reducer = (state: State, action: Action) => {
   }
 }
 
+export const useSidebarCta = (sidebarId: string, consumer?: string) => {
+  const { breakpoints } = useTheme<Theme>()
+  const { id = sidebarId } = useSidebarCtx()
+  const props = useSidebar(id, consumer)
+  const anchor = getSidebarAnchor(props.config)
+  return {
+    id,
+    anchor,
+    breakpoints,
+    ...props,
+  }
+}
+
 export const useLayoutCtx = () => {
   const ctx = React.useContext(Context)
   if (!ctx) {
@@ -36,7 +50,7 @@ export const useLayoutCtx = () => {
 }
 
 export const useSidebar = (id: string, consumer?: string) => {
-  if(!id) {
+  if (!id) {
     throw new Error(`You must specify a sidebar id to <${consumer} />`)
   }
   const { styles, state, config, ...props } = useLayoutCtx()
@@ -44,13 +58,13 @@ export const useSidebar = (id: string, consumer?: string) => {
     state: state.sidebar[id],
     styles: styles.sidebar[id],
     config: config.sidebarById[id],
-    ...props
+    ...props,
   }
 }
 
 export const useHeader = () => {
   const { styles } = useLayoutCtx()
-  const { breakpoints } = useTheme()
+  const { breakpoints } = useTheme<Theme>()
   return {
     styles: createBreakpointStyles(styles.header, breakpoints),
   }
