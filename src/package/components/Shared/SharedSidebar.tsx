@@ -1,31 +1,15 @@
 import React from "react"
-import styled from "styled-components"
 import Drawer, { DrawerProps } from "@material-ui/core/Drawer"
-import { MediaQueries } from "../../utils/createBreakpointStyles"
 import { ContextValue, SidebarState, SidebarVariant } from "../../types"
 import { upperFirst } from "../../utils"
 import { useLayoutCtx } from "../../core/Context"
+import createHiddenProxyComponent, { HiddenProxyProps } from "./HiddenProxy"
 
 const CLS = "MuiTreasury-paper"
 
-export type SharedSidebarProps = {
-  styles: MediaQueries
-  hiddenStyles?: MediaQueries
-} & DrawerProps
+const StyledProxyDrawer = createHiddenProxyComponent<DrawerProps>(Drawer, CLS)
 
-const ProxyEdgeSidebar = ({
-  hiddenStyles,
-  styles,
-  ...props
-}: SharedSidebarProps) => <Drawer {...props} />
-
-const StyledDrawer = styled(ProxyEdgeSidebar)<{
-  styles: MediaQueries
-  hiddenStyles: MediaQueries
-}>(({ styles, hiddenStyles }) => ({
-  ...hiddenStyles,
-  [`& .${CLS}`]: styles,
-}))
+export type SharedSidebarProps = DrawerProps & HiddenProxyProps
 
 interface CreateSidebar {
   (
@@ -49,7 +33,7 @@ const createDrawerSidebar: CreateSidebar = (variant, getProps) => {
   }: SharedSidebarProps & { state: SidebarState }) => {
     const utils = useLayoutCtx()
     return (
-      <StyledDrawer
+      <StyledProxyDrawer
         {...props}
         {...(getProps && getProps({ ...utils, id: props.id, state }))}
         open={state.open}

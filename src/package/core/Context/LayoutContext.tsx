@@ -5,7 +5,7 @@ import { createBreakpointStyles } from "../../utils"
 import { ILayoutBuilder } from "../Builder"
 import { ContextValue, State } from "../../types"
 
-const Context = React.createContext(null)
+const Context = React.createContext<ContextValue>(null)
 Context.displayName = "MuiLayoutCtx"
 
 type SidebarPayload = { id: string; value: boolean }
@@ -27,7 +27,7 @@ const reducer = (state: State, action: Action) => {
   }
 }
 
-export const useLayoutCtx = (): ContextValue => {
+export const useLayoutCtx = () => {
   const ctx = React.useContext(Context)
   if (!ctx) {
     throw new Error("useLayoutCtx must be rendered under LayoutProvider")
@@ -35,11 +35,15 @@ export const useLayoutCtx = (): ContextValue => {
   return ctx
 }
 
-export const useSidebar = (id: string) => {
-  const { styles, state, ...props } = useLayoutCtx()
+export const useSidebar = (id: string, consumer?: string) => {
+  if(!id) {
+    throw new Error(`You must specify a sidebar id to <${consumer} />`)
+  }
+  const { styles, state, config, ...props } = useLayoutCtx()
   return {
     state: state.sidebar[id],
     styles: styles.sidebar[id],
+    config: config.sidebarById[id],
     ...props
   }
 }
@@ -76,11 +80,13 @@ export const LayoutProvider = ({
       payload: { id, value },
     })
   const styles = scheme.getComponentStyle(state)
+  const config = scheme.getComponentConfig()
   return (
     <Context.Provider
       value={{
         state,
         styles,
+        config,
         setOpen,
         setCollapsed,
       }}

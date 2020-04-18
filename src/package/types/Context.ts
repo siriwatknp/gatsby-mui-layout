@@ -1,4 +1,5 @@
 import { ComponentStyle } from "../core/Builder"
+import { LayoutConfig } from "./Config"
 
 export type SidebarState = {
   collapsed?: boolean
@@ -20,6 +21,7 @@ interface ISidebarTrigger {
 export type ContextValue = {
   state: State
   styles: ComponentStyle
+  config: LayoutConfig
   setOpen: ISidebarTrigger
   setCollapsed: ISidebarTrigger
 }

@@ -2,10 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/Shared/HiddenProxy.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/Context/SidebarContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/utils/getSidebarAnchor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/LayoutBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/LayoutBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Context/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Builder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Context.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/utils/createHiddenStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/createHiddenStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
@@ -203,7 +218,7 @@
       <workItem from="1586580186913" duration="75659000" />
       <workItem from="1586916322167" duration="21687000" />
       <workItem from="1587083415994" duration="4897000" />
-      <workItem from="1587133021968" duration="15651000" />
+      <workItem from="1587133021968" duration="26829000" />
     </task>
     <servers />
   </component>

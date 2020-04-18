@@ -5,7 +5,7 @@ import {
   ISidebarBuilder,
   State,
   ResultStyle,
-  SidebarResultStyle,
+  SidebarResultStyle, LayoutConfig,
 } from "../../types"
 
 interface BuilderCallback<T> {
@@ -21,6 +21,7 @@ export interface ILayoutBuilder {
   configureHeader: (callback: BuilderCallback<IHeaderBuilder>) => void
   configureSidebar: (callback: BuilderCallback<ISidebarBuilder>) => void
   getComponentStyle: (state: State) => ComponentStyle
+  getComponentConfig: () => LayoutConfig
   getInitialState: () => State
 }
 
@@ -35,6 +36,11 @@ export default (): ILayoutBuilder => {
     configureSidebar(callback) {
       callback(sidebar)
     },
+    getComponentConfig: () => ({
+      header: header.getConfig(),
+      sidebar: sidebar.getConfig(),
+      sidebarById: sidebar.getConfigMapById()
+    }),
     getComponentStyle: (state: State) => ({
       header: header.getResultStyle(state, sidebar),
       sidebar: sidebar.getResultStyle(state, header),

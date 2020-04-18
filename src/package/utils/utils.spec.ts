@@ -1,4 +1,4 @@
-import each from 'jest-each';
+import each from "jest-each"
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
 import pickNearestBreakpoint from "./pickNearestBreakpoint"
 import createBreakpointStyles from "./createBreakpointStyles"
@@ -9,18 +9,33 @@ import createHiddenStyles, {
   getHiddenRange,
 } from "./createHiddenStyles"
 import getFlexBehaviorValue from "./getFlexBehaviorValue"
+import getSidebarAnchor from "./getSidebarAnchor"
 
 const breakpoints = createBreakpoints({})
+
+describe("getSidebarAnchor", () => {
+  it("return correct anchor", () => {
+    expect(
+      getSidebarAnchor({
+        md: { anchor: "left" as const, id: "1" },
+        lg: { anchor: "left" as const, id: "2" }
+      })
+    ).toEqual('left')
+  })
+})
 
 describe("getFlexBehaviorValue", () => {
   each([
     ["left", 300, 300],
-    ["left", '30%', '30%'],
-    ["right", '40rem', '-40rem'],
-    ['right', 256, -256]
-  ]).test('return %s when addding %s and %s', (anchor, currentWidth, result) => {
-    expect(getFlexBehaviorValue(anchor, currentWidth)).toEqual(result)
-  })
+    ["left", "30%", "30%"],
+    ["right", "40rem", "-40rem"],
+    ["right", 256, -256],
+  ]).test(
+    "return %s when addding %s and %s",
+    (anchor, currentWidth, result) => {
+      expect(getFlexBehaviorValue(anchor, currentWidth)).toEqual(result)
+    }
+  )
 })
 
 describe("createDisplayNone", () => {
@@ -49,7 +64,10 @@ describe("createHiddenStyles", () => {
 
   it("getHiddenRange", () => {
     expect(getHiddenRange({ sm: {}, md: {} }, [])).toEqual(["xs"])
-    expect(getHiddenRange({ sm: {}, md: {} }, [{ xl: {} }])).toEqual(["xs", "xl"])
+    expect(getHiddenRange({ sm: {}, md: {} }, [{ xl: {} }])).toEqual([
+      "xs",
+      "xl",
+    ])
     expect(
       getHiddenRange({ xs: {} }, [{ sm: {}, md: {} }, { xl: {} }])
     ).toEqual(["sm", "md", "lg", "xl"])
@@ -61,23 +79,21 @@ describe("createHiddenStyles", () => {
       "md",
       "lg",
     ])
-    expect(getHiddenRange({ lg: {} }, [{ sm: {} }])).toEqual([
+    expect(getHiddenRange({ lg: {} }, [{ sm: {} }])).toEqual(["xs", "sm", "md"])
+    expect(getHiddenRange({ md: {} }, [{ sm: {} }, { xl: {} }])).toEqual([
       "xs",
       "sm",
-      "md"
+      "xl",
     ])
-    expect(getHiddenRange({ md: {} }, [ {sm:{}}, { xl: {}}])).toEqual(
-      ["xs", "sm", 'xl']
-    )
-    expect(getHiddenRange({ sm: {}, lg: {} }, [ {xs:{}}, { md: {}}, { xl: {}}])).toEqual(
-      ["xs", "md", 'xl']
-    )
-    expect(getHiddenRange({ xs: {}, md: {} }, [ {sm:{}}, { xl: {}}])).toEqual(
-      ["sm", 'xl']
-    )
-    expect(getHiddenRange({ md: {}, xl: {} }, [ {xs:{}}, { lg: {}}])).toEqual(
-      ["xs", 'sm', 'lg']
-    )
+    expect(
+      getHiddenRange({ sm: {}, lg: {} }, [{ xs: {} }, { md: {} }, { xl: {} }])
+    ).toEqual(["xs", "md", "xl"])
+    expect(
+      getHiddenRange({ xs: {}, md: {} }, [{ sm: {} }, { xl: {} }])
+    ).toEqual(["sm", "xl"])
+    expect(
+      getHiddenRange({ md: {}, xl: {} }, [{ xs: {} }, { lg: {} }])
+    ).toEqual(["xs", "sm", "lg"])
   })
 
   it("create media queries with display none", () => {
@@ -113,11 +129,7 @@ describe("createHiddenStyles", () => {
       },
     })
     expect(
-      createHiddenStyles(
-        { xs: {}, xl: {} },
-        [{ md: {} }],
-        breakpoints
-      )
+      createHiddenStyles({ xs: {}, xl: {} }, [{ md: {} }], breakpoints)
     ).toStrictEqual({
       "@media (min-width:960px) and (max-width:1279.95px)": {
         display: "none",

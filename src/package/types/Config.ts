@@ -1,4 +1,5 @@
 import { AppendDictionary, Dictionary } from "./Utils"
+import { HeaderConfigMap, SidebarConfigMap, SidebarConfigMapById } from "./Builder"
 
 export type PersistentBehavior = "fit" | "flexible" | "none"
 export type PersistentBehaviorById = Dictionary<PersistentBehavior>
@@ -25,6 +26,7 @@ export interface PersistentSidebarConfig extends CollapsibleSidebarConfig {
 
 export interface InsetSidebarConfig {
   id: string
+  anchor?: DrawerAnchor
 }
 
 export interface TemporarySidebarConfig {
@@ -47,4 +49,10 @@ export interface HeaderConfig {
   id: string
   position: Position
   clipped?: AppendDictionary<boolean>
+}
+
+export type LayoutConfig = {
+  header: HeaderConfigMap
+  sidebar: SidebarConfigMap
+  sidebarById: SidebarConfigMapById
 }

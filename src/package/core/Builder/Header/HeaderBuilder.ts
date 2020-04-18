@@ -3,14 +3,14 @@ import createHeaderModel from "../../../models/Header"
 import createHeaderEffect from "../../../effects/Header"
 import {
   HeaderConfig,
+  HeaderConfigMap,
   IHeaderBuilder,
   IRegistry,
-  MapBreakpoint,
   ResultStyle,
 } from "../../../types"
 
 export default (): IHeaderBuilder => {
-  const map: MapBreakpoint<HeaderConfig> = {}
+  const map: HeaderConfigMap = {}
 
   return {
     create: function(id: string) {

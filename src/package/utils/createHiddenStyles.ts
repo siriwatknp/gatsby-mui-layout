@@ -9,9 +9,9 @@ import { ResultStyle } from "../types"
 
 interface CreateHiddenStyles {
   (
-    self?: ResultStyle,
-    siblings?: ResultStyle[],
-    breakpoints?: Breakpoints
+    self: ResultStyle,
+    siblings: ResultStyle[],
+    breakpoints: Breakpoints
   ): MediaQueries
 }
 

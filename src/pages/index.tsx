@@ -9,9 +9,8 @@ import {
   FooterMockUp,
   // @ts-ignore
 } from "@mui-treasury/mockup/layout"
-import { Root, Header, DrawerSidebar } from "../package/components"
+import { Root, Header, DrawerSidebar, SidebarTrigger } from "../package/components"
 import Layout, { useLayoutCtx } from "../package/core"
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
 const TriggerBtn = ({ sidebarId }: { sidebarId: string }) => {
   const { setOpen, state } = useLayoutCtx()
@@ -56,7 +55,7 @@ const IndexPage = () => {
       })
       .registerPersistentConfig("sm", {
         anchor: "left",
-        width: "auto",
+        width: 256,
         persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
@@ -64,7 +63,7 @@ const IndexPage = () => {
       .registerPersistentConfig("md", {
         anchor: "left",
         width: "30%",
-        persistentBehavior: "flexible",
+        persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
       })
@@ -83,7 +82,7 @@ const IndexPage = () => {
       >
         <Header>
           <Toolbar>
-            <TriggerBtn sidebarId={"primarySidebar"} />
+            <SidebarTrigger sidebarId="primarySidebar" />
             Hello
           </Toolbar>
         </Header>

@@ -16,7 +16,8 @@ import {
   ISidebarBuilder,
   IEdgeSidebarRegistry,
   SidebarResultStyle,
-  Dictionary,
+  SidebarConfigMap,
+  SidebarConfigMapById,
 } from "../../../types"
 
 export const isUniqueSidebars = (sidebars: SidebarConfig[]): boolean => {
@@ -43,8 +44,8 @@ const createStateEffect = (
 
 export default (): ISidebarBuilder => {
   const sidebarIds: string[] = []
-  const mapByBreakpoint: MapBreakpoint<SidebarConfig[]> = {}
-  const mapById: Dictionary<MapBreakpoint<SidebarConfig>> = {}
+  const mapByBreakpoint: SidebarConfigMap = {}
+  const mapById: SidebarConfigMapById = {}
   const effect: MapBreakpoint<ISidebarStateEffectCreator[]> = {}
   const addConfig = (
     breakpoint: Breakpoint,
@@ -107,6 +108,7 @@ export default (): ISidebarBuilder => {
     },
     getSidebarIds: () => sidebarIds,
     getConfig: () => mapByBreakpoint,
+    getConfigMapById: () => mapById,
     getBreakpointConfig: breakpoint =>
       pickNearestBreakpoint(mapByBreakpoint, breakpoint),
     getBreakpointEffect: breakpoint =>

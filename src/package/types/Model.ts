@@ -46,7 +46,3 @@ export interface IMargin {
   getStyle: () => MarginStyle
   combine: (m: IMargin) => IMargin
 }
-
-export type LayoutConfig = {
-  [key in Breakpoint]?: Dictionary<string | number>
-}

@@ -1,6 +1,9 @@
 import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
-import { useSidebar } from "../../core/Context"
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
+import makeStyles from "@material-ui/core/styles/makeStyles"
+import { DrawerProps } from "@material-ui/core/Drawer"
+import { useSidebar, SidebarProvider } from "../../core/Context"
 import PersistentDrawer from "./Persistent"
 import PermanentDrawer from "./Permanent"
 import TemporaryDrawer from "./Temporary"
@@ -8,10 +11,8 @@ import {
   createBreakpointStyles,
   createDisplayNone,
   createHiddenStyles,
+  getSidebarAnchor,
 } from "../../utils"
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import makeStyles from "@material-ui/core/styles/makeStyles"
-import { DrawerProps } from "@material-ui/core"
 
 const useStyles = makeStyles(
   ({ breakpoints }) => ({
@@ -33,14 +34,20 @@ const DrawerSidebar = ({
   const {
     styles: { permanent, persistent, temporary },
     state,
+    config,
   } = useSidebar(props.id)
+  const anchor = getSidebarAnchor(config)
+  const commonProps = {
+    ...props,
+    anchor,
+    classes,
+    state,
+  }
 
   return (
-    <>
+    <SidebarProvider id={props.id}>
       <TemporaryDrawer
-        {...props}
-        classes={classes}
-        state={state}
+        {...commonProps}
         hiddenStyles={createHiddenStyles(
           temporary,
           [permanent, persistent],
@@ -49,9 +56,7 @@ const DrawerSidebar = ({
         styles={createBreakpointStyles(temporary, breakpoints)}
       />
       <PersistentDrawer
-        {...props}
-        classes={classes}
-        state={state}
+        {...commonProps}
         hiddenStyles={createHiddenStyles(
           persistent,
           [temporary, permanent],
@@ -60,9 +65,7 @@ const DrawerSidebar = ({
         styles={createBreakpointStyles(persistent, breakpoints)}
       />
       <PermanentDrawer
-        {...props}
-        classes={classes}
-        state={state}
+        {...commonProps}
         hiddenStyles={createHiddenStyles(
           permanent,
           [temporary, persistent],
@@ -70,7 +73,7 @@ const DrawerSidebar = ({
         )}
         styles={createBreakpointStyles(permanent, breakpoints)}
       />
-    </>
+    </SidebarProvider>
   )
 }
 
