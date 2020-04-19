@@ -5,7 +5,7 @@ import ArrowLeft from "@material-ui/icons/KeyboardArrowLeftRounded"
 import ArrowRight from "@material-ui/icons/KeyboardArrowRightRounded"
 import createHiddenProxyComponent from "../Shared/HiddenProxy"
 import { CtaProps } from "../../types"
-import { useSidebarCta } from "../../core/Context"
+import { useSidebarCta } from "../../core"
 import { createHiddenStyles } from "../../utils"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({

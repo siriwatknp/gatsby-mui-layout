@@ -1,10 +1,7 @@
 import React from "react"
 import merge from "deepmerge"
-import { useTheme, Theme } from "@material-ui/core/styles"
-import { createBreakpointStyles, getSidebarAnchor } from "../../utils"
 import { ILayoutBuilder } from "../Builder"
 import { ContextValue, State } from "../../types"
-import { useSidebarCtx } from "./SidebarContext"
 
 const Context = React.createContext<ContextValue>(null)
 Context.displayName = "MuiLayoutCtx"
@@ -28,48 +25,6 @@ const reducer = (state: State, action: Action) => {
   }
 }
 
-export const useSidebarCta = (sidebarId: string, consumer?: string) => {
-  const { breakpoints } = useTheme<Theme>()
-  const { id = sidebarId } = useSidebarCtx()
-  const props = useSidebar(id, consumer)
-  return {
-    id,
-    breakpoints,
-    ...props,
-  }
-}
-
-export const useLayoutCtx = () => {
-  const ctx = React.useContext(Context)
-  if (!ctx) {
-    throw new Error("useLayoutCtx must be rendered under LayoutProvider")
-  }
-  return ctx
-}
-
-export const useSidebar = (id: string, consumer?: string) => {
-  if (!id) {
-    throw new Error(`You must specify a sidebar id to <${consumer} />`)
-  }
-  const { styles, state, config, ...props } = useLayoutCtx()
-  const anchor = getSidebarAnchor(config.sidebarById[id])
-  return {
-    anchor,
-    state: state.sidebar[id],
-    styles: styles.sidebar[id],
-    config: config.sidebarById[id],
-    ...props,
-  }
-}
-
-export const useHeader = () => {
-  const { styles } = useLayoutCtx()
-  const { breakpoints } = useTheme<Theme>()
-  return {
-    styles: createBreakpointStyles(styles.header, breakpoints),
-  }
-}
-
 export const LayoutConsumer = Context.Consumer
 
 export type LayoutProviderProps = {
@@ -78,13 +33,14 @@ export type LayoutProviderProps = {
 }
 
 export const LayoutProvider = ({
-  initialState,
+  initialState: controlledInitialState,
   scheme,
   children,
 }: React.PropsWithChildren<LayoutProviderProps>) => {
+  const autoGenInitialState = scheme.getInitialState()
   const [state, dispatch] = React.useReducer(
     reducer,
-    merge(scheme.getInitialState(), initialState)
+    merge(autoGenInitialState, controlledInitialState || {})
   )
   const setOpen = (id: string, value: boolean) =>
     dispatch({ type: "SET_OPEN", payload: { id, value } })
@@ -109,3 +65,5 @@ export const LayoutProvider = ({
     </Context.Provider>
   )
 }
+
+export default Context

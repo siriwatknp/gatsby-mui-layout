@@ -32,7 +32,7 @@ export default (): IHeaderBuilder => {
     getResultStyle(state, sidebar) {
       const result: ResultStyle = {}
       const breakpoints = combineBreakpoints(map, sidebar.getConfig())
-      breakpoints.map(bp => {
+      sidebar.iterateBreakpointEffects(state, breakpoints, (bp, effects) => {
         const headerConfig = this.getBreakpointConfig(bp)
         if (!headerConfig) {
           throw new Error(
@@ -40,11 +40,7 @@ export default (): IHeaderBuilder => {
           )
         }
 
-        const stateEffectCreators = sidebar.getBreakpointEffect(bp)
-        if (stateEffectCreators) {
-          const effects = stateEffectCreators.map(c => c(state))
-          result[bp] = createHeaderModel(headerConfig, effects).getStyle()
-        }
+        result[bp] = createHeaderModel(headerConfig, effects).getStyle()
       })
       return result
     },

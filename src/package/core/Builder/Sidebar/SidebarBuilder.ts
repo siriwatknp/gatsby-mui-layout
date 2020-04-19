@@ -10,7 +10,6 @@ import {
 } from "../../../utils/sidebarChecker"
 import {
   SidebarConfig,
-  MapBreakpoint,
   ISidebarEffectCreator,
   ISidebarStateEffectCreator,
   ISidebarBuilder,
@@ -18,6 +17,8 @@ import {
   SidebarResultStyle,
   SidebarConfigMap,
   SidebarConfigMapById,
+  SidebarEffectMapById,
+  SidebarEffectMap,
 } from "../../../types"
 
 export const isUniqueSidebars = (sidebars: SidebarConfig[]): boolean => {
@@ -39,14 +40,14 @@ export const isUniqueSidebars = (sidebars: SidebarConfig[]): boolean => {
 const createStateEffect = (
   effectCreator: ISidebarEffectCreator,
   config: SidebarConfig
-): ISidebarStateEffectCreator => mapByBreakpoint =>
-  effectCreator(config, mapByBreakpoint)
+): ISidebarStateEffectCreator => state => effectCreator(config, state)
 
 export default (): ISidebarBuilder => {
   const sidebarIds: string[] = []
   const mapByBreakpoint: SidebarConfigMap = {}
   const mapById: SidebarConfigMapById = {}
-  const effect: MapBreakpoint<ISidebarStateEffectCreator[]> = {}
+  const effect: SidebarEffectMap = {}
+  const effectById: SidebarEffectMapById = {}
   const addConfig = (
     breakpoint: Breakpoint,
     config: SidebarConfig,
@@ -62,6 +63,7 @@ export default (): ISidebarBuilder => {
     // todo: this can be inconsistent
     // sidebar {id} can have duplicate "xs" config
     mapByBreakpoint[breakpoint].push(config)
+
     if (!mapById[config.id]) {
       mapById[config.id] = {}
     }
@@ -73,6 +75,10 @@ export default (): ISidebarBuilder => {
     if (effectCreator) {
       effect[breakpoint].push(createStateEffect(effectCreator, config))
     }
+    if (!effectById[config.id]) {
+      effectById[config.id] = {}
+    }
+    effectById[config.id][breakpoint] = createStateEffect(effectCreator, config)
 
     if (!isUniqueSidebars(mapByBreakpoint[breakpoint])) {
       throw new Error(
@@ -113,6 +119,35 @@ export default (): ISidebarBuilder => {
       pickNearestBreakpoint(mapByBreakpoint, breakpoint),
     getBreakpointEffect: breakpoint =>
       pickNearestBreakpoint(effect, breakpoint),
+    getBreakpointEffectById: (id, breakpoint) =>
+      pickNearestBreakpoint(effectById[id], breakpoint),
+    iterateBreakpointEffects(state, breakpoints = [], getEffects) {
+      let foundAllSidebars = false
+      breakpoints.forEach(bp => {
+        const sidebarIds = this.getSidebarIds()
+        const sidebarCount = sidebarIds.length
+        const stateEffectCreators: ISidebarStateEffectCreator[] = this.getBreakpointEffect(
+          bp
+        )
+        if (stateEffectCreators) {
+          const effects = stateEffectCreators.map(c => c(state))
+          if (!foundAllSidebars && effects.length === sidebarCount) {
+            foundAllSidebars = true
+          }
+          if (foundAllSidebars && effects.length < sidebarCount) {
+            // attach all
+            const existingIds = effects.map(({ id }) => id)
+            const missingIds: string[] = sidebarIds.filter(
+              (id: string) => !existingIds.includes(id)
+            )
+            missingIds.forEach(id => {
+              effects.push(this.getBreakpointEffectById(id, bp)(state))
+            })
+          }
+          getEffects(bp, effects)
+        }
+      })
+    },
     getResultStyle(state, header) {
       const result: SidebarResultStyle = {}
 

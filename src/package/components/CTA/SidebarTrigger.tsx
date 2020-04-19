@@ -4,17 +4,24 @@ import IconButton, { IconButtonProps } from "@material-ui/core/IconButton"
 import ArrowLeft from "@material-ui/icons/KeyboardArrowLeftRounded"
 import ArrowRight from "@material-ui/icons/KeyboardArrowRightRounded"
 import MenuRounded from "@material-ui/icons/MenuRounded"
-import { useSidebarCta } from "../../core/Context"
+import { useSidebarCta } from "../../core"
 import { createHiddenStyles } from "../../utils"
 import { CtaProps } from "../../types"
 import createHiddenProxyComponent from "../Shared/HiddenProxy"
 
 const useStyles = makeStyles(
   ({ spacing }) => ({
-    root: {
-      marginLeft: spacing(-1),
-      marginRight: spacing(1),
-    },
+    // @ts-ignore
+    root: ({ anchor }) => ({
+      ...(anchor === "left" && {
+        marginLeft: spacing(-1),
+        marginRight: spacing(1),
+      }),
+      ...(anchor === "right" && {
+        marginLeft: spacing(1),
+        marginRight: spacing(-1),
+      }),
+    }),
   }),
   { name: "SidebarTrigger" }
 )
@@ -30,7 +37,6 @@ const SidebarTrigger = ({
   SvgIconProps,
   ...props
 }: IconButtonProps & CtaProps) => {
-  const classes = useStyles(props)
   const {
     id,
     anchor,
@@ -39,6 +45,7 @@ const SidebarTrigger = ({
     setOpen,
     styles: { permanent, persistent, temporary },
   } = useSidebarCta(sidebarId, "SidebarTrigger")
+  const classes = useStyles({ ...props, anchor })
   const getArrow = () => {
     if (!state.open) return <MenuRounded {...SvgIconProps} />
     if (anchor === "left") return <ArrowLeft {...SvgIconProps} />

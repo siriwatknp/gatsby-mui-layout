@@ -17,11 +17,17 @@ export default (
     marginInterfaces.push(getObjectMargin(objectId))
   })
   return {
-    marginStyle: marginInterfaces
-      .reduce((result, current) => result.combine(current))
-      .getStyle(),
-    widthStyle: widthInterfaces
-      .reduce((result, current) => result.combine(current))
-      .getStyle(),
+    marginStyle:
+      marginInterfaces.length > 0
+        ? marginInterfaces
+            .reduce((result, current) => result.combine(current))
+            .getStyle()
+        : undefined,
+    widthStyle:
+      widthInterfaces.length > 0
+        ? widthInterfaces
+            .reduce((result, current) => result.combine(current))
+            .getStyle()
+        : undefined,
   }
 }

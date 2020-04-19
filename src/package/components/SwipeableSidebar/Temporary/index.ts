@@ -1,3 +1,3 @@
-export * from './TemporaryDrawerSidebar';
+export * from './TemporarySwipeable';
 
-export { default } from './TemporaryDrawerSidebar';
+export { default } from './TemporarySwipeable';

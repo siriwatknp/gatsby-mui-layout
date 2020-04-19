@@ -1,7 +1,7 @@
 import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { SwipeableDrawerProps } from "@material-ui/core/SwipeableDrawer"
-import { useSidebar, SidebarProvider } from "../../core/Context"
+import { useSidebar, SidebarProvider } from "../../core"
 import PersistentSwipeableDrawer from "./Persistent"
 import PermanentSwipeableDrawer from "./Permanent"
 import TemporarySwipeableDrawer from "./Temporary"
@@ -42,6 +42,7 @@ const SwipeableSidebar = ({
   return (
     <SidebarProvider id={props.id}>
       <TemporarySwipeableDrawer
+        disableScrollLock
         {...commonProps}
         hiddenStyles={createHiddenStyles(
           temporary,

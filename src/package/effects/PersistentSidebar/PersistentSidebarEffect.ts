@@ -22,7 +22,11 @@ export default (
 
   const isBehavior = (value: PersistentBehavior, objectId: string) => {
     if (typeof config.persistentBehavior === "object") {
-      return config?.persistentBehavior?.[objectId] === value
+      const objectBehavior = config?.persistentBehavior?.[objectId]
+      if (!objectBehavior) {
+        return config?.persistentBehavior?._other === value
+      }
+      return objectBehavior === value
     }
     return config.persistentBehavior === value
   }

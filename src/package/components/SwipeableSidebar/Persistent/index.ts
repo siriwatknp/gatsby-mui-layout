@@ -1,3 +1,3 @@
-export * from './PersistentDrawerSidebar';
+export * from './PersistentSwipeable';
 
-export { default } from './PersistentDrawerSidebar';
+export { default } from './PersistentSwipeable';

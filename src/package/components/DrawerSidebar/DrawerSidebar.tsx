@@ -1,7 +1,7 @@
 import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { DrawerProps } from "@material-ui/core/Drawer"
-import { useSidebar, SidebarProvider } from "../../core/Context"
+import { useSidebar, SidebarProvider } from "../../core"
 import PersistentDrawer from "./Persistent"
 import PermanentDrawer from "./Permanent"
 import TemporaryDrawer from "./Temporary"
@@ -37,6 +37,7 @@ const DrawerSidebar = ({
   return (
     <SidebarProvider id={props.id}>
       <TemporaryDrawer
+        disableScrollLock
         {...commonProps}
         hiddenStyles={createHiddenStyles(
           temporary,

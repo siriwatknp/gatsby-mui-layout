@@ -1,3 +1,3 @@
-export * from "./PermanentDrawer"
+export * from "./PermanentSwipeable"
 
-export { default } from "./PermanentDrawer"
+export { default } from "./PermanentSwipeable"

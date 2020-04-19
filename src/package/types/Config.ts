@@ -16,12 +16,12 @@ export interface CollapsibleSidebarConfig {
 }
 
 export interface PermanentSidebarConfig extends CollapsibleSidebarConfig {
-  variant: "permanent"
+  variant?: "permanent"
 }
 
 export interface PersistentSidebarConfig extends CollapsibleSidebarConfig {
   persistentBehavior: AppendDictionary<PersistentBehavior>
-  variant: "persistent"
+  variant?: "persistent"
 }
 
 export interface InsetSidebarConfig {
@@ -32,7 +32,7 @@ export interface InsetSidebarConfig {
 export interface TemporarySidebarConfig {
   id: string
   width: number | string
-  variant: "temporary"
+  variant?: "temporary"
   anchor?: DrawerAnchor
 }
 

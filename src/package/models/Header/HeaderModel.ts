@@ -1,4 +1,4 @@
-import createModel from "../../effects/Header/HeaderEffect"
+import createEffect from "../../effects/Header/HeaderEffect"
 import createWidthInterface from "../Width"
 import createMarginInterface from "../Margin"
 import { ISidebarEffect, HeaderConfig, IMargin, IWidth } from "../../types"
@@ -9,12 +9,13 @@ const shouldClipped = (
 ) => {
   return (
     (typeof config.clipped === "boolean" && config.clipped) ||
-    (typeof config.clipped === "object" && config?.clipped?.[objectId])
+    (typeof config.clipped === "object" &&
+      (config?.clipped?.[objectId] ?? config?.clipped?._other))
   )
 }
 
 export default (config: HeaderConfig, sidebarEffects: ISidebarEffect[]) => {
-  const headerEffect = createModel(config)
+  const headerEffect = createEffect(config)
 
   const marginInterfaces: IMargin[] = []
   const widthInterfaces: IWidth[] = []

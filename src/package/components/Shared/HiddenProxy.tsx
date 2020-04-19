@@ -20,9 +20,11 @@ function createHiddenProxyComponent<T>(
   const StyledComponent = styled(ProxyComponent)<HiddenProxyProps>(
     ({ styles, hiddenStyles }) => ({
       ...hiddenStyles,
-      ...(refClassName && {
-        [`& .${refClassName}`]: styles,
-      }),
+      ...(refClassName
+        ? {
+            [`& .${refClassName}`]: styles,
+          }
+        : styles),
     })
   )
 

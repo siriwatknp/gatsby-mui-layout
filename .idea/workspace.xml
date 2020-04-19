@@ -2,17 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/Content/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/components/Footer/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Content/ContentBuilder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Content/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Footer/FooterBuilder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Footer/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Header/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/hooks.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/CTA/CollapseBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/CTA/CollapseBtn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent/PersistentDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent/PersistentDrawerSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Temporary/TemporaryDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/Temporary/TemporaryDrawerSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/PermanentDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/PermanentDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/PersistentDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/PersistentDrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Shared/HiddenProxy.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Shared/HiddenProxy.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/PermanentDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/PermanentSwipeable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Permanent/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/PersistentDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/PersistentSwipeable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Persistent/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/TemporaryDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/TemporaryDrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/TemporaryDrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/TemporarySwipeable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/Temporary/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Header/HeaderBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/LayoutBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/LayoutBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/Sidebar/SidebarBuilder.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Header/HeaderModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/SidebarList/SidebarListEffect.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/SidebarList/SidebarListEffect.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/SidebarList/SidebarListEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/SidebarList/SidebarListEffect.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/SidebarList/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/SidebarList/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Builder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,7 +68,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/package/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/package/core/Builder/Sidebar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,6 +95,9 @@
       <recent name="$PROJECT_DIR$/src/package/types/Builder.ts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/package/core/Builder/Sidebar" />
+      <recent name="$PROJECT_DIR$/src/package/core/Builder/Header" />
+      <recent name="$PROJECT_DIR$/src/package/core/Builder/Content" />
       <recent name="$PROJECT_DIR$/src/package/components" />
       <recent name="$PROJECT_DIR$/src/package/utils" />
     </key>
@@ -83,7 +114,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.createHiddenStyles.getHiddenRange">
+  <component name="RunManager" selected="Jest.SidebarListEffect.return correct style for anchor left + right">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -92,20 +123,6 @@
       <jest-options value="--watchAll" />
       <envs />
       <scope-kind value="ALL" />
-      <method v="2" />
-    </configuration>
-    <configuration name="BaseSidebarModel" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <jest-options value="--watchAll" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/package/models/BaseSidebar/BaseSidebarModel.spec.ts" />
-      <test-names>
-        <test-name value="BaseSidebarModel" />
-      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="HeaderModel.return correct style" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
@@ -120,6 +137,21 @@
       <test-names>
         <test-name value="HeaderModel" />
         <test-name value="return correct style" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="SidebarListEffect.return correct style for anchor left + right" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <jest-options value="--watchAll" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/package/effects/SidebarList/SidebarListEffect.spec.ts" />
+      <test-names>
+        <test-name value="SidebarListEffect" />
+        <test-name value="return correct style for anchor left + right" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -179,18 +211,18 @@
     <list>
       <item itemvalue="Jest.All Tests" />
       <item itemvalue="Jest.createBreakpointStyles" />
-      <item itemvalue="Jest.BaseSidebarModel" />
       <item itemvalue="Jest.HeaderModel.return correct style" />
       <item itemvalue="Jest.createHiddenStyles.getHiddenRange" />
       <item itemvalue="Jest.createHiddenStyles.create media queries with display none" />
+      <item itemvalue="Jest.SidebarListEffect.return correct style for anchor left + right" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.SidebarListEffect.return correct style for anchor left + right" />
         <item itemvalue="Jest.createHiddenStyles.getHiddenRange" />
         <item itemvalue="Jest.createHiddenStyles.create media queries with display none" />
         <item itemvalue="Jest.HeaderModel.return correct style" />
         <item itemvalue="Jest.createBreakpointStyles" />
-        <item itemvalue="Jest.BaseSidebarModel" />
       </list>
     </recent_temporary>
   </component>

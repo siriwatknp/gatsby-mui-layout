@@ -1,6 +1,8 @@
 import React from "react"
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { StylesProvider } from "@material-ui/core/styles"
 import Toolbar from "@material-ui/core/Toolbar"
+import Box from "@material-ui/core/Box"
 import {
   HeaderMockUp,
   NavHeaderMockUp,
@@ -12,6 +14,8 @@ import {
 import {
   Root,
   Header,
+  Content,
+  Footer,
   DrawerSidebar,
   SwipeableSidebar,
   SidebarTrigger,
@@ -29,8 +33,12 @@ const IndexPage = () => {
         clipped: false,
       })
       .registerConfig("md", {
-        position: "relative",
+        position: "sticky",
         clipped: false,
+      })
+      .registerConfig("lg", {
+        position: "sticky",
+        clipped: true,
       })
   })
   scheme.configureSidebar(builder => {
@@ -54,31 +62,56 @@ const IndexPage = () => {
         collapsible: true,
         collapsedWidth: 80,
       })
-      .registerPermanentConfig("lg", {
-        anchor: "left",
-        width: "50%",
+
+    builder
+      .createEdgeSidebar("secondarySidebar")
+      .registerPersistentConfig("md", {
+        anchor: "right",
+        width: 240,
+        persistentBehavior: {
+          _other: "none",
+          appHeader: "fit",
+          appFooter: "fit",
+        },
         collapsible: true,
-        collapsedWidth: "12%",
+        collapsedWidth: 64,
       })
+  })
+  scheme.configureFooter(builder => {
+    builder.create("appFooter")
   })
   return (
     <StylesProvider injectFirst>
+      <CssBaseline />
       <Root
         scheme={scheme}
-        initialState={{ sidebar: { primarySidebar: { open: true } } }}
+        // initialState={{ sidebar: { primarySidebar: { open: true } } }}
       >
         <Header>
           <Toolbar>
             <SidebarTrigger sidebarId="primarySidebar" />
-            Hello
+            <Box flex={1}>Hello</Box>
+            <SidebarTrigger sidebarId="secondarySidebar" />
           </Toolbar>
         </Header>
-        <SwipeableSidebar id="primarySidebar">
+        <DrawerSidebar id="primarySidebar">
           <div>
             <NavContentMockUp />
           </div>
           <CollapseBtn />
-        </SwipeableSidebar>
+        </DrawerSidebar>
+        <DrawerSidebar id="secondarySidebar">
+          <div>
+            <NavContentMockUp />
+          </div>
+          <CollapseBtn />
+        </DrawerSidebar>
+        <Content>
+          <ContentMockUp />
+        </Content>
+        <Footer>
+          <FooterMockUp />
+        </Footer>
       </Root>
     </StylesProvider>
   )

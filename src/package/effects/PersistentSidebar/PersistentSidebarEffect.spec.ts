@@ -160,7 +160,7 @@ describe("[ObjectReference] Mixed Behavior", () => {
       width: 256,
       persistentBehavior: {
         object1: "fit",
-        object2: "flexible",
+        _other: "flexible",
       },
     }
     state = {
