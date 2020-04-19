@@ -7,7 +7,7 @@ import MenuRounded from "@material-ui/icons/MenuRounded"
 import { useSidebarCta } from "../../core"
 import { createHiddenStyles } from "../../utils"
 import { CtaProps } from "../../types"
-import createHiddenProxyComponent from "../Shared/HiddenProxy"
+import createHiddenProxyComponent from "../Shared/StyledProxy"
 
 const useStyles = makeStyles(
   ({ spacing }) => ({

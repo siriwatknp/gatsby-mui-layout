@@ -1,8 +1,13 @@
-import { Theme, useTheme } from "@material-ui/core"
+import merge from "deepmerge"
+import { Theme, useTheme } from "@material-ui/core/styles"
 import LayoutContext from "./Context/LayoutContext"
 import { useSidebarCtx } from "./Context"
 import React from "react"
-import { createBreakpointStyles, getSidebarAnchor } from "../utils"
+import {
+  createBreakpointStyles,
+  getSidebarAnchor,
+  createHiddenStyles,
+} from "../utils"
 
 export const useSidebarCta = (sidebarId: string, consumer?: string) => {
   const { breakpoints } = useTheme<Theme>()
@@ -60,4 +65,34 @@ export const useFooter = () => {
   return {
     styles: createBreakpointStyles(styles.footer, breakpoints),
   }
+}
+
+export const useInsetSidebar = (id: string) => {
+  const { styles } = useLayoutCtx()
+  const { breakpoints } = useTheme<Theme>()
+  const sidebarStyles = styles.inset[id]
+  const hiddenRootStyles = createHiddenStyles(
+    sidebarStyles.root,
+    [],
+    breakpoints
+  )
+  const hiddenBodyStyles = createHiddenStyles(
+    sidebarStyles.body,
+    [],
+    breakpoints
+  )
+  return {
+    rootStyles: merge(
+      createBreakpointStyles(sidebarStyles.root, breakpoints),
+      hiddenRootStyles
+    ),
+    bodyStyles: merge(
+      createBreakpointStyles(sidebarStyles.body, breakpoints),
+      hiddenBodyStyles
+    ),
+  }
+}
+
+export const useInsetAvoidingView = () => {
+  const { config } = useLayoutCtx()
 }

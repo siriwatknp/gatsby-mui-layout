@@ -1,7 +1,7 @@
 import React from "react"
 import AppBar, { AppBarProps } from "@material-ui/core/AppBar"
 import { useHeader } from "../../core"
-import createHiddenProxyComponent from "../Shared/HiddenProxy"
+import createHiddenProxyComponent from "../Shared/StyledProxy"
 
 const StyledProxyAppBar = createHiddenProxyComponent<AppBarProps>(AppBar)
 

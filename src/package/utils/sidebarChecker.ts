@@ -1,7 +1,13 @@
 import {
-  EdgeSidebarConfig, PermanentSidebarConfig,
+  AbsoluteInsetSidebarConfig,
+  EdgeSidebarConfig,
+  FixedInsetSidebarConfig,
+  InsetSidebarConfig,
+  PermanentSidebarConfig,
   PersistentSidebarConfig,
-  SidebarConfig, TemporarySidebarConfig,
+  SidebarConfig,
+  StickyInsetSidebarConfig,
+  TemporarySidebarConfig,
 } from "../types"
 
 export const isEdgeSidebarConfig = (
@@ -26,4 +32,22 @@ export const isTemporarySidebarConfig = (
   config: SidebarConfig
 ): config is TemporarySidebarConfig => {
   return (config as TemporarySidebarConfig).variant === "temporary"
+}
+
+export const isFixedInsetSidebarConfig = (
+  config: InsetSidebarConfig
+): config is FixedInsetSidebarConfig => {
+  return (config as FixedInsetSidebarConfig).variant === "fixed"
+}
+
+export const isAbsoluteInsetSidebarConfig = (
+  config: InsetSidebarConfig
+): config is AbsoluteInsetSidebarConfig => {
+  return (config as AbsoluteInsetSidebarConfig).variant === "absolute"
+}
+
+export const isStickyInsetSidebarConfig = (
+  config: InsetSidebarConfig
+): config is StickyInsetSidebarConfig => {
+  return (config as StickyInsetSidebarConfig).variant === "sticky"
 }

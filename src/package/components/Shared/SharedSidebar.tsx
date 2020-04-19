@@ -5,7 +5,7 @@ import SwipeableDrawer, {
 } from "@material-ui/core/SwipeableDrawer"
 import { SidebarVariant } from "../../types"
 import { upperFirst } from "../../utils"
-import createHiddenProxyComponent, { HiddenProxyProps } from "./HiddenProxy"
+import createHiddenProxyComponent, { HiddenProxyProps } from "./StyledProxy"
 
 const CLS = "MuiTreasury-paper"
 

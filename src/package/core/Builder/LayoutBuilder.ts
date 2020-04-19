@@ -9,8 +9,12 @@ import {
   SidebarResultStyle,
   LayoutConfig,
   IContentBuilder,
+  InsetSidebarResultStyle,
+  Dictionary,
 } from "../../types"
 import FooterBuilder from "./Footer"
+import InsetBuilder from "./Inset"
+import { IInsetBuilder } from "./Inset/InsetBuilder"
 
 interface BuilderCallback<T> {
   (builder: T): void
@@ -21,11 +25,13 @@ export type ComponentStyle = {
   sidebar: SidebarResultStyle
   content: ResultStyle
   footer: ResultStyle
+  inset: Dictionary<InsetSidebarResultStyle>
 }
 
 export interface ILayoutBuilder {
   configureHeader: (callback: BuilderCallback<IHeaderBuilder>) => void
   configureSidebar: (callback: BuilderCallback<ISidebarBuilder>) => void
+  configureInset: (callback: BuilderCallback<IInsetBuilder>) => void
   configureContent: (callback: BuilderCallback<IContentBuilder>) => void
   configureFooter: (callback: BuilderCallback<IContentBuilder>) => void
   getComponentStyle: (state: State) => ComponentStyle
@@ -38,6 +44,7 @@ export default (): ILayoutBuilder => {
   const sidebar = SidebarBuilder()
   const content = ContentBuilder()
   const footer = FooterBuilder()
+  const inset = InsetBuilder()
 
   return {
     configureHeader(callback) {
@@ -45,6 +52,9 @@ export default (): ILayoutBuilder => {
     },
     configureSidebar(callback) {
       callback(sidebar)
+    },
+    configureInset(callback) {
+      callback(inset)
     },
     configureContent(callback) {
       callback(content)
@@ -56,12 +66,14 @@ export default (): ILayoutBuilder => {
       header: header.getConfig(),
       sidebar: sidebar.getConfig(),
       sidebarById: sidebar.getConfigMapById(),
+      inset: inset.getConfig(),
     }),
     getComponentStyle: (state: State) => ({
       header: header.getResultStyle(state, sidebar),
       sidebar: sidebar.getResultStyle(state, header),
       content: content.getResultStyle(state, sidebar),
       footer: footer.getResultStyle(state, sidebar),
+      inset: inset.getResultStyle(),
     }),
     getInitialState: () => {
       const sidebarIds = sidebar.getSidebarIds()

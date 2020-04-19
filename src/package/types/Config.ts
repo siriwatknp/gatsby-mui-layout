@@ -1,5 +1,10 @@
 import { AppendDictionary, Dictionary } from "./Utils"
-import { HeaderConfigMap, SidebarConfigMap, SidebarConfigMapById } from "./Builder"
+import {
+  HeaderConfigMap,
+  SidebarConfigMap,
+  SidebarConfigMapById,
+} from "./Builder"
+import { InsetSidebarConfigMap } from "../core/Builder/Inset/InsetBuilder"
 
 export type PersistentBehavior = "fit" | "flexible" | "none"
 export type PersistentBehaviorById = Dictionary<PersistentBehavior>
@@ -21,13 +26,33 @@ export interface PermanentSidebarConfig extends CollapsibleSidebarConfig {
 
 export interface PersistentSidebarConfig extends CollapsibleSidebarConfig {
   persistentBehavior: AppendDictionary<PersistentBehavior>
-  variant?: "persistent"
+  variant: "persistent"
 }
 
-export interface InsetSidebarConfig {
-  id: string
-  anchor?: DrawerAnchor
+export type FixedInsetSidebarConfig = {
+  id?: string
+  anchor: DrawerAnchor
+  width: number | string
+  variant: "fixed"
 }
+
+export type AbsoluteInsetSidebarConfig = {
+  id?: string
+  width: number | string
+  variant: "absolute"
+}
+
+export type StickyInsetSidebarConfig = {
+  id?: string
+  width: number | string
+  top: number | string
+  variant: "sticky"
+}
+
+export type InsetSidebarConfig =
+  | FixedInsetSidebarConfig
+  | AbsoluteInsetSidebarConfig
+  | StickyInsetSidebarConfig
 
 export interface TemporarySidebarConfig {
   id: string
@@ -38,10 +63,7 @@ export interface TemporarySidebarConfig {
 
 export type EdgeSidebarConfig = PersistentSidebarConfig | PermanentSidebarConfig
 
-export type SidebarConfig =
-  | EdgeSidebarConfig
-  | TemporarySidebarConfig
-  | InsetSidebarConfig
+export type SidebarConfig = EdgeSidebarConfig | TemporarySidebarConfig
 
 export type Position = "static" | "relative" | "sticky" | "absolute" | "fixed"
 
@@ -55,4 +77,5 @@ export type LayoutConfig = {
   header: HeaderConfigMap
   sidebar: SidebarConfigMap
   sidebarById: SidebarConfigMapById
+  inset: InsetSidebarConfigMap
 }

@@ -1,5 +1,5 @@
 import React from "react"
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from "@material-ui/core/CssBaseline"
 import { StylesProvider } from "@material-ui/core/styles"
 import Toolbar from "@material-ui/core/Toolbar"
 import Box from "@material-ui/core/Box"
@@ -16,6 +16,10 @@ import {
   Header,
   Content,
   Footer,
+  InsetContainer,
+  InsetSidebar,
+  InsetAvoidingView,
+  InsetFooter,
   DrawerSidebar,
   SwipeableSidebar,
   SidebarTrigger,
@@ -77,6 +81,26 @@ const IndexPage = () => {
         collapsedWidth: 64,
       })
   })
+  scheme.configureInset(builder => {
+    builder
+      .createSidebar("insetSidebar")
+      .registerAbsoluteConfig("sm", {
+        width: "33%",
+      })
+      .registerStickyConfig("md", {
+        top: "4rem",
+        width: 256,
+      })
+      .registerFixedConfig("lg", {
+        anchor: "right",
+        width: "10rem",
+      })
+
+    builder.createSidebar("secondInsetSidebar").registerFixedConfig("lg", {
+      anchor: "left",
+      width: "5rem",
+    })
+  })
   scheme.configureFooter(builder => {
     builder.create("appFooter")
   })
@@ -107,11 +131,19 @@ const IndexPage = () => {
           <CollapseBtn />
         </DrawerSidebar>
         <Content>
-          <ContentMockUp />
+          <InsetContainer>
+            <InsetSidebar id="secondInsetSidebar">
+              <Box height={200} width={80} bgcolor={"primary.main"} />
+            </InsetSidebar>
+            <ContentMockUp />
+            <InsetSidebar id="insetSidebar">
+              <NavContentMockUp />
+            </InsetSidebar>
+          </InsetContainer>
         </Content>
-        <Footer>
+        <InsetFooter>
           <FooterMockUp />
-        </Footer>
+        </InsetFooter>
       </Root>
     </StylesProvider>
   )

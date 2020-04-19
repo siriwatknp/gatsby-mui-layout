@@ -7,7 +7,7 @@ export interface HiddenProxyProps {
   hiddenStyles?: MediaQueries
 }
 
-function createHiddenProxyComponent<T>(
+function createProxyStyledComponent<T>(
   WrappedComponent: React.ComponentType<T>,
   refClassName?: string
 ) {
@@ -34,4 +34,4 @@ function createHiddenProxyComponent<T>(
   return StyledComponent
 }
 
-export default createHiddenProxyComponent
+export default createProxyStyledComponent
