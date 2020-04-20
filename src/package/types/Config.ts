@@ -5,6 +5,7 @@ import {
   SidebarConfigMapById,
 } from "./Builder"
 import { InsetSidebarConfigMap } from "../core/Builder/Inset/InsetBuilder"
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
 export type PersistentBehavior = "fit" | "flexible" | "none"
 export type PersistentBehaviorById = Dictionary<PersistentBehavior>
@@ -73,9 +74,14 @@ export interface HeaderConfig {
   clipped?: AppendDictionary<boolean>
 }
 
+export interface GlobalConfig {
+  autoCollapse: Dictionary<false | Breakpoint>
+}
+
 export type LayoutConfig = {
   header: HeaderConfigMap
   sidebar: SidebarConfigMap
   sidebarById: SidebarConfigMapById
   inset: InsetSidebarConfigMap
+  global: GlobalConfig
 }

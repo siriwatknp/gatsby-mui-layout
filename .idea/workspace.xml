@@ -2,42 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetAvoidingView/InsetAvoidingView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetAvoidingView/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetContainer/InsetContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetContainer/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetFooter/InsetFooter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetFooter/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetSidebar/InsetSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetSidebar/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/StyledProxy/StyledProxy.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/StyledProxy/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Inset/InsetBuilder.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Inset/InsetBuilder.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/Builder/Inset/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/effects/FixedInsetSidebar/FixedInsetSidebarEffect.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/effects/FixedInsetSidebar/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/models/InsetAvoidingView/InsetAvoidingViewModel.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/models/InsetAvoidingView/InsetAvoidingViewModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/models/InsetAvoidingView/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/models/Sidebar/Inset/AbsoluteInset.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/models/Sidebar/Inset/FixedInset.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/models/Sidebar/Inset/StickyInset.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useAutoCollapse.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useScreen.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/utils/mapWidthToScreen.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/autocollapse.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/CTA/CollapseBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/CTA/CollapseBtn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Shared/HiddenProxy.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Shared/StyledProxy.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Shared/SharedSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/core/Builder/LayoutBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Builder/LayoutBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/hooks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/sidebarChecker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/sidebarChecker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/utils/toValidCssValue.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/toValidCssValue.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/getSidebarAnchor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/getSidebarAnchor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/utils.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +88,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.SidebarListEffect.return correct style for anchor left + right">
+  <component name="RunManager" selected="Jest.mapWidthToScreen">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -160,20 +138,6 @@
       <scope-kind value="ALL" />
       <method v="2" />
     </configuration>
-    <configuration name="createBreakpointStyles" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <jest-options value="--watchAll" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/package/utils/createBreakpointStyles/createBreakpointStyles.spec.ts" />
-      <test-names>
-        <test-name value="createBreakpointStyles" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <configuration name="createHiddenStyles.create media queries with display none" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -204,21 +168,35 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="mapWidthToScreen" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <jest-options value="--watchAll" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/package/utils/utils.spec.ts" />
+      <test-names>
+        <test-name value="mapWidthToScreen" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Jest.All Tests" />
-      <item itemvalue="Jest.createBreakpointStyles" />
       <item itemvalue="Jest.HeaderModel.return correct style" />
       <item itemvalue="Jest.createHiddenStyles.getHiddenRange" />
       <item itemvalue="Jest.createHiddenStyles.create media queries with display none" />
       <item itemvalue="Jest.SidebarListEffect.return correct style for anchor left + right" />
+      <item itemvalue="Jest.mapWidthToScreen" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.mapWidthToScreen" />
         <item itemvalue="Jest.SidebarListEffect.return correct style for anchor left + right" />
         <item itemvalue="Jest.createHiddenStyles.getHiddenRange" />
         <item itemvalue="Jest.createHiddenStyles.create media queries with display none" />
         <item itemvalue="Jest.HeaderModel.return correct style" />
-        <item itemvalue="Jest.createBreakpointStyles" />
       </list>
     </recent_temporary>
   </component>
@@ -239,6 +217,8 @@
       <workItem from="1586916322167" duration="21687000" />
       <workItem from="1587083415994" duration="4897000" />
       <workItem from="1587133021968" duration="32813000" />
+      <workItem from="1587311293976" duration="4740000" />
+      <workItem from="1587394766422" duration="3304000" />
     </task>
     <servers />
   </component>

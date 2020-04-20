@@ -10,15 +10,27 @@ import createHiddenStyles, {
 } from "./createHiddenStyles"
 import getFlexBehaviorValue from "./getFlexBehaviorValue"
 import getSidebarAnchor from "./getSidebarAnchor"
+import mapWidthToScreen from "./mapWidthToScreen"
 
 const breakpoints = createBreakpoints({})
+
+describe("mapWidthToScreen", () => {
+  it("return correct screen", () => {
+    expect(mapWidthToScreen(undefined, breakpoints)).toBeUndefined()
+    expect(mapWidthToScreen(320, breakpoints)).toBe("xs")
+    expect(mapWidthToScreen(768, breakpoints)).toBe("sm")
+    expect(mapWidthToScreen(1024, breakpoints)).toBe("md")
+    expect(mapWidthToScreen(1440, breakpoints)).toBe("lg")
+    expect(mapWidthToScreen(1920, breakpoints)).toBe("xl")
+  })
+})
 
 describe("getSidebarAnchor", () => {
   it("return correct anchor", () => {
     expect(
       getSidebarAnchor({
-        md: { anchor: "left" as const, id: "1" },
-        lg: { anchor: "left" as const, id: "2" }
+        md: { anchor: "left" as const },
+        lg: { anchor: "left" as const }
       })
     ).toEqual('left')
   })
@@ -97,7 +109,6 @@ describe("createHiddenStyles", () => {
   })
 
   it("create media queries with display none", () => {
-    expect(createHiddenStyles()).toEqual({})
     expect(
       createHiddenStyles({ xs: {}, md: {} }, [], breakpoints)
     ).toStrictEqual({})

@@ -2,6 +2,7 @@ import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { DrawerProps } from "@material-ui/core/Drawer"
 import { useSidebar, SidebarProvider } from "../../core"
+import useAutoCollapse from "../../core/hooks/useAutoCollapse"
 import PersistentDrawer from "./Persistent"
 import PermanentDrawer from "./Permanent"
 import TemporaryDrawer from "./Temporary"
@@ -16,6 +17,7 @@ const DrawerSidebar = ({
 }: Omit<DrawerProps, "variant"> & {
   id: string
 }) => {
+  useAutoCollapse(props.id)
   const { breakpoints } = useTheme()
   const {
     anchor,

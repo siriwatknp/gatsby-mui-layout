@@ -10,3 +10,4 @@ export { default as createDisplayNone } from "./createDisplayNone"
 export { default as createHiddenStyles } from "./createHiddenStyles"
 export { default as getFlexBehaviorValue } from "./getFlexBehaviorValue"
 export { default as getSidebarAnchor } from './getSidebarAnchor';
+export { default as mapWidthToScreen } from './mapWidthToScreen';

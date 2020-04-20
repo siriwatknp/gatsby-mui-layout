@@ -10,11 +10,12 @@ import {
   LayoutConfig,
   IContentBuilder,
   InsetSidebarResultStyle,
-  Dictionary,
+  Dictionary, GlobalConfig,
 } from "../../types"
 import FooterBuilder from "./Footer"
 import InsetBuilder from "./Inset"
 import { IInsetBuilder } from "./Inset/InsetBuilder"
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
 interface BuilderCallback<T> {
   (builder: T): void
@@ -34,12 +35,16 @@ export interface ILayoutBuilder {
   configureInset: (callback: BuilderCallback<IInsetBuilder>) => void
   configureContent: (callback: BuilderCallback<IContentBuilder>) => void
   configureFooter: (callback: BuilderCallback<IContentBuilder>) => void
+  enableAutoCollapse: (sidebarId: string, breakpoint?: Breakpoint) => void
   getComponentStyle: (state: State) => ComponentStyle
   getComponentConfig: () => LayoutConfig
   getInitialState: () => State
 }
 
 export default (): ILayoutBuilder => {
+  const global: GlobalConfig = {
+    autoCollapse: {}
+  }
   const header = HeaderBuilder()
   const sidebar = SidebarBuilder()
   const content = ContentBuilder()
@@ -62,11 +67,15 @@ export default (): ILayoutBuilder => {
     configureFooter(callback) {
       callback(footer)
     },
+    enableAutoCollapse(sidebarId, breakpoint = "md") {
+      global.autoCollapse[sidebarId] = breakpoint
+    },
     getComponentConfig: () => ({
       header: header.getConfig(),
       sidebar: sidebar.getConfig(),
       sidebarById: sidebar.getConfigMapById(),
       inset: inset.getConfig(),
+      global
     }),
     getComponentStyle: (state: State) => ({
       header: header.getResultStyle(state, sidebar),
