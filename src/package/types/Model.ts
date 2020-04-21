@@ -29,10 +29,24 @@ export interface ISidebarEffect {
   getObjectMargin: (id?: string) => IMargin
 }
 
+export interface HeaderHeightParams {
+  objectId?: string
+  clippable?: boolean
+  height?: number | string
+  scrollY?: number
+}
+
 export interface IHeaderEffect {
   id: string
   getHeaderZIndex: (theme?: Theme) => ZIndexStyle
   getEdgeSidebarZIndex: (id?: string, theme?: Theme) => ZIndexStyle
+  resolveHeight: (
+    height?: number | string,
+    options?: HeaderHeightParams
+  ) => number | string
+  getInitialHeight: (options?: HeaderHeightParams) => number | string
+  getUpdatedHeight: (options?: HeaderHeightParams) => string
+  getOffsetHeight: (options?: HeaderHeightParams) => number
 }
 
 export interface IWidth {

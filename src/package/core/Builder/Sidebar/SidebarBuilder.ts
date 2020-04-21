@@ -145,6 +145,8 @@ export default (): ISidebarBuilder => {
             })
           }
           getEffects(bp, effects)
+        } else {
+          getEffects(bp, [])
         }
       })
     },

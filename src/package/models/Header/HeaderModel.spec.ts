@@ -14,6 +14,7 @@ describe("HeaderModel", () => {
     }
     sidebarConfig = {
       id: "appSidebar",
+      variant: "persistent",
       anchor: "left" as const,
       collapsible: true,
       width: 256,

@@ -14,6 +14,7 @@ import {
 import {
   Root,
   Header,
+  HeaderAdjustment,
   Content,
   Footer,
   DrawerSidebar,
@@ -21,17 +22,22 @@ import {
   CollapseBtn,
 } from "../package/components"
 import Layout from "../package/core"
-import useScreen from "../package/core/hooks/useScreen"
 
 const IndexPage = () => {
-  const screen = useScreen()
-  console.log('screen', screen);
   const scheme = Layout()
   scheme.configureHeader(builder => {
-    builder.create("appHeader").registerConfig("xs", {
-      position: "fixed",
-      clipped: false,
-    })
+    builder
+      .create("appHeader")
+      .registerConfig("xs", {
+        position: "fixed",
+        clipped: true,
+        initialHeight: 64,
+      })
+      .registerConfig("lg", {
+        position: "relative",
+        clipped: false,
+        initialHeight: 72,
+      })
   })
   scheme.configureSidebar(builder => {
     builder.createEdgeSidebar("primarySidebar").registerPermanentConfig("md", {
@@ -57,6 +63,7 @@ const IndexPage = () => {
           </Toolbar>
         </Header>
         <DrawerSidebar id="primarySidebar">
+          <HeaderAdjustment objectId="primarySidebar" clippable />
           <NavHeaderMockUp />
           <div style={{ flex: 1 }}>
             <NavContentMockUp />
@@ -64,6 +71,7 @@ const IndexPage = () => {
           <CollapseBtn />
         </DrawerSidebar>
         <Content>
+          <HeaderAdjustment />
           <ContentMockUp />
         </Content>
         <Footer>

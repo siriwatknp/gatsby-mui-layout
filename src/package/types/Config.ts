@@ -66,12 +66,13 @@ export type EdgeSidebarConfig = PersistentSidebarConfig | PermanentSidebarConfig
 
 export type SidebarConfig = EdgeSidebarConfig | TemporarySidebarConfig
 
-export type Position = "static" | "relative" | "sticky" | "absolute" | "fixed"
+export type Position = "relative" | "sticky" | "absolute" | "fixed"
 
 export interface HeaderConfig {
   id: string
   position: Position
   clipped?: AppendDictionary<boolean>
+  initialHeight?: number | string
 }
 
 export interface GlobalConfig {

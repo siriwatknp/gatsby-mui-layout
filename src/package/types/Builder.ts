@@ -77,7 +77,7 @@ export interface ISidebarBuilder {
   iterateBreakpointEffects: (
     state: State,
     breakpoints: Breakpoint[],
-    getEffects: (breakpoint: Breakpoint, effects: ISidebarEffect[]) => void
+    getEffects: (breakpoint: Breakpoint, effects?: ISidebarEffect[]) => void
   ) => void
   getResultStyle: (state: State, header: IHeaderBuilder) => SidebarResultStyle
 }

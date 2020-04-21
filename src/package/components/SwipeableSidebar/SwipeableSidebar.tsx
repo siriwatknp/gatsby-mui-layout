@@ -2,7 +2,7 @@ import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { SwipeableDrawerProps } from "@material-ui/core/SwipeableDrawer"
 import { useSidebar, SidebarProvider } from "../../core"
-import useAutoCollapse from "../../core/hooks/useAutoCollapse"
+import useSidebarAutoCollapse from "../../core/hooks/useSidebarAutoCollapse"
 import PersistentSwipeableDrawer from "./Persistent"
 import PermanentSwipeableDrawer from "./Permanent"
 import TemporarySwipeableDrawer from "./Temporary"
@@ -17,7 +17,7 @@ const SwipeableSidebar = ({
   onClose?: SwipeableDrawerProps["onClose"]
   onOpen?: SwipeableDrawerProps["onOpen"]
 }) => {
-  useAutoCollapse(props.id)
+  useSidebarAutoCollapse(props.id)
   const { breakpoints } = useTheme()
   const {
     styles: { permanent, persistent, temporary },
