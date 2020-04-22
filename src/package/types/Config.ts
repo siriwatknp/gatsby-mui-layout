@@ -1,5 +1,6 @@
 import { AppendDictionary, Dictionary } from "./Utils"
 import {
+  EdgeSidebarData,
   HeaderConfigMap,
   SidebarConfigMap,
   SidebarConfigMapById,
@@ -76,6 +77,11 @@ export interface HeaderConfig {
 
 export interface GlobalConfig {
   autoCollapse: Dictionary<false | Breakpoint>
+}
+
+export interface ILayoutConfig {
+  edgeSidebar: EdgeSidebarData
+  header: HeaderConfigMap
 }
 
 export type LayoutConfig = {

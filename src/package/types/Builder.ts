@@ -22,6 +22,11 @@ export type SidebarEffectMap = MapBreakpoint<ISidebarStateEffectCreator[]>
 export type SidebarEffectMapById = Dictionary<
   MapBreakpoint<ISidebarStateEffectCreator>
 >
+export type EdgeSidebarData = {
+  sidebarIds: string[]
+  configMap: MapBreakpoint<EdgeSidebarConfig[]>
+  configMapById: Dictionary<MapBreakpoint<EdgeSidebarConfig>>
+}
 
 export interface IRegistry<ConfigType> {
   registerConfig: (
@@ -66,6 +71,7 @@ export interface IEdgeSidebarRegistry {
 export interface IEdgeSidebarBuilder {
   create: (id: string) => IEdgeSidebarRegistry
   getSidebarIds: () => string[]
+  getData: () => EdgeSidebarData
   getConfig: () => MapBreakpoint<EdgeSidebarConfig[]>
   getConfigMapById: () => Dictionary<MapBreakpoint<EdgeSidebarConfig>>
   getBreakpointConfig: (breakpoint: Breakpoint) => EdgeSidebarConfig[]

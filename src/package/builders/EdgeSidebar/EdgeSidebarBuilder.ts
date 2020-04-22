@@ -21,7 +21,9 @@ import {
   SidebarEffectMap,
 } from "../../types"
 
-export const isUniqueSidebars = (sidebars: Pick<EdgeSidebarConfig, "id">[]): boolean => {
+export const isUniqueSidebars = (
+  sidebars: Pick<EdgeSidebarConfig, "id">[]
+): boolean => {
   const keys: string[] = []
   let isUnique = true
   sidebars.forEach(({ id }) => {
@@ -111,6 +113,13 @@ export default (): IEdgeSidebarBuilder => {
         },
       })
       return Registry()
+    },
+    getData() {
+      return {
+        sidebarIds,
+        configMap: mapByBreakpoint,
+        configMapById: mapById,
+      }
     },
     getSidebarIds: () => sidebarIds,
     getConfig: () => mapByBreakpoint,
