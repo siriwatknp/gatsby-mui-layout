@@ -1,4 +1,7 @@
 import Layout from "../builders"
+import HeaderCompiler from "../compilers/HeaderCompiler"
+import EdgeSidebarCompiler from "../compilers/EdgeSidebarCompiler"
+import ContentCompiler from "../compilers/ContentCompiler"
 
 describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
   it("can create config and get the correct config", () => {
@@ -31,18 +34,16 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
           collapsedWidth: "12%",
         })
 
-      builder
-        .create("secondarySidebar")
-        .registerPersistentConfig("md", {
-          anchor: "right",
-          width: 240,
-          persistentBehavior: {
-            _other: "none",
-            footer: "fit",
-          },
-          collapsible: true,
-          collapsedWidth: 64,
-        })
+      builder.create("secondarySidebar").registerPersistentConfig("md", {
+        anchor: "right",
+        width: 240,
+        persistentBehavior: {
+          _other: "none",
+          footer: "fit",
+        },
+        collapsible: true,
+        collapsedWidth: 64,
+      })
     })
 
     scheme.configureHeader(builder => {
@@ -59,11 +60,11 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
     })
 
     scheme.configureContent(builder => {
-      builder.create('content')
+      builder.create("content")
     })
 
     scheme.configureFooter(builder => {
-      builder.create('footer')
+      builder.create("footer")
     })
 
     const state = {
@@ -72,36 +73,42 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
         secondarySidebar: { open: true, collapsed: false },
       },
     }
+    const data = scheme.getComponentData()
+    const edgeSidebarCompiler = EdgeSidebarCompiler(
+      state,
+      data.edgeSidebar,
+      data.header
+    )
 
-    const styles = scheme.getComponentStyle(state)
-
-    expect(styles.sidebar).toStrictEqual({
-      primarySidebar: {
-        temporary: {
-          xs: {
-            width: "auto",
-          },
-        },
-        permanent: {
-          lg: { width: "50%" },
-        },
-        persistent: {
-          sm: { width: 256 },
-          md: { width: "30%" },
+    expect(edgeSidebarCompiler.getResultStyle("primarySidebar")).toStrictEqual({
+      temporary: {
+        xs: {
+          width: "auto",
         },
       },
-      secondarySidebar: {
-        permanent: {},
-        temporary: {},
-        persistent: {
-          md: {
-            width: 240,
-          },
+      permanent: {
+        lg: { width: "50%" },
+      },
+      persistent: {
+        sm: { width: 256 },
+        md: { width: "30%" },
+      },
+    })
+
+    expect(
+      edgeSidebarCompiler.getResultStyle("secondarySidebar")
+    ).toStrictEqual({
+      permanent: {},
+      temporary: {},
+      persistent: {
+        md: {
+          width: 240,
         },
       },
     })
 
-    expect(styles.header).toStrictEqual({
+    const headerCompiler = HeaderCompiler(state, data.header, data.edgeSidebar)
+    expect(headerCompiler.getResultStyle()).toStrictEqual({
       xs: {
         position: "fixed",
       },
@@ -118,48 +125,49 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
         position: "relative",
       },
       lg: {
-        marginLeft: 'calc(0px + 0px)',
-        marginRight: 'calc(0px + 0px)',
+        marginLeft: "calc(0px + 0px)",
+        marginRight: "calc(0px + 0px)",
         width: "100%",
         zIndex: 1210,
         position: "relative",
       },
     })
 
-    expect(styles.content).toStrictEqual({
+    const contentCompiler = ContentCompiler(state, data.edgeSidebar)
+    expect(contentCompiler.getResultStyle("content")).toStrictEqual({
       xs: {},
       sm: {
         marginLeft: 256,
-        width: 'calc(100% - 256px)',
+        width: "calc(100% - 256px)",
       },
       md: {
-        marginLeft: 'calc(30%)',
+        marginLeft: "calc(30%)",
         marginRight: 0,
-        width: '100%',
+        width: "100%",
       },
       lg: {
-        marginLeft: 'calc(50%)',
+        marginLeft: "calc(50%)",
         marginRight: 0,
-        width: 'calc(100% - (50%))'
-      }
+        width: "calc(100% - (50%))",
+      },
     })
 
-    expect(styles.footer).toStrictEqual({
+    expect(contentCompiler.getResultStyle("footer")).toStrictEqual({
       xs: {},
       sm: {
         marginLeft: 256,
-        width: 'calc(100% - 256px)',
+        width: "calc(100% - 256px)",
       },
       md: {
-        marginLeft: 'calc(30%)',
+        marginLeft: "calc(30%)",
         marginRight: 240,
-        width: 'calc(100% - 240px)',
+        width: "calc(100% - 240px)",
       },
       lg: {
-        marginLeft: 'calc(50%)',
+        marginLeft: "calc(50%)",
         marginRight: 240,
-        width: 'calc(100% - (50% + 240px))'
-      }
+        width: "calc(100% - (50% + 240px))",
+      },
     })
   })
 })

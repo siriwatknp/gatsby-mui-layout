@@ -3,11 +3,13 @@ import EdgeSidebarBuilder from "../builders/EdgeSidebar"
 import HeaderBuilder from "../builders/Header"
 import SidebarBuilder from "../builders/EdgeSidebar/EdgeSidebarBuilder"
 
+const sidebarId = "primarySidebar"
+
 describe("EdgeSidebarCompiler", () => {
   it("get correct result style", () => {
     const sidebar = EdgeSidebarBuilder()
     sidebar
-      .create("primarySidebar")
+      .create(sidebarId)
       .registerPersistentConfig("xs", {
         anchor: "left",
         width: 256,
@@ -34,29 +36,27 @@ describe("EdgeSidebarCompiler", () => {
     })
     const compiler = EdgeSidebarCompiler(
       {
-        sidebar: { primarySidebar: { collapsed: false, open: true } },
+        sidebar: { [sidebarId]: { collapsed: false, open: true } },
       },
       sidebar.getData(),
       header.getConfig()
     )
 
-    expect(compiler.getResultStyle()).toStrictEqual({
-      primarySidebar: {
-        temporary: {},
-        permanent: {
-          lg: { width: "50%" },
-        },
-        persistent: {
-          xs: { width: 256 },
-          md: { width: "30%" },
-        },
+    expect(compiler.getResultStyle(sidebarId)).toStrictEqual({
+      temporary: {},
+      permanent: {
+        lg: { width: "50%" },
+      },
+      persistent: {
+        xs: { width: 256 },
+        md: { width: "30%" },
       },
     })
   })
 
   it("return empty if no breakpoint config found", () => {
     const sidebar = SidebarBuilder()
-    sidebar.create("primarySidebar").registerPersistentConfig("md", {
+    sidebar.create(sidebarId).registerPersistentConfig("md", {
       anchor: "left",
       width: "30%",
       collapsible: true,
@@ -72,20 +72,18 @@ describe("EdgeSidebarCompiler", () => {
 
     const compiler = EdgeSidebarCompiler(
       {
-        sidebar: { primarySidebar: { open: true, collapsed: true } },
+        sidebar: { [sidebarId]: { open: true, collapsed: true } },
       },
       sidebar.getData(),
       header.getConfig()
     )
 
-    expect(compiler.getResultStyle()).toStrictEqual({
-      primarySidebar: {
-        temporary: {},
-        permanent: {},
-        persistent: {
-          md: {
-            width: "12%",
-          },
+    expect(compiler.getResultStyle(sidebarId)).toStrictEqual({
+      temporary: {},
+      permanent: {},
+      persistent: {
+        md: {
+          width: "12%",
         },
       },
     })

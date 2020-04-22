@@ -1,7 +1,7 @@
 import { AppendDictionary, Dictionary } from "./Utils"
 import {
   EdgeSidebarData,
-  HeaderConfigMap,
+  HeaderConfigMap, InsetSidebarData,
   SidebarConfigMap,
   SidebarConfigMapById,
 } from "./Builder"
@@ -81,7 +81,10 @@ export interface GlobalConfig {
 
 export interface ILayoutConfig {
   edgeSidebar: EdgeSidebarData
+  insetSidebar: InsetSidebarData
   header: HeaderConfigMap
+  content: { id: string }
+  footer: { id: string }
 }
 
 export type LayoutConfig = {

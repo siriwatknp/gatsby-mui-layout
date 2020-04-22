@@ -1,6 +1,6 @@
 import React from "react"
 import merge from "deepmerge"
-import { ComponentStyle, ILayoutBuilder } from "../../builders"
+import { ILayoutBuilder } from "../../builders"
 import { ILayoutConfig, LayoutConfig, State } from "../../types"
 
 const Context = React.createContext<ContextValue>(null)
@@ -8,7 +8,6 @@ Context.displayName = "MuiLayoutCtx"
 
 export type ContextValue = {
   state: State
-  styles: ComponentStyle
   config: LayoutConfig
   data: ILayoutConfig
   setOpen: (id: string, value: boolean) => void
@@ -32,6 +31,14 @@ const reducer = (state: State, action: Action) => {
     default:
       return state
   }
+}
+
+export const useLayoutCtx = () => {
+  const ctx = React.useContext(Context)
+  if (!ctx) {
+    throw new Error("useLayoutCtx must be rendered under LayoutProvider")
+  }
+  return ctx
 }
 
 export const LayoutConsumer = Context.Consumer
@@ -58,14 +65,12 @@ export const LayoutProvider = ({
       type: "SET_COLLAPSED",
       payload: { id, value },
     })
-  const styles = scheme.getComponentStyle(state)
   const config = scheme.getComponentConfig()
   const data = scheme.getComponentData()
   return (
     <Context.Provider
       value={{
         state,
-        styles,
         config,
         data,
         setOpen,

@@ -2,15 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/ContentCompiler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/HeaderCompiler.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/HeaderCompiler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/InsetSidebarCompiler.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/InsetSidebarCompiler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useInsetSidebar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useSidebar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useSidebarCta.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/effects/EdgeSidebars/EdgeSidebarEffects.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/effects/EdgeSidebars/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/EdgeSidebarBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/EdgeSidebarBuilder.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/Content/ContentBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Content/ContentBuilder.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/EdgeSidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/EdgeSidebarBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/Footer/FooterBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Footer/FooterBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/InsetSidebar/InsetSidebarBuilder.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/InsetSidebar/InsetSidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/InsetSidebar/InsetSidebarBuilder.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/builders/LayoutBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/LayoutBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useHeaderAdjustment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useHeaderAdjustment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useSidebarAutoCollapse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useSidebarAutoCollapse.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/types/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Builder.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,22 +77,22 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/package/core/Builder/Sidebar" />
-      <recent name="$PROJECT_DIR$/src/package/core/Builder/Header" />
-      <recent name="$PROJECT_DIR$/src/package/core/Builder/Content" />
-      <recent name="$PROJECT_DIR$/src/package/components" />
-      <recent name="$PROJECT_DIR$/src/package/utils" />
-    </key>
-    <key name="es6.move.members.recent.items">
-      <recent name="$PROJECT_DIR$/src/package/types/Builder.ts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/package" />
       <recent name="$PROJECT_DIR$/src/package/effects" />
       <recent name="$PROJECT_DIR$/src/package/components/DrawerSidebar/Persistent" />
       <recent name="$PROJECT_DIR$/src/package/components/DrawerSidebar" />
       <recent name="$PROJECT_DIR$/src/package/effects/Header" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/package/types/Builder.ts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/package/core/Builder/Sidebar" />
+      <recent name="$PROJECT_DIR$/src/package/core/Builder/Header" />
+      <recent name="$PROJECT_DIR$/src/package/core/Builder/Content" />
+      <recent name="$PROJECT_DIR$/src/package/components" />
+      <recent name="$PROJECT_DIR$/src/package/utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -215,7 +239,8 @@
       <workItem from="1587311293976" duration="4740000" />
       <workItem from="1587394766422" duration="13172000" />
       <workItem from="1587478552821" duration="5776000" />
-      <workItem from="1587485970660" duration="7534000" />
+      <workItem from="1587485970660" duration="8912000" />
+      <workItem from="1587563226225" duration="8894000" />
     </task>
     <servers />
   </component>

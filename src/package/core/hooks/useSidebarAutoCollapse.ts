@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { keys } from "@material-ui/core/styles/createBreakpoints"
 import useScreen from "./useScreen"
-import { useLayoutCtx } from "../hooks"
+import { useLayoutCtx } from "../Context"
 
 export default (sidebarId: string) => {
   const {

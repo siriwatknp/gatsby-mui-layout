@@ -20,10 +20,10 @@ export type InsetSidebarResultStyle = {
   body: ResultStyle
 }
 
-export type SidebarVariantStyle = {
+export type EdgeSidebarVariantStyle = {
   persistent: ResultStyle
   permanent: ResultStyle
   temporary: ResultStyle
 }
 
-export type SidebarResultStyle = Dictionary<SidebarVariantStyle>
+export type EdgeSidebarResultStyle = Dictionary<EdgeSidebarVariantStyle>

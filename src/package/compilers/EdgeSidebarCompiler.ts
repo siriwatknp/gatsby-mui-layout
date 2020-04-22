@@ -3,7 +3,7 @@ import {
   EdgeSidebarConfig,
   EdgeSidebarData,
   HeaderConfigMap,
-  SidebarResultStyle,
+  EdgeSidebarVariantStyle,
   State,
 } from "../types"
 import { combineBreakpoints, pickNearestBreakpoint } from "../utils"
@@ -20,46 +20,38 @@ export default (
   header: HeaderConfigMap
 ) => {
   return {
-    getResultStyle: (): SidebarResultStyle => {
-      const result: SidebarResultStyle = {}
-      Object.entries(edgeSidebar.configMapById).forEach(
-        ([sidebarId, configMap]) => {
-          result[sidebarId] = {
-            persistent: {},
-            permanent: {},
-            temporary: {},
-          }
+    getResultStyle: (sidebarId: string): EdgeSidebarVariantStyle => {
+      const result: EdgeSidebarVariantStyle = {
+        persistent: {},
+        permanent: {},
+        temporary: {},
+      }
 
-          const breakpoints = combineBreakpoints(configMap, header)
+      const configMap = edgeSidebar.configMapById[sidebarId]
 
-          breakpoints.forEach(bp => {
-            const config: EdgeSidebarConfig = pickNearestBreakpoint(
-              configMap,
-              bp
-            )
-            if (config) {
-              const headerEffect = HeaderEffect(
-                pickNearestBreakpoint(header, bp)
-              )
-              if (isPersistentSidebarConfig(config) && headerEffect) {
-                result[sidebarId].persistent[bp] = {
-                  ...createEdgeSidebarModel(config, state),
-                  ...headerEffect.getEdgeSidebarZIndex(sidebarId),
-                }
-              } else if (isPermanentSidebarConfig(config) && headerEffect) {
-                result[sidebarId].permanent[bp] = {
-                  ...createEdgeSidebarModel(config, state),
-                  ...headerEffect.getEdgeSidebarZIndex(sidebarId),
-                }
-              } else if (isTemporarySidebarConfig(config)) {
-                result[sidebarId].temporary[bp] = {
-                  width: config.width,
-                }
-              }
+      const breakpoints = combineBreakpoints(configMap, header)
+
+      breakpoints.forEach(bp => {
+        const config: EdgeSidebarConfig = pickNearestBreakpoint(configMap, bp)
+        if (config) {
+          const headerEffect = HeaderEffect(pickNearestBreakpoint(header, bp))
+          if (isPersistentSidebarConfig(config) && headerEffect) {
+            result.persistent[bp] = {
+              ...createEdgeSidebarModel(config, state),
+              ...headerEffect.getEdgeSidebarZIndex(sidebarId),
             }
-          })
+          } else if (isPermanentSidebarConfig(config) && headerEffect) {
+            result.permanent[bp] = {
+              ...createEdgeSidebarModel(config, state),
+              ...headerEffect.getEdgeSidebarZIndex(sidebarId),
+            }
+          } else if (isTemporarySidebarConfig(config)) {
+            result.temporary[bp] = {
+              width: config.width,
+            }
+          }
         }
-      )
+      })
       return result
     },
   }

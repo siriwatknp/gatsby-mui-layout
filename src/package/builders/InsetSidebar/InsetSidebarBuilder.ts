@@ -2,21 +2,11 @@ import {
   AbsoluteInsetSidebarConfig,
   Dictionary,
   FixedInsetSidebarConfig,
-  InsetSidebarConfig,
-  InsetSidebarResultStyle,
+  InsetSidebarConfig, InsetSidebarData,
   MapBreakpoint,
   StickyInsetSidebarConfig,
 } from "../../types"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import { pickNearestBreakpoint } from "../../utils"
-import {
-  isAbsoluteInsetSidebarConfig,
-  isFixedInsetSidebarConfig,
-  isStickyInsetSidebarConfig,
-} from "../../utils/sidebarChecker"
-import AbsoluteInset from "../../models/Sidebar/Inset/AbsoluteInset"
-import StickyInset from "../../models/Sidebar/Inset/StickyInset"
-import FixedInset from "../../models/Sidebar/Inset/FixedInset"
 
 export interface IInsetSidebarRegistry {
   registerStickyConfig: (
@@ -35,8 +25,8 @@ export interface IInsetSidebarRegistry {
 
 export interface IInsetSidebarBuilder {
   create: (id: string) => IInsetSidebarRegistry
+  getData: () => InsetSidebarData
   getConfig: () => InsetSidebarConfigMap
-  getResultStyle: () => Dictionary<InsetSidebarResultStyle>
 }
 
 export type InsetSidebarConfigMap = MapBreakpoint<InsetSidebarConfig[]>
@@ -77,34 +67,10 @@ export default (): IInsetSidebarBuilder => {
       })
       return Registry()
     },
+    getData: () => ({
+      configMapById: mapById,
+      configMap: mapByBreakpoints
+    }),
     getConfig: () => mapByBreakpoints,
-    getResultStyle() {
-      const result: Dictionary<InsetSidebarResultStyle> = {}
-      Object.entries(mapById).forEach(([sidebarId, breakpointConfigMap]) => {
-        result[sidebarId] = { root: {}, body: {} }
-
-        const breakpoints = Object.keys(breakpointConfigMap)
-        breakpoints.forEach((bp: Breakpoint) => {
-          const config: InsetSidebarConfig = pickNearestBreakpoint(
-            breakpointConfigMap,
-            bp
-          )
-          if (config) {
-            let model: { getRootStyle: () => {}; getBodyStyle: () => {} }
-            if (isStickyInsetSidebarConfig(config)) {
-              model = StickyInset(config)
-            } else if (isAbsoluteInsetSidebarConfig(config)) {
-              model = AbsoluteInset(config)
-            } else if (isFixedInsetSidebarConfig(config)) {
-              model = FixedInset(config)
-            }
-
-            result[sidebarId].root[bp] = model.getRootStyle()
-            result[sidebarId].body[bp] = model.getBodyStyle()
-          }
-        })
-      })
-      return result
-    },
   }
 }

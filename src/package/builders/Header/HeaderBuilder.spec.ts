@@ -1,5 +1,4 @@
 import HeaderBuilder from "./HeaderBuilder"
-import SidebarBuilder from "../EdgeSidebar"
 
 it("can create config and return correct config", () => {
   const header = HeaderBuilder()
@@ -26,61 +25,4 @@ it("can create config and return correct config", () => {
   expect(header.getBreakpointConfig("md")).toEqual(mdConfig)
   // will return lower breakpoint if not found
   expect(header.getBreakpointConfig("lg")).toEqual(mdConfig)
-  expect(
-    header.getBreakpointEffect("md").getEdgeSidebarZIndex()
-  ).toBeUndefined()
-})
-
-it("return correct result style by mapping all possible breakpoints with related effect", () => {
-  const header = HeaderBuilder()
-
-  header
-    .create("header")
-    .registerConfig("xs", {
-      clipped: true,
-      position: "sticky",
-    })
-    .registerConfig("md", {
-      clipped: false,
-      position: "sticky",
-    })
-
-  const sidebar = SidebarBuilder()
-  sidebar
-    .create("sidebar-1")
-    .registerPersistentConfig("xs", {
-      anchor: "left",
-      width: 256,
-      collapsible: true,
-      collapsedWidth: 80,
-      persistentBehavior: "fit",
-    })
-    .registerPersistentConfig("xl", {
-      anchor: "left",
-      width: "30%",
-      collapsible: false,
-      persistentBehavior: "fit",
-    })
-
-  expect(
-    header.getResultStyle({ sidebar: { "sidebar-1": { open: true } } }, sidebar)
-  ).toStrictEqual({
-    xs: {
-      zIndex: 1210,
-      marginLeft: 0,
-      marginRight: 0,
-      width: '100%',
-      position: 'sticky',
-    },
-    md: {
-      width: "calc(100% - 256px)",
-      marginLeft: 256,
-      position: 'sticky',
-    },
-    xl: {
-      marginLeft: "calc(30%)",
-      width: "calc(100% - (30%))",
-      position: 'sticky',
-    },
-  })
 })
