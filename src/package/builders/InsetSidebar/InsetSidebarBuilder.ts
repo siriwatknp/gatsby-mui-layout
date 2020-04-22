@@ -5,7 +5,6 @@ import {
   InsetSidebarConfig,
   InsetSidebarResultStyle,
   MapBreakpoint,
-  ResultStyle,
   StickyInsetSidebarConfig,
 } from "../../types"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
@@ -34,8 +33,8 @@ export interface IInsetSidebarRegistry {
   ) => IInsetSidebarRegistry
 }
 
-export interface IInsetBuilder {
-  createSidebar: (id: string) => IInsetSidebarRegistry
+export interface IInsetSidebarBuilder {
+  create: (id: string) => IInsetSidebarRegistry
   getConfig: () => InsetSidebarConfigMap
   getResultStyle: () => Dictionary<InsetSidebarResultStyle>
 }
@@ -45,7 +44,7 @@ export type InsetSidebarConfigMapById = Dictionary<
   MapBreakpoint<InsetSidebarConfig>
 >
 
-export default (): IInsetBuilder => {
+export default (): IInsetSidebarBuilder => {
   const mapByBreakpoints: InsetSidebarConfigMap = {}
   const mapById: InsetSidebarConfigMapById = {}
   const addConfig = (bp: Breakpoint, config: InsetSidebarConfig): void => {
@@ -60,7 +59,7 @@ export default (): IInsetBuilder => {
     mapById[config.id][bp] = config
   }
   return {
-    createSidebar(id: string) {
+    create(id: string) {
       // InsetSidebar can be multiples, id is needed
       const Registry = (): IInsetSidebarRegistry => ({
         registerStickyConfig(breakpoint, config) {

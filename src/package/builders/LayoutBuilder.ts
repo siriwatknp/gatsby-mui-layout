@@ -13,8 +13,8 @@ import {
   Dictionary, GlobalConfig,
 } from "../types"
 import FooterBuilder from "./Footer"
-import InsetBuilder from "./Inset"
-import { IInsetBuilder } from "./Inset/InsetBuilder"
+import InsetBuilder from "./InsetSidebar"
+import { IInsetSidebarBuilder } from "./InsetSidebar/InsetSidebarBuilder"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
 interface BuilderCallback<T> {
@@ -32,7 +32,7 @@ export type ComponentStyle = {
 export interface ILayoutBuilder {
   configureHeader: (callback: BuilderCallback<IHeaderBuilder>) => void
   configureSidebar: (callback: BuilderCallback<ISidebarBuilder>) => void
-  configureInset: (callback: BuilderCallback<IInsetBuilder>) => void
+  configureInset: (callback: BuilderCallback<IInsetSidebarBuilder>) => void
   configureContent: (callback: BuilderCallback<IContentBuilder>) => void
   configureFooter: (callback: BuilderCallback<IContentBuilder>) => void
   enableAutoCollapse: (sidebarId: string, breakpoint?: Breakpoint) => void

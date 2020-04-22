@@ -4,7 +4,7 @@ import {
   SidebarConfigMap,
   SidebarConfigMapById,
 } from "./Builder"
-import { InsetSidebarConfigMap } from "../builders/Inset/InsetBuilder"
+import { InsetSidebarConfigMap } from "../builders/InsetSidebar/InsetBuilder"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
 export type PersistentBehavior = "fit" | "flexible" | "none"

@@ -1,11 +1,11 @@
-import InsetBuilder from "./InsetBuilder"
+import InsetSidebarBuilder from "./InsetSidebarBuilder"
 
-describe("InsetBuilder", () => {
+describe("InsetSidebarBuilder", () => {
   it("return correct style", () => {
-    const builder = InsetBuilder()
+    const builder = InsetSidebarBuilder()
 
     builder
-      .createSidebar("insetSidebar")
+      .create("insetSidebar")
       .registerFixedConfig("sm", {
         anchor: "right",
         width: "40rem",

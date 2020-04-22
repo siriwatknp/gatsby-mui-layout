@@ -83,7 +83,7 @@ const IndexPage = () => {
   })
   scheme.configureInset(builder => {
     builder
-      .createSidebar("insetSidebar")
+      .create("insetSidebar")
       .registerAbsoluteConfig("sm", {
         width: "33%",
       })
@@ -96,7 +96,7 @@ const IndexPage = () => {
         width: "10rem",
       })
 
-    builder.createSidebar("secondInsetSidebar").registerFixedConfig("lg", {
+    builder.create("secondInsetSidebar").registerFixedConfig("lg", {
       anchor: "left",
       width: "5rem",
     })
