@@ -1,14 +1,14 @@
-import { createSidebarListEffect } from "../../../effects/SidebarList"
-import { IFooterBuilder, ResultStyle } from "../../../types"
+import createListEffect from "../../effects/SidebarList/SidebarListEffect"
+import { IContentBuilder, ResultStyle } from "../../types"
 
-import { sortBreakpoints } from "../../../utils/createHiddenStyles"
+import { sortBreakpoints } from "../../utils/createHiddenStyles"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
-export default (): IFooterBuilder => {
+export default (): IContentBuilder => {
   let id: string
   return {
-    create: function(footerId: string) {
-      id = footerId
+    create: function(contentId: string) {
+      id = contentId
     },
     getResultStyle(state, sidebar) {
       const result: ResultStyle = {}
@@ -16,7 +16,7 @@ export default (): IFooterBuilder => {
         Object.keys(sidebar.getConfig()) as Breakpoint[]
       )
       sidebar.iterateBreakpointEffects(state, breakpoints, (bp, effects) => {
-        const { marginStyle, widthStyle } = createSidebarListEffect(effects, id)
+        const { marginStyle, widthStyle } = createListEffect(effects, id)
         result[bp] = { ...widthStyle, ...marginStyle }
       })
       return result

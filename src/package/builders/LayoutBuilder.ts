@@ -11,7 +11,7 @@ import {
   IContentBuilder,
   InsetSidebarResultStyle,
   Dictionary, GlobalConfig,
-} from "../../types"
+} from "../types"
 import FooterBuilder from "./Footer"
 import InsetBuilder from "./Inset"
 import { IInsetBuilder } from "./Inset/InsetBuilder"

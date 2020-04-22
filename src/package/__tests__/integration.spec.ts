@@ -1,4 +1,4 @@
-import Layout from "../core/Builder"
+import Layout from "../builders"
 
 describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
   it("can create config and get the correct config", () => {

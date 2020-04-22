@@ -1,13 +1,13 @@
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import createEdgeSidebarModel from "../../../models/Sidebar/Edge"
-import { createPersistentSidebarEffect } from "../../../effects/PersistentSidebar"
-import { createPermanentSidebarEffect } from "../../../effects/PermanentSidebar"
-import { combineBreakpoints, pickNearestBreakpoint } from "../../../utils"
+import createEdgeSidebarModel from "../../models/Sidebar/Edge"
+import { createPersistentSidebarEffect } from "../../effects/PersistentSidebar"
+import { createPermanentSidebarEffect } from "../../effects/PermanentSidebar"
+import { combineBreakpoints, pickNearestBreakpoint } from "../../utils"
 import {
   isPermanentSidebarConfig,
   isPersistentSidebarConfig,
   isTemporarySidebarConfig,
-} from "../../../utils/sidebarChecker"
+} from "../../utils/sidebarChecker"
 import {
   SidebarConfig,
   ISidebarEffectCreator,
@@ -19,9 +19,9 @@ import {
   SidebarConfigMapById,
   SidebarEffectMapById,
   SidebarEffectMap,
-} from "../../../types"
+} from "../../types"
 
-export const isUniqueSidebars = (sidebars: SidebarConfig[]): boolean => {
+export const isUniqueSidebars = (sidebars: Pick<SidebarConfig, "id">[]): boolean => {
   const keys: string[] = []
   let isUnique = true
   sidebars.forEach(({ id }) => {

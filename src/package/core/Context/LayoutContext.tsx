@@ -1,10 +1,18 @@
 import React from "react"
 import merge from "deepmerge"
-import { ILayoutBuilder } from "../Builder"
-import { ContextValue, State } from "../../types"
+import { ComponentStyle, ILayoutBuilder } from "../../builders"
+import { LayoutConfig, State } from "../../types"
 
 const Context = React.createContext<ContextValue>(null)
 Context.displayName = "MuiLayoutCtx"
+
+export type ContextValue = {
+  state: State
+  styles: ComponentStyle
+  config: LayoutConfig
+  setOpen: (id: string, value: boolean) => void
+  setCollapsed: (id: string, value: boolean) => void
+}
 
 type SidebarPayload = { id: string; value: boolean }
 type Action =

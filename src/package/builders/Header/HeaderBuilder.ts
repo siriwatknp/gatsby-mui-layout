@@ -1,13 +1,13 @@
-import { pickNearestBreakpoint, combineBreakpoints } from "../../../utils"
-import createHeaderModel from "../../../models/Header"
-import createHeaderEffect from "../../../effects/Header"
+import { pickNearestBreakpoint, combineBreakpoints } from "../../utils"
+import createHeaderModel from "../../models/Header"
+import createHeaderEffect from "../../effects/Header"
 import {
   HeaderConfig,
   HeaderConfigMap,
   IHeaderBuilder,
   IRegistry,
   ResultStyle,
-} from "../../../types"
+} from "../../types"
 
 export default (): IHeaderBuilder => {
   const map: HeaderConfigMap = {}

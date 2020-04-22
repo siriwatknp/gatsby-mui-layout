@@ -7,17 +7,17 @@ import {
   MapBreakpoint,
   ResultStyle,
   StickyInsetSidebarConfig,
-} from "../../../types"
+} from "../../types"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import { pickNearestBreakpoint } from "../../../utils"
+import { pickNearestBreakpoint } from "../../utils"
 import {
   isAbsoluteInsetSidebarConfig,
   isFixedInsetSidebarConfig,
   isStickyInsetSidebarConfig,
-} from "../../../utils/sidebarChecker"
-import AbsoluteInset from "../../../models/Sidebar/Inset/AbsoluteInset"
-import StickyInset from "../../../models/Sidebar/Inset/StickyInset"
-import FixedInset from "../../../models/Sidebar/Inset/FixedInset"
+} from "../../utils/sidebarChecker"
+import AbsoluteInset from "../../models/Sidebar/Inset/AbsoluteInset"
+import StickyInset from "../../models/Sidebar/Inset/StickyInset"
+import FixedInset from "../../models/Sidebar/Inset/FixedInset"
 
 export interface IInsetSidebarRegistry {
   registerStickyConfig: (
