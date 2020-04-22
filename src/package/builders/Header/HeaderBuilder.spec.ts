@@ -1,5 +1,5 @@
 import HeaderBuilder from "./HeaderBuilder"
-import SidebarBuilder from "../Sidebar/SidebarBuilder"
+import SidebarBuilder from "../EdgeSidebar"
 
 it("can create config and return correct config", () => {
   const header = HeaderBuilder()
@@ -47,7 +47,7 @@ it("return correct result style by mapping all possible breakpoints with related
 
   const sidebar = SidebarBuilder()
   sidebar
-    .createEdgeSidebar("sidebar-1")
+    .create("sidebar-1")
     .registerPersistentConfig("xs", {
       anchor: "left",
       width: 256,

@@ -47,7 +47,7 @@ const IndexPage = () => {
   })
   scheme.configureSidebar(builder => {
     builder
-      .createEdgeSidebar("primarySidebar")
+      .create("primarySidebar")
       .registerTemporaryConfig("xs", {
         anchor: "left",
         width: "auto",
@@ -68,7 +68,7 @@ const IndexPage = () => {
       })
 
     builder
-      .createEdgeSidebar("secondarySidebar")
+      .create("secondarySidebar")
       .registerPersistentConfig("md", {
         anchor: "right",
         width: 240,

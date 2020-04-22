@@ -40,7 +40,7 @@ const IndexPage = () => {
       })
   })
   scheme.configureSidebar(builder => {
-    builder.createEdgeSidebar("primarySidebar").registerPermanentConfig("md", {
+    builder.create("primarySidebar").registerPermanentConfig("md", {
       anchor: "left",
       width: 256,
       collapsible: true,

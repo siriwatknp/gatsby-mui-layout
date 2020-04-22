@@ -5,7 +5,7 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
     const scheme = Layout()
     scheme.configureSidebar(builder => {
       builder
-        .createEdgeSidebar("primarySidebar")
+        .create("primarySidebar")
         .registerTemporaryConfig("xs", {
           anchor: "left",
           width: "auto",
@@ -32,7 +32,7 @@ describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
         })
 
       builder
-        .createEdgeSidebar("secondarySidebar")
+        .create("secondarySidebar")
         .registerPersistentConfig("md", {
           anchor: "right",
           width: 240,

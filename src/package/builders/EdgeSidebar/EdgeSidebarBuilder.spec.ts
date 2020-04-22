@@ -1,4 +1,4 @@
-import SidebarBuilder, { isUniqueSidebars } from "./SidebarBuilder"
+import SidebarBuilder, { isUniqueSidebars } from "./EdgeSidebarBuilder"
 import HeaderBuilder from "../Header/HeaderBuilder"
 
 it("can check unique sidebars", () => {
@@ -14,7 +14,7 @@ it("can check unique sidebars", () => {
 it("can create config and get the correct config", () => {
   const sidebar = SidebarBuilder()
   sidebar
-    .createEdgeSidebar("primarySidebar")
+    .create("primarySidebar")
     .registerPersistentConfig("xs", {
       anchor: "left",
       width: 256,
@@ -65,7 +65,7 @@ it("can create config and get the correct config", () => {
 
 it("return empty if no config found", () => {
   const sidebar = SidebarBuilder()
-  sidebar.createEdgeSidebar("primarySidebar").registerPersistentConfig("md", {
+  sidebar.create("primarySidebar").registerPersistentConfig("md", {
     anchor: "left",
     width: "30%",
     collapsible: true,

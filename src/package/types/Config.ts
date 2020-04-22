@@ -4,31 +4,12 @@ import {
   SidebarConfigMap,
   SidebarConfigMapById,
 } from "./Builder"
-import { InsetSidebarConfigMap } from "../builders/InsetSidebar/InsetBuilder"
+import { InsetSidebarConfigMap } from "../builders/InsetSidebar/InsetSidebarBuilder"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
 export type PersistentBehavior = "fit" | "flexible" | "none"
-export type PersistentBehaviorById = Dictionary<PersistentBehavior>
-export type InsetBehavior = "fit"
 
 export type DrawerAnchor = "left" | "right"
-
-export interface CollapsibleSidebarConfig {
-  id: string
-  anchor?: DrawerAnchor
-  collapsible: boolean
-  collapsedWidth?: number | string
-  width: number | string
-}
-
-export interface PermanentSidebarConfig extends CollapsibleSidebarConfig {
-  variant?: "permanent"
-}
-
-export interface PersistentSidebarConfig extends CollapsibleSidebarConfig {
-  persistentBehavior: AppendDictionary<PersistentBehavior>
-  variant: "persistent"
-}
 
 export type FixedInsetSidebarConfig = {
   id?: string
@@ -55,6 +36,23 @@ export type InsetSidebarConfig =
   | AbsoluteInsetSidebarConfig
   | StickyInsetSidebarConfig
 
+export interface CollapsibleSidebarConfig {
+  id: string
+  anchor?: DrawerAnchor
+  collapsible: boolean
+  collapsedWidth?: number | string
+  width: number | string
+}
+
+export interface PermanentSidebarConfig extends CollapsibleSidebarConfig {
+  variant?: "permanent"
+}
+
+export interface PersistentSidebarConfig extends CollapsibleSidebarConfig {
+  persistentBehavior: AppendDictionary<PersistentBehavior>
+  variant: "persistent"
+}
+
 export interface TemporarySidebarConfig {
   id: string
   width: number | string
@@ -62,9 +60,10 @@ export interface TemporarySidebarConfig {
   anchor?: DrawerAnchor
 }
 
-export type EdgeSidebarConfig = PersistentSidebarConfig | PermanentSidebarConfig
-
-export type SidebarConfig = EdgeSidebarConfig | TemporarySidebarConfig
+export type EdgeSidebarConfig =
+  | PersistentSidebarConfig
+  | PermanentSidebarConfig
+  | TemporarySidebarConfig
 
 export type Position = "relative" | "sticky" | "absolute" | "fixed"
 

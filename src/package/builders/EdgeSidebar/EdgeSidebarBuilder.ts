@@ -9,10 +9,10 @@ import {
   isTemporarySidebarConfig,
 } from "../../utils/sidebarChecker"
 import {
-  SidebarConfig,
+  EdgeSidebarConfig,
   ISidebarEffectCreator,
   ISidebarStateEffectCreator,
-  ISidebarBuilder,
+  IEdgeSidebarBuilder,
   IEdgeSidebarRegistry,
   SidebarResultStyle,
   SidebarConfigMap,
@@ -21,7 +21,7 @@ import {
   SidebarEffectMap,
 } from "../../types"
 
-export const isUniqueSidebars = (sidebars: Pick<SidebarConfig, "id">[]): boolean => {
+export const isUniqueSidebars = (sidebars: Pick<EdgeSidebarConfig, "id">[]): boolean => {
   const keys: string[] = []
   let isUnique = true
   sidebars.forEach(({ id }) => {
@@ -39,10 +39,10 @@ export const isUniqueSidebars = (sidebars: Pick<SidebarConfig, "id">[]): boolean
 
 const createStateEffect = (
   effectCreator: ISidebarEffectCreator,
-  config: SidebarConfig
+  config: EdgeSidebarConfig
 ): ISidebarStateEffectCreator => state => effectCreator(config, state)
 
-export default (): ISidebarBuilder => {
+export default (): IEdgeSidebarBuilder => {
   const sidebarIds: string[] = []
   const mapByBreakpoint: SidebarConfigMap = {}
   const mapById: SidebarConfigMapById = {}
@@ -50,7 +50,7 @@ export default (): ISidebarBuilder => {
   const effectById: SidebarEffectMapById = {}
   const addConfig = (
     breakpoint: Breakpoint,
-    config: SidebarConfig,
+    config: EdgeSidebarConfig,
     effectCreator?: ISidebarEffectCreator
   ): void => {
     if (!sidebarIds.includes(config.id)) {
@@ -87,7 +87,7 @@ export default (): ISidebarBuilder => {
     }
   }
   return {
-    createEdgeSidebar: function(id: string) {
+    create: function(id: string) {
       const Registry = (): IEdgeSidebarRegistry => ({
         registerPersistentConfig(breakpoint, config) {
           addConfig(
@@ -164,7 +164,7 @@ export default (): ISidebarBuilder => {
           header.getConfig()
         )
         breakpoints.forEach(bp => {
-          const config: SidebarConfig = pickNearestBreakpoint(
+          const config: EdgeSidebarConfig = pickNearestBreakpoint(
             breakpointConfigMap,
             bp
           )

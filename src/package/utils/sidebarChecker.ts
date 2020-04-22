@@ -1,35 +1,28 @@
 import {
   AbsoluteInsetSidebarConfig,
-  EdgeSidebarConfig,
   FixedInsetSidebarConfig,
   InsetSidebarConfig,
   PermanentSidebarConfig,
   PersistentSidebarConfig,
-  SidebarConfig,
+  EdgeSidebarConfig,
   StickyInsetSidebarConfig,
   TemporarySidebarConfig,
 } from "../types"
 
-export const isEdgeSidebarConfig = (
-  config: SidebarConfig
-): config is EdgeSidebarConfig => {
-  return typeof (config as EdgeSidebarConfig).collapsible === "boolean"
-}
-
 export const isPersistentSidebarConfig = (
-  config: SidebarConfig
+  config: EdgeSidebarConfig
 ): config is PersistentSidebarConfig => {
   return (config as PersistentSidebarConfig).variant === "persistent"
 }
 
 export const isPermanentSidebarConfig = (
-  config: SidebarConfig
+  config: EdgeSidebarConfig
 ): config is PermanentSidebarConfig => {
   return (config as PermanentSidebarConfig).variant === "permanent"
 }
 
 export const isTemporarySidebarConfig = (
-  config: SidebarConfig
+  config: EdgeSidebarConfig
 ): config is TemporarySidebarConfig => {
   return (config as TemporarySidebarConfig).variant === "temporary"
 }

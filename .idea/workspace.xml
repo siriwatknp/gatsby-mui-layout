@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/Inset/InsetBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/InsetSidebar/InsetSidebarBuilder.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/Inset/InsetBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/InsetSidebar/InsetSidebarBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/Inset/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/InsetSidebar/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/builders/LayoutBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/LayoutBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/Sidebar/SidebarBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/EdgeSidebarBuilder.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/Sidebar/SidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/EdgeSidebarBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/builders/Sidebar/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Builder.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/getSidebarAnchor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/getSidebarAnchor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/sidebarChecker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/sidebarChecker.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/autocollapse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/autocollapse.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -213,7 +221,7 @@
       <workItem from="1587311293976" duration="4740000" />
       <workItem from="1587394766422" duration="13172000" />
       <workItem from="1587478552821" duration="5776000" />
-      <workItem from="1587485970660" duration="3146000" />
+      <workItem from="1587485970660" duration="3633000" />
     </task>
     <servers />
   </component>

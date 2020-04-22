@@ -1,7 +1,7 @@
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 import { Theme } from "@material-ui/core/styles/createMuiTheme"
 import { WidthStyle, MarginStyle, ZIndexStyle } from "./InlineStyle"
-import { HeaderConfig, SidebarConfig } from "./Config"
+import { HeaderConfig, EdgeSidebarConfig } from "./Config"
 import { State } from "./Context"
 import { Dictionary, MapBreakpoint } from "./Utils"
 
@@ -13,7 +13,7 @@ export interface IStateEffectCreator<T> {
 }
 
 export interface ISidebarEffectCreator
-  extends IEffectCreator<SidebarConfig, ISidebarEffect> {}
+  extends IEffectCreator<EdgeSidebarConfig, ISidebarEffect> {}
 
 export interface ISidebarStateEffectCreator
   extends IStateEffectCreator<ISidebarEffect> {}

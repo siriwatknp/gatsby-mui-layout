@@ -1,19 +1,20 @@
-import HeaderBuilder from "./Header/HeaderBuilder"
-import SidebarBuilder from "./Sidebar/SidebarBuilder"
-import ContentBuilder from "./Content/ContentBuilder"
+import HeaderBuilder from "./Header"
+import SidebarBuilder from "./EdgeSidebar"
+import ContentBuilder from "./Content"
+import FooterBuilder from "./Footer"
+import InsetBuilder from "./InsetSidebar"
 import {
   IHeaderBuilder,
-  ISidebarBuilder,
+  IEdgeSidebarBuilder,
   State,
   ResultStyle,
   SidebarResultStyle,
   LayoutConfig,
   IContentBuilder,
   InsetSidebarResultStyle,
-  Dictionary, GlobalConfig,
+  Dictionary,
+  GlobalConfig,
 } from "../types"
-import FooterBuilder from "./Footer"
-import InsetBuilder from "./InsetSidebar"
 import { IInsetSidebarBuilder } from "./InsetSidebar/InsetSidebarBuilder"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
@@ -31,7 +32,7 @@ export type ComponentStyle = {
 
 export interface ILayoutBuilder {
   configureHeader: (callback: BuilderCallback<IHeaderBuilder>) => void
-  configureSidebar: (callback: BuilderCallback<ISidebarBuilder>) => void
+  configureSidebar: (callback: BuilderCallback<IEdgeSidebarBuilder>) => void
   configureInset: (callback: BuilderCallback<IInsetSidebarBuilder>) => void
   configureContent: (callback: BuilderCallback<IContentBuilder>) => void
   configureFooter: (callback: BuilderCallback<IContentBuilder>) => void
@@ -43,7 +44,7 @@ export interface ILayoutBuilder {
 
 export default (): ILayoutBuilder => {
   const global: GlobalConfig = {
-    autoCollapse: {}
+    autoCollapse: {},
   }
   const header = HeaderBuilder()
   const sidebar = SidebarBuilder()
@@ -75,7 +76,7 @@ export default (): ILayoutBuilder => {
       sidebar: sidebar.getConfig(),
       sidebarById: sidebar.getConfigMapById(),
       inset: inset.getConfig(),
-      global
+      global,
     }),
     getComponentStyle: (state: State) => ({
       header: header.getResultStyle(state, sidebar),
