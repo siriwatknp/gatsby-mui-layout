@@ -20,11 +20,21 @@ interface BuilderCallback<T> {
 }
 
 export interface ILayoutBuilder {
-  configureHeader: (callback: BuilderCallback<IHeaderBuilder>) => void
-  configureSidebar: (callback: BuilderCallback<IEdgeSidebarBuilder>) => void
-  configureInset: (callback: BuilderCallback<IInsetSidebarBuilder>) => void
-  configureContent: (callback: BuilderCallback<IContentBuilder>) => void
-  configureFooter: (callback: BuilderCallback<IFooterBuilder>) => void
+  configureHeader: (
+    callback: BuilderCallback<Pick<IHeaderBuilder, "create">>
+  ) => void
+  configureSidebar: (
+    callback: BuilderCallback<Pick<IEdgeSidebarBuilder, "create">>
+  ) => void
+  configureInset: (
+    callback: BuilderCallback<Pick<IInsetSidebarBuilder, "create">>
+  ) => void
+  configureContent: (
+    callback: BuilderCallback<Pick<IContentBuilder, "create">>
+  ) => void
+  configureFooter: (
+    callback: BuilderCallback<Pick<IFooterBuilder, "create">>
+  ) => void
   enableAutoCollapse: (sidebarId: string, breakpoint?: Breakpoint) => void
   getComponentData: () => LayoutData
   getInitialState: () => State
