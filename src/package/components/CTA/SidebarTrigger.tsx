@@ -47,6 +47,7 @@ const SidebarTrigger = ({
   } = useSidebarCta(sidebarId, "SidebarTrigger")
   const classes = useStyles({ ...props, anchor })
   const getArrow = () => {
+    if (!state) return null
     if (!state.open) return <MenuRounded {...SvgIconProps} />
     if (anchor === "left") return <ArrowLeft {...SvgIconProps} />
     if (anchor === "right") return <ArrowRight {...SvgIconProps} />

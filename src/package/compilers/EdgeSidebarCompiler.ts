@@ -27,7 +27,10 @@ export default (
         temporary: {},
       }
 
-      const configMap = edgeSidebar.configMapById[sidebarId]
+      const sidebarConfigMap = edgeSidebar.configMapById[sidebarId]
+      if (!sidebarConfigMap) return result
+
+      const configMap = sidebarConfigMap
 
       const breakpoints = combineBreakpoints(configMap, header)
 

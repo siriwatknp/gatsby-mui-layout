@@ -16,6 +16,7 @@ import {
   Header,
   Content,
   Footer,
+  HeaderAdjustment,
   InsetContainer,
   InsetSidebar,
   InsetAvoidingView,
@@ -42,10 +43,11 @@ const IndexPage = () => {
       })
       .registerConfig("lg", {
         position: "sticky",
+        initialHeight: 64,
         clipped: true,
       })
   })
-  scheme.configureSidebar(builder => {
+  scheme.configureEdgeSidebar(builder => {
     builder
       .create("primarySidebar", { anchor: "left" })
       .registerTemporaryConfig("xs", {
@@ -77,7 +79,7 @@ const IndexPage = () => {
         collapsedWidth: 64,
       })
   })
-  scheme.configureInset(builder => {
+  scheme.configureInsetSidebar(builder => {
     builder
       .create("insetSidebar", { anchor: "right" })
       .registerAbsoluteConfig("sm", {
@@ -114,13 +116,13 @@ const IndexPage = () => {
             <SidebarTrigger sidebarId="secondarySidebar" />
           </Toolbar>
         </Header>
-        <DrawerSidebar id="primarySidebar">
+        <DrawerSidebar sidebarId="primarySidebar">
           <div>
             <NavContentMockUp />
           </div>
           <CollapseBtn />
         </DrawerSidebar>
-        <DrawerSidebar id="secondarySidebar">
+        <DrawerSidebar sidebarId="secondarySidebar">
           <div>
             <NavContentMockUp />
           </div>
@@ -128,11 +130,11 @@ const IndexPage = () => {
         </DrawerSidebar>
         <Content>
           <InsetContainer>
-            <InsetSidebar id="secondInsetSidebar">
+            <InsetSidebar sidebarId="secondInsetSidebar">
               <Box height={200} width={80} bgcolor={"primary.main"} />
             </InsetSidebar>
             <ContentMockUp />
-            <InsetSidebar id="insetSidebar">
+            <InsetSidebar sidebarId="insetSidebar">
               <NavContentMockUp />
             </InsetSidebar>
           </InsetContainer>

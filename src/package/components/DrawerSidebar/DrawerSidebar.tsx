@@ -6,28 +6,31 @@ import useSidebarAutoCollapse from "../../core/hooks/useSidebarAutoCollapse"
 import PersistentDrawer from "./Persistent"
 import PermanentDrawer from "./Permanent"
 import TemporaryDrawer from "./Temporary"
-import {
-  createBreakpointStyles,
-  createHiddenStyles,
-} from "../../utils"
+import HeaderAdjustment from "../HeaderAdjustment"
+import useAdjustmentStable from "../../core/hooks/useAdjustmentStable"
+import { createBreakpointStyles, createHiddenStyles } from "../../utils"
+import { isCollapsibleSidebarConfig } from "../../utils/sidebarChecker"
 
 const DrawerSidebar = ({
   onClose,
+  children,
   ...props
 }: Omit<DrawerProps, "variant"> & {
-  id: string
+  sidebarId: string
 }) => {
-  useSidebarAutoCollapse(props.id)
+  const sidebarId = props.sidebarId
+  useSidebarAutoCollapse(sidebarId)
   const { breakpoints } = useTheme()
   const {
     anchor,
     styles: { permanent, persistent, temporary },
     state,
     setOpen,
-  } = useSidebar(props.id)
+    edgeSidebar,
+  } = useSidebar(sidebarId)
   const wrappedOnClose: DrawerProps["onClose"] = (...args) => {
     if (typeof onClose === "function") onClose(...args)
-    setOpen(props.id, false)
+    setOpen(sidebarId, false)
   }
   const commonProps = {
     ...props,
@@ -36,8 +39,16 @@ const DrawerSidebar = ({
     onClose: wrappedOnClose,
   }
 
+  const stable = useAdjustmentStable(
+    edgeSidebar.configMapById?.[sidebarId],
+    isCollapsibleSidebarConfig
+  )
+  const headerAdjustment = (
+    <HeaderAdjustment clippable objectId={sidebarId} stable={stable} />
+  )
+
   return (
-    <SidebarProvider id={props.id}>
+    <SidebarProvider id={sidebarId}>
       <TemporaryDrawer
         disableScrollLock
         {...commonProps}
@@ -47,7 +58,9 @@ const DrawerSidebar = ({
           breakpoints
         )}
         styles={createBreakpointStyles(temporary, breakpoints)}
-      />
+      >
+        {children}
+      </TemporaryDrawer>
       <PersistentDrawer
         {...commonProps}
         hiddenStyles={createHiddenStyles(
@@ -56,7 +69,10 @@ const DrawerSidebar = ({
           breakpoints
         )}
         styles={createBreakpointStyles(persistent, breakpoints)}
-      />
+      >
+        {headerAdjustment}
+        {children}
+      </PersistentDrawer>
       <PermanentDrawer
         {...commonProps}
         hiddenStyles={createHiddenStyles(
@@ -65,7 +81,10 @@ const DrawerSidebar = ({
           breakpoints
         )}
         styles={createBreakpointStyles(permanent, breakpoints)}
-      />
+      >
+        {headerAdjustment}
+        {children}
+      </PermanentDrawer>
     </SidebarProvider>
   )
 }

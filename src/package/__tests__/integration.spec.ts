@@ -6,7 +6,7 @@ import ContentCompiler from "../compilers/ContentCompiler"
 describe("Header + PrimarySidebar + SecondarySidebar + Content", () => {
   it("can create config and get the correct config", () => {
     const scheme = Layout()
-    scheme.configureSidebar(builder => {
+    scheme.configureEdgeSidebar(builder => {
       builder
         .create("primarySidebar")
         .registerTemporaryConfig("xs", {

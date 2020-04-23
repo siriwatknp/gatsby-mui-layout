@@ -2,13 +2,12 @@ import InsetSidebarCompiler from "./InsetSidebarCompiler"
 import InsetSidebarBuilder from "../builders/InsetSidebar"
 
 describe("InsetSidebarCompiler", () => {
-  it("return correct style", () => {
+  it("return correct style for multiple variants", () => {
     const builder = InsetSidebarBuilder()
 
     builder
-      .create("insetSidebar")
+      .create("insetSidebar", { anchor: "right" })
       .registerFixedConfig("sm", {
-        anchor: "right",
         width: "40rem",
       })
       .registerAbsoluteConfig("md", {

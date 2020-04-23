@@ -14,10 +14,9 @@ export default (options?: HeaderHeightParams): { height: string } => {
   const screen = useScreen()
   const scrollY = useScrollY()
   const {
-    config: { header },
+    data: { header, headerId },
   } = useLayoutCtx()
   const breakpointConfig = pickNearestBreakpoint(header, screen)
-  const { id: headerId } = breakpointConfig
   const headerEffect = HeaderEffect(breakpointConfig)
   const initialHeight = headerEffect.getInitialHeight(options)
   const resizedHeight = useHeaderResize(headerId, initialHeight)

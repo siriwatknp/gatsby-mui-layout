@@ -16,6 +16,9 @@ import {
   HeaderAdjustment,
   Content,
   Footer,
+  InsetSidebar,
+  InsetContainer,
+  InsetFooter,
   DrawerSidebar,
   SidebarTrigger,
   CollapseBtn,
@@ -28,26 +31,24 @@ const IndexPage = () => {
     builder
       .create("appHeader")
       .registerConfig("xs", {
-        position: "relative",
-        clipped: true,
-        initialHeight: 64,
-      })
-      .registerConfig("lg", {
+        initialHeight: 56,
         position: "fixed",
-        clipped: false,
-        initialHeight: 72,
+      })
+      .registerConfig("md", {
+        initialHeight: 64,
+        position: "relative",
       })
   })
-  scheme.configureEdgeSidebar(builder => {
+  scheme.configureInsetSidebar(builder => {
     builder
-      .create("primarySidebar", { anchor: "left" })
-      .registerPermanentConfig("md", {
+      .create("primarySidebar", { anchor: "right" })
+      .registerFixedConfig("md", {
         width: 256,
-        collapsible: true,
-        collapsedWidth: 80,
+      })
+      .registerAbsoluteConfig("lg", {
+        width: '30%',
       })
   })
-  scheme.enableAutoCollapse("primarySidebar")
 
   return (
     <StylesProvider injectFirst>
@@ -62,21 +63,21 @@ const IndexPage = () => {
             <HeaderMockUp />
           </Toolbar>
         </Header>
-        <DrawerSidebar sidebarId="primarySidebar">
-          <HeaderAdjustment objectId="primarySidebar" clippable />
-          <NavHeaderMockUp />
-          <div style={{ flex: 1 }}>
-            <NavContentMockUp />
-          </div>
-          <CollapseBtn />
-        </DrawerSidebar>
         <Content>
-          <HeaderAdjustment />
-          <ContentMockUp />
+          <InsetContainer>
+            <ContentMockUp />
+            <InsetSidebar sidebarId="primarySidebar">
+              <HeaderAdjustment stable />
+              <NavHeaderMockUp />
+              <div style={{ flex: 1 }}>
+                <NavContentMockUp />
+              </div>
+            </InsetSidebar>
+          </InsetContainer>
         </Content>
-        <Footer>
+        <InsetFooter>
           <FooterMockUp />
-        </Footer>
+        </InsetFooter>
       </Root>
     </StylesProvider>
   )

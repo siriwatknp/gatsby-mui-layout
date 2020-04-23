@@ -16,6 +16,13 @@ import FixedInset from "../models/Sidebar/Inset/FixedInset"
 
 export default (insetSidebar: Pick<InsetSidebarData, "configMapById">) => {
   return {
+    getVariant: (sidebarId: string): string => {
+      const config = pickNearestBreakpoint(
+        insetSidebar.configMapById[sidebarId],
+        "xl"
+      )
+      return config.variant
+    },
     getResultStyle: (sidebarId: string): InsetSidebarResultStyle => {
       const result: InsetSidebarResultStyle = { root: {}, body: {} }
       const breakpointConfigMap = insetSidebar.configMapById[sidebarId]

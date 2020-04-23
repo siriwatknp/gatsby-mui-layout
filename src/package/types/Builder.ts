@@ -43,6 +43,7 @@ export interface IContentBuilder {
 
 export interface IHeaderBuilder {
   create: (id: string) => IRegistry<HeaderConfig>
+  getId: () => string
   getData: () => HeaderConfigMap
 }
 

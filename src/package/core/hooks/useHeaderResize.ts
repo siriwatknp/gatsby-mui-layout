@@ -5,7 +5,7 @@ export default (headerId: string, initialHeight?: number | string) => {
   const [height, setHeight] = useState(initialHeight)
   const ref = useRef(0)
   useEffect(() => {
-    const headerElm = document.getElementById(headerId)
+    const headerElm = document.querySelector(`[mui-layout='${headerId}']`)
     new ResizeSensor(headerElm, () => {
       if (!ref.current) {
         ref.current = headerElm.clientHeight

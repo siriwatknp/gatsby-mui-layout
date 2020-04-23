@@ -9,10 +9,14 @@ const useInsetSidebar = (id: string) => {
     data: { insetSidebar },
   } = useLayoutCtx()
   const { breakpoints } = useTheme<Theme>()
-  const { root, body } = InsetSidebarCompiler(insetSidebar).getResultStyle(id)
+  const compiler = InsetSidebarCompiler(insetSidebar)
+  const { root, body } = compiler.getResultStyle(id)
+  const variant = compiler.getVariant(id)
   const hiddenRootStyles = createHiddenStyles(root, [], breakpoints)
   const hiddenBodyStyles = createHiddenStyles(body, [], breakpoints)
   return {
+    variant,
+    insetSidebar,
     rootStyles: merge(
       createBreakpointStyles(root, breakpoints),
       hiddenRootStyles

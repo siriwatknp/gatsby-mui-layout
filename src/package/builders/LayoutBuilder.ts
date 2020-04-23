@@ -23,10 +23,10 @@ export interface ILayoutBuilder {
   configureHeader: (
     callback: BuilderCallback<Pick<IHeaderBuilder, "create">>
   ) => void
-  configureSidebar: (
+  configureEdgeSidebar: (
     callback: BuilderCallback<Pick<IEdgeSidebarBuilder, "create">>
   ) => void
-  configureInset: (
+  configureInsetSidebar: (
     callback: BuilderCallback<Pick<IInsetSidebarBuilder, "create">>
   ) => void
   configureContent: (
@@ -54,10 +54,10 @@ export default (): ILayoutBuilder => {
     configureHeader(callback) {
       callback(header)
     },
-    configureSidebar(callback) {
+    configureEdgeSidebar(callback) {
       callback(edgeSidebar)
     },
-    configureInset(callback) {
+    configureInsetSidebar(callback) {
       callback(insetSidebar)
     },
     configureContent(callback) {
@@ -74,6 +74,7 @@ export default (): ILayoutBuilder => {
       edgeSidebar: edgeSidebar.getData(),
       insetSidebar: insetSidebar.getData(),
       header: header.getData(),
+      headerId: header.getId(),
       content: content.getData(),
       footer: footer.getData(),
     }),

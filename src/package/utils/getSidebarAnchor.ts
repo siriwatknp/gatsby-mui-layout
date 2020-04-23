@@ -1,7 +1,10 @@
 import { DrawerAnchor, MapBreakpoint, EdgeSidebarConfig } from "../types"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
-export default (configMap: MapBreakpoint<Pick<EdgeSidebarConfig, "anchor">>) => {
+export default (
+  configMap: MapBreakpoint<Pick<EdgeSidebarConfig, "anchor">>
+) => {
+  if (!configMap) return undefined
   if (process.env.NODE_ENV !== "production") {
     const configs: EdgeSidebarConfig[] = Object.entries(configMap).reduce(
       (result, curr) => [...result, curr],

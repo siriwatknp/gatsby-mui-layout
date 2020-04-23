@@ -15,6 +15,7 @@ export type FixedInsetSidebarConfig = {
   anchor: DrawerAnchor
   width: number | string
   variant: "fixed"
+  headerAdjustmentStable?: boolean
 }
 
 export type AbsoluteInsetSidebarConfig = {
@@ -41,6 +42,7 @@ export interface CollapsibleSidebarConfig {
   collapsible: boolean
   collapsedWidth?: number | string
   width: number | string
+  headerAdjustmentStable?: boolean
 }
 
 export interface PermanentSidebarConfig extends CollapsibleSidebarConfig {
@@ -81,6 +83,7 @@ export interface LayoutData {
   global: GlobalConfig
   edgeSidebar: EdgeSidebarData
   insetSidebar: InsetSidebarData
+  headerId: string
   header: HeaderConfigMap
   content: { id: string }
   footer: { id: string }

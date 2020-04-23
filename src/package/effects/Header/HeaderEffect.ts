@@ -32,11 +32,19 @@ export default (header: Partial<HeaderConfig>): IHeaderEffect => {
       isAboveSomeSidebars && !isObjectClipped(sidebarId)
         ? incrementZIndex(theme, 20)
         : undefined,
-    resolveHeight: (height, { objectId, clippable } = {}) => {
+    resolveHeight: (height, { objectId, clippable, insetFixed } = {}) => {
+      if (clippable && insetFixed && process.env.NODE_ENV === "development") {
+        console.warn(
+          "You should not have both 'clippable' & 'insetFixed' set to true."
+        )
+      }
       const isClipped = isObjectClipped(objectId)
       if (clippable) {
         if (isClipped) return height
         return 0
+      }
+      if (insetFixed) {
+        return height
       }
       if (["absolute", "fixed"].includes(header.position)) {
         return height
@@ -51,10 +59,18 @@ export default (header: Partial<HeaderConfig>): IHeaderEffect => {
       const offsetHeight = this.getOffsetHeight(options)
       return calc(baseHeight, offsetHeight)
     },
-    getOffsetHeight({ objectId, clippable, scrollY = 0 } = {}){
+    getOffsetHeight({
+      objectId,
+      clippable,
+      scrollY = 0,
+      insetFixed,
+      stable,
+    } = {}) {
+      if (stable) return 0
       const isClipped = isObjectClipped(objectId)
       if (clippable && isClipped && header.position === "relative")
         return scrollY
+      if (insetFixed && header.position === "relative") return scrollY
       return 0
     },
   }

@@ -1,5 +1,4 @@
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
-import { pickNearestBreakpoint } from "../../utils"
 import {
   EdgeSidebarConfig,
   IEdgeSidebarBuilder,

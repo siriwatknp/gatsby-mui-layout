@@ -1,37 +1,43 @@
 import React from "react"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { SwipeableDrawerProps } from "@material-ui/core/SwipeableDrawer"
-import { useSidebar, SidebarProvider } from "../../core"
-import useSidebarAutoCollapse from "../../core/hooks/useSidebarAutoCollapse"
 import PersistentSwipeableDrawer from "./Persistent"
 import PermanentSwipeableDrawer from "./Permanent"
 import TemporarySwipeableDrawer from "./Temporary"
+import useAdjustmentStable from "../../core/hooks/useAdjustmentStable"
+import { useSidebar, SidebarProvider } from "../../core"
+import useSidebarAutoCollapse from "../../core/hooks/useSidebarAutoCollapse"
 import { createBreakpointStyles, createHiddenStyles } from "../../utils"
+import { isCollapsibleSidebarConfig } from "../../utils/sidebarChecker"
+import HeaderAdjustment from "../HeaderAdjustment"
 
 const SwipeableSidebar = ({
   onClose,
   onOpen,
+  children,
   ...props
 }: Omit<SwipeableDrawerProps, "variant" | "open" | "onClose" | "onOpen"> & {
-  id: string
+  sidebarId: string
   onClose?: SwipeableDrawerProps["onClose"]
   onOpen?: SwipeableDrawerProps["onOpen"]
 }) => {
-  useSidebarAutoCollapse(props.id)
+  const { sidebarId } = props
+  useSidebarAutoCollapse(sidebarId)
   const { breakpoints } = useTheme()
   const {
     styles: { permanent, persistent, temporary },
+    edgeSidebar,
     state,
     anchor,
     setOpen,
-  } = useSidebar(props.id)
+  } = useSidebar(sidebarId, "SwipeableDrawer")
   const wrappedOnOpen: SwipeableDrawerProps["onOpen"] = (...args) => {
     if (typeof onOpen === "function") onOpen(...args)
-    setOpen(props.id, true)
+    setOpen(sidebarId, true)
   }
   const wrappedOnClose: SwipeableDrawerProps["onClose"] = (...args) => {
     if (typeof onOpen === "function") onClose(...args)
-    setOpen(props.id, false)
+    setOpen(sidebarId, false)
   }
   const commonProps = {
     ...props,
@@ -41,8 +47,16 @@ const SwipeableSidebar = ({
     onClose: wrappedOnClose,
   }
 
+  const stable = useAdjustmentStable(
+    edgeSidebar.configMapById?.[sidebarId],
+    isCollapsibleSidebarConfig
+  )
+  const headerAdjustment = (
+    <HeaderAdjustment clippable objectId={sidebarId} stable={stable} />
+  )
+
   return (
-    <SidebarProvider id={props.id}>
+    <SidebarProvider id={sidebarId}>
       <TemporarySwipeableDrawer
         disableScrollLock
         {...commonProps}
@@ -52,7 +66,9 @@ const SwipeableSidebar = ({
           breakpoints
         )}
         styles={createBreakpointStyles(temporary, breakpoints)}
-      />
+      >
+        {children}
+      </TemporarySwipeableDrawer>
       <PersistentSwipeableDrawer
         {...commonProps}
         hiddenStyles={createHiddenStyles(
@@ -61,7 +77,10 @@ const SwipeableSidebar = ({
           breakpoints
         )}
         styles={createBreakpointStyles(persistent, breakpoints)}
-      />
+      >
+        {headerAdjustment}
+        {children}
+      </PersistentSwipeableDrawer>
       <PermanentSwipeableDrawer
         {...commonProps}
         hiddenStyles={createHiddenStyles(
@@ -70,7 +89,10 @@ const SwipeableSidebar = ({
           breakpoints
         )}
         styles={createBreakpointStyles(permanent, breakpoints)}
-      />
+      >
+        {headerAdjustment}
+        {children}
+      </PermanentSwipeableDrawer>
     </SidebarProvider>
   )
 }

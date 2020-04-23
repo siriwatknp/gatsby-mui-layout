@@ -16,6 +16,7 @@ const useSidebar = (id: string, consumer?: string) => {
   return {
     anchor,
     state: state.sidebar[id],
+    edgeSidebar: data.edgeSidebar,
     styles,
     setOpen,
     setCollapsed,

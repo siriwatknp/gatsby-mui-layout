@@ -19,7 +19,7 @@ const Header: React.FC<AppBarProps> = props => {
     <StyledProxyAppBar
       color={"default"}
       elevation={0}
-      id={"appHeader"}
+      mui-layout={data.headerId}
       {...props}
       styles={styles}
     />

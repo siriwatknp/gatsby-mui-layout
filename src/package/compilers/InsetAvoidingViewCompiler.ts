@@ -1,31 +1,39 @@
-import {
-  Breakpoint,
-  Breakpoints,
-} from "@material-ui/core/styles/createBreakpoints"
-import { InsetSidebarConfig, InsetSidebarData } from "../types"
+import { Breakpoints } from "@material-ui/core/styles/createBreakpoints"
+import { InsetSidebarConfig, InsetSidebarData, MapBreakpoint } from "../types"
 import { MediaQueries } from "../utils/createBreakpointStyles"
 import { isFixedInsetSidebarConfig } from "../utils/sidebarChecker"
 import { createFixedInsetSidebarEffect } from "../effects/FixedInsetSidebar"
 
-export default (insetSidebar: Pick<InsetSidebarData, "configMap">) => {
+export default (insetSidebar: Pick<InsetSidebarData, "configMapById">) => {
+  const iterateBreakpoints = (
+    breakpoints: Breakpoints,
+    result: MediaQueries,
+    configMap: MapBreakpoint<InsetSidebarConfig>
+  ) => {
+    let lastConfig: InsetSidebarConfig = undefined
+    breakpoints.keys.forEach(bp => {
+      const config = configMap[bp]
+      if (config) {
+        lastConfig = config
+      }
+      if (lastConfig && isFixedInsetSidebarConfig(lastConfig)) {
+        result[breakpoints.only(bp)] = {
+          ...result[breakpoints.only(bp)] as object,
+          ...createFixedInsetSidebarEffect(lastConfig).getAvoidingStyle()
+        }
+      }
+    })
+  }
+
   return {
     getMediaQueryStyle: (breakpoints: Breakpoints) => {
+      const sidebarIds = Object.keys(insetSidebar.configMapById)
       let styles: MediaQueries = {}
-      Object.entries(insetSidebar.configMap).forEach(
-        ([bp, insetConfigs]: [Breakpoint, InsetSidebarConfig[]]) => {
-          styles[bp] = {}
-          insetConfigs.forEach(config => {
-            if (isFixedInsetSidebarConfig(config)) {
-              styles[bp] = {
-                ...(styles[bp] as object),
-                ...createFixedInsetSidebarEffect(config).getAvoidingStyle(),
-              }
-            }
-          })
-          styles[breakpoints.only(bp)] = styles[bp]
-          delete styles[bp]
-        }
-      )
+      sidebarIds.forEach(id => {
+        const configMap = insetSidebar.configMapById[id]
+        iterateBreakpoints(breakpoints, styles, configMap)
+      })
+
       return styles
     },
   }

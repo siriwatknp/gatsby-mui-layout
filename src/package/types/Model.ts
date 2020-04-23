@@ -32,6 +32,8 @@ export interface ISidebarEffect {
 export interface HeaderHeightParams {
   objectId?: string
   clippable?: boolean
+  stable?: boolean
+  insetFixed?: boolean
   height?: number | string
   scrollY?: number
 }
