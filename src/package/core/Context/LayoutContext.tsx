@@ -1,15 +1,14 @@
 import React from "react"
 import merge from "deepmerge"
 import { ILayoutBuilder } from "../../builders"
-import { ILayoutConfig, LayoutConfig, State } from "../../types"
+import { LayoutData, State } from "../../types"
 
 const Context = React.createContext<ContextValue>(null)
 Context.displayName = "MuiLayoutCtx"
 
 export type ContextValue = {
   state: State
-  config: LayoutConfig
-  data: ILayoutConfig
+  data: LayoutData
   setOpen: (id: string, value: boolean) => void
   setCollapsed: (id: string, value: boolean) => void
 }
@@ -65,13 +64,11 @@ export const LayoutProvider = ({
       type: "SET_COLLAPSED",
       payload: { id, value },
     })
-  const config = scheme.getComponentConfig()
   const data = scheme.getComponentData()
   return (
     <Context.Provider
       value={{
         state,
-        config,
         data,
         setOpen,
         setCollapsed,

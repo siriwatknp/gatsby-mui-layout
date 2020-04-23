@@ -1,5 +1,5 @@
 import createModel from "./PersistentSidebarEffect"
-import { PersistentSidebarConfig, ISidebarEffect, State } from "../../types"
+import { ISidebarEffect, State } from "../../types"
 
 const getWidthStyle = (model: ISidebarEffect, ...args: any[]) =>
   model.getObjectWidth(...args).getStyle()
@@ -30,7 +30,7 @@ describe("[Simple] None Behavior", () => {
 })
 
 describe("[Simple] Fit Behavior", () => {
-  let baseConfig: PersistentSidebarConfig
+  let baseConfig: any
   let state: State
   beforeEach(() => {
     baseConfig = {
@@ -114,7 +114,7 @@ describe("[Simple] Fit Behavior", () => {
 })
 
 describe("[Simple] Flexible Behavior", () => {
-  let baseConfig: PersistentSidebarConfig
+  let baseConfig: any
   let state: State
   beforeEach(() => {
     baseConfig = {
@@ -149,7 +149,7 @@ describe("[Simple] Flexible Behavior", () => {
 })
 
 describe("[ObjectReference] Mixed Behavior", () => {
-  let baseConfig: PersistentSidebarConfig
+  let baseConfig: any
   let state: State
   beforeEach(() => {
     baseConfig = {

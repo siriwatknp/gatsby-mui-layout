@@ -1,5 +1,7 @@
 import { upperFirst, getFlexBehaviorValue } from "../../utils"
-import createEdgeModel from "../../models/Sidebar/Edge"
+import createEdgeModel, {
+  CollapsibleConfigParam,
+} from "../../models/Sidebar/Edge"
 import createWidthInterface from "../../models/Width"
 import createMarginInterface from "../../models/Margin"
 import {
@@ -12,7 +14,10 @@ import {
 } from "../../types"
 
 export default (
-  config: PersistentSidebarConfig,
+  config: Pick<
+    PersistentSidebarConfig,
+    keyof CollapsibleConfigParam | "anchor" | "persistentBehavior"
+  >,
   state?: State
 ): ISidebarEffect => {
   const { anchor } = config

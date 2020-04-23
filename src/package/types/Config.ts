@@ -79,18 +79,11 @@ export interface GlobalConfig {
   autoCollapse: Dictionary<false | Breakpoint>
 }
 
-export interface ILayoutConfig {
+export interface LayoutData {
+  global: GlobalConfig
   edgeSidebar: EdgeSidebarData
   insetSidebar: InsetSidebarData
   header: HeaderConfigMap
   content: { id: string }
   footer: { id: string }
-}
-
-export type LayoutConfig = {
-  header: HeaderConfigMap
-  sidebar: SidebarConfigMap
-  sidebarById: SidebarConfigMapById
-  inset: InsetSidebarConfigMap
-  global: GlobalConfig
 }

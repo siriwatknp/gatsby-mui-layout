@@ -5,7 +5,7 @@ import { useLayoutCtx } from "../Context"
 
 export default (sidebarId: string) => {
   const {
-    config: {
+    data: {
       global: {
         autoCollapse: { [sidebarId]: sidebarAutoCollapse },
       },

@@ -6,12 +6,12 @@ const useSidebar = (id: string, consumer?: string) => {
   if (!id) {
     throw new Error(`You must specify a sidebar id to <${consumer} />`)
   }
-  const { state, config, data, setOpen, setCollapsed } = useLayoutCtx()
-  const anchor = getSidebarAnchor(config.sidebarById[id])
+  const { state, data, setOpen, setCollapsed } = useLayoutCtx()
+  const anchor = getSidebarAnchor(data.edgeSidebar.configMapById[id])
   const styles = EdgeSidebarCompiler(
     state,
     data.edgeSidebar,
-    config.header
+    data.header
   ).getResultStyle(id)
   return {
     anchor,

@@ -2,39 +2,124 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/ContentCompiler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/HeaderCompiler.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/HeaderCompiler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/InsetSidebarCompiler.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/InsetSidebarCompiler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useInsetSidebar.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useSidebar.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useSidebarCta.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/effects/EdgeSidebars/EdgeSidebarEffects.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/effects/EdgeSidebars/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/InsetAvoidingViewCompiler.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/__tests__/integration.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/Content/ContentBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Content/ContentBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/EdgeSidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/EdgeSidebar/EdgeSidebarBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/Footer/FooterBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Footer/FooterBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/Header/HeaderBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/InsetSidebar/InsetSidebarBuilder.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/builders/InsetSidebar/InsetSidebarBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/InsetSidebar/InsetSidebarBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/Header/Header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/Header/Header.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/Header/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/Header/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/Root/Root.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/Root/Root.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/Root/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/Root/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/components/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Builder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Builder.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Builder.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Builder.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Header/HeaderBuilder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Header/HeaderBuilder.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Header/HeaderBuilder.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Header/HeaderBuilder.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Sidebar/SidebarBuilder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Sidebar/SidebarBuilder.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Sidebar/SidebarBuilder.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/Sidebar/SidebarBuilder.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Builder/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Context/LayoutContext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Context/LayoutContext.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Context/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/core/Context/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/BaseSidebar/BaseSidebarModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/BaseSidebar/BaseSidebarModel.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/BaseSidebar/BaseSidebarModel.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/BaseSidebar/BaseSidebarModel.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/BaseSidebar/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/BaseSidebar/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/HeaderEffect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/HeaderEffect.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/HeaderEffect.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/HeaderEffect.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/HeaderModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/HeaderModel.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/HeaderModel.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/HeaderModel.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Header/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Margin/MarginModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Margin/MarginModel.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Margin/MarginModel.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Margin/MarginModel.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Margin/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Margin/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/PersistentSidebar/PersistentSidebarEffect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/PersistentSidebar/PersistentSidebarEffect.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/PersistentSidebar/PersistentSidebarEffect.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/PersistentSidebar/PersistentSidebarEffect.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/PersistentSidebar/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/PersistentSidebar/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/SidebarList/SidebarListEffect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/SidebarList/SidebarListEffect.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/SidebarList/SidebarListEffect.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/SidebarList/SidebarListEffect.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/SidebarList/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/SidebarList/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Width/WidthModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Width/WidthModel.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Width/WidthModel.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Width/WidthModel.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Width/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/models/Width/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Builder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Builder.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Config.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Context.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Context.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/InlineStyle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/InlineStyle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Model.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/Utils.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/types/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/constant.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/constant.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/createBreakpointStyles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/createBreakpointStyles.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/isNil.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/isNil.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/isNilOrEmpty.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/isNilOrEmpty.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/pickNearestBreakpoint.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/pickNearestBreakpoint.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/toValidCssValue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/toValidCssValue.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/upperFirst.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/upperFirst.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/utils.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/package/utils/utils.spec.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/pages/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/pages/index.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/builders/LayoutBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/builders/LayoutBuilder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/compilers/EdgeSidebarCompiler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/InsetAvoidingView/InsetAvoidingView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/InsetAvoidingView/InsetAvoidingView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/Context/LayoutContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/hooks.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useHeaderAdjustment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useHeaderAdjustment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useSidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useSidebar.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useSidebarAutoCollapse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useSidebarAutoCollapse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/Builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Builder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/effects/PermanentSidebar/PermanentSidebarEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/PermanentSidebar/PermanentSidebarEffect.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/PersistentSidebar/PersistentSidebarEffect.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/InsetAvoidingView/InsetAvoidingViewModel.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/compilers/InsetAvoidingViewCompiler.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/InsetAvoidingView/InsetAvoidingViewModel.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/InsetAvoidingView/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/Sidebar/Edge/EdgeSidebarModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Sidebar/Edge/EdgeSidebarModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/models/Sidebar/Edge/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Sidebar/Edge/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/InlineStyle.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +146,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/package/core/Builder/Sidebar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/package/compilers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -88,11 +173,11 @@
       <recent name="$PROJECT_DIR$/src/package/types/Builder.ts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/package/compilers" />
       <recent name="$PROJECT_DIR$/src/package/core/Builder/Sidebar" />
       <recent name="$PROJECT_DIR$/src/package/core/Builder/Header" />
       <recent name="$PROJECT_DIR$/src/package/core/Builder/Content" />
       <recent name="$PROJECT_DIR$/src/package/components" />
-      <recent name="$PROJECT_DIR$/src/package/utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -240,7 +325,7 @@
       <workItem from="1587394766422" duration="13172000" />
       <workItem from="1587478552821" duration="5776000" />
       <workItem from="1587485970660" duration="8912000" />
-      <workItem from="1587563226225" duration="8894000" />
+      <workItem from="1587563226225" duration="11619000" />
     </task>
     <servers />
   </component>

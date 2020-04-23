@@ -7,10 +7,10 @@ import {
   IHeaderBuilder,
   IEdgeSidebarBuilder,
   State,
-  LayoutConfig,
   IContentBuilder,
   GlobalConfig,
-  ILayoutConfig, IFooterBuilder,
+  LayoutData,
+  IFooterBuilder,
 } from "../types"
 import { IInsetSidebarBuilder } from "./InsetSidebar/InsetSidebarBuilder"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
@@ -26,8 +26,7 @@ export interface ILayoutBuilder {
   configureContent: (callback: BuilderCallback<IContentBuilder>) => void
   configureFooter: (callback: BuilderCallback<IFooterBuilder>) => void
   enableAutoCollapse: (sidebarId: string, breakpoint?: Breakpoint) => void
-  getComponentData: () => ILayoutConfig
-  getComponentConfig: () => LayoutConfig
+  getComponentData: () => LayoutData
   getInitialState: () => State
 }
 
@@ -61,18 +60,12 @@ export default (): ILayoutBuilder => {
       global.autoCollapse[sidebarId] = breakpoint
     },
     getComponentData: () => ({
+      global,
       edgeSidebar: sidebar.getData(),
       insetSidebar: inset.getData(),
       header: header.getData(),
       content: content.getData(),
-      footer: footer.getData()
-    }),
-    getComponentConfig: () => ({
-      header: header.getConfig(),
-      sidebar: sidebar.getConfig(),
-      sidebarById: sidebar.getConfigMapById(),
-      inset: inset.getConfig(),
-      global,
+      footer: footer.getData(),
     }),
     getInitialState: () => {
       const sidebarIds = sidebar.getSidebarIds()

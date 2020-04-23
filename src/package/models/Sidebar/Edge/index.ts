@@ -1,1 +1,3 @@
-export { default } from './EdgeSidebarModel';
+export * from "./EdgeSidebarModel"
+
+export { default } from "./EdgeSidebarModel"

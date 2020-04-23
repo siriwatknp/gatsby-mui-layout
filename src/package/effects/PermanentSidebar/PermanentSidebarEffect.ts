@@ -8,10 +8,12 @@ import {
   PermanentSidebarConfig,
   State,
 } from "../../types"
-import createEdgeModel from "../../models/Sidebar/Edge/EdgeSidebarModel"
+import createEdgeModel, {
+  CollapsibleConfigParam,
+} from "../../models/Sidebar/Edge"
 
 export default (
-  config: PermanentSidebarConfig,
+  config: Pick<PermanentSidebarConfig, keyof CollapsibleConfigParam | "anchor">,
   state?: State
 ): ISidebarEffect => {
   const { anchor } = config
