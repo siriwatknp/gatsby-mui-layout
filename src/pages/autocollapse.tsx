@@ -2,7 +2,6 @@ import React from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { StylesProvider } from "@material-ui/core/styles"
 import Toolbar from "@material-ui/core/Toolbar"
-import Box from "@material-ui/core/Box"
 import {
   HeaderMockUp,
   NavHeaderMockUp,
@@ -40,12 +39,13 @@ const IndexPage = () => {
       })
   })
   scheme.configureSidebar(builder => {
-    builder.create("primarySidebar").registerPermanentConfig("md", {
-      anchor: "left",
-      width: 256,
-      collapsible: true,
-      collapsedWidth: 80,
-    })
+    builder
+      .create("primarySidebar", { anchor: "left" })
+      .registerPermanentConfig("md", {
+        width: 256,
+        collapsible: true,
+        collapsedWidth: 80,
+      })
   })
   scheme.enableAutoCollapse("primarySidebar")
 

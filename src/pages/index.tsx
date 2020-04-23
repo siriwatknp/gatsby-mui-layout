@@ -47,20 +47,17 @@ const IndexPage = () => {
   })
   scheme.configureSidebar(builder => {
     builder
-      .create("primarySidebar")
+      .create("primarySidebar", { anchor: "left" })
       .registerTemporaryConfig("xs", {
-        anchor: "left",
         width: "auto",
       })
       .registerPersistentConfig("sm", {
-        anchor: "left",
         width: 256,
         persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
       })
       .registerPersistentConfig("md", {
-        anchor: "left",
         width: "30%",
         persistentBehavior: "fit",
         collapsible: true,
@@ -68,9 +65,8 @@ const IndexPage = () => {
       })
 
     builder
-      .create("secondarySidebar")
+      .create("secondarySidebar", { anchor: "right" })
       .registerPersistentConfig("md", {
-        anchor: "right",
         width: 240,
         persistentBehavior: {
           _other: "none",
@@ -83,7 +79,7 @@ const IndexPage = () => {
   })
   scheme.configureInset(builder => {
     builder
-      .create("insetSidebar")
+      .create("insetSidebar", { anchor: "right" })
       .registerAbsoluteConfig("sm", {
         width: "33%",
       })
@@ -92,14 +88,14 @@ const IndexPage = () => {
         width: 256,
       })
       .registerFixedConfig("lg", {
-        anchor: "right",
         width: "10rem",
       })
 
-    builder.create("secondInsetSidebar").registerFixedConfig("lg", {
-      anchor: "left",
-      width: "5rem",
-    })
+    builder
+      .create("secondInsetSidebar", { anchor: "left" })
+      .registerFixedConfig("lg", {
+        width: "5rem",
+      })
   })
   scheme.configureFooter(builder => {
     builder.create("appFooter")

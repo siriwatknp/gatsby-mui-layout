@@ -19,16 +19,14 @@ describe("HeaderCompiler", () => {
 
     const sidebar = EdgeSidebarBuilder()
     sidebar
-      .create("sidebar-1")
+      .create("sidebar-1", { anchor: "left" })
       .registerPersistentConfig("xs", {
-        anchor: "left",
         width: 256,
         collapsible: true,
         collapsedWidth: 80,
         persistentBehavior: "fit",
       })
       .registerPersistentConfig("xl", {
-        anchor: "left",
         width: "30%",
         collapsible: false,
         persistentBehavior: "fit",
@@ -36,7 +34,7 @@ describe("HeaderCompiler", () => {
 
     const compiler = HeaderCompiler(
       { sidebar: { "sidebar-1": { open: true, collapsed: false } } },
-      header.getConfig(),
+      header.getData(),
       sidebar.getData()
     )
 

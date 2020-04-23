@@ -1,16 +1,14 @@
 import { AppendDictionary, Dictionary } from "./Utils"
-import {
-  EdgeSidebarData,
-  HeaderConfigMap, InsetSidebarData,
-  SidebarConfigMap,
-  SidebarConfigMapById,
-} from "./Builder"
-import { InsetSidebarConfigMap } from "../builders/InsetSidebar/InsetSidebarBuilder"
+import { EdgeSidebarData, HeaderConfigMap, InsetSidebarData } from "./Builder"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
 
 export type PersistentBehavior = "fit" | "flexible" | "none"
 
 export type DrawerAnchor = "left" | "right"
+
+export type SidebarProperties = {
+  anchor: DrawerAnchor
+}
 
 export type FixedInsetSidebarConfig = {
   id?: string

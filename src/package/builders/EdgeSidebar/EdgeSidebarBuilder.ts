@@ -57,18 +57,33 @@ export default (): IEdgeSidebarBuilder => {
     }
   }
   return {
-    create: function(id: string) {
+    create: function(id, props) {
       const Registry = (): IEdgeSidebarRegistry => ({
         registerPersistentConfig(breakpoint, config) {
-          addConfig(breakpoint, { ...config, id, variant: "persistent" })
+          addConfig(breakpoint, {
+            ...config,
+            ...props,
+            id,
+            variant: "persistent",
+          })
           return this
         },
         registerPermanentConfig(breakpoint, config) {
-          addConfig(breakpoint, { ...config, id, variant: "permanent" })
+          addConfig(breakpoint, {
+            ...config,
+            ...props,
+            id,
+            variant: "permanent",
+          })
           return this
         },
         registerTemporaryConfig(breakpoint, config) {
-          addConfig(breakpoint, { ...config, id, variant: "temporary" })
+          addConfig(breakpoint, {
+            ...config,
+            ...props,
+            id,
+            variant: "temporary",
+          })
           return this
         },
       })
@@ -82,9 +97,5 @@ export default (): IEdgeSidebarBuilder => {
       }
     },
     getSidebarIds: () => sidebarIds,
-    getConfig: () => mapByBreakpoint,
-    getConfigMapById: () => mapById,
-    getBreakpointConfig: breakpoint =>
-      pickNearestBreakpoint(mapByBreakpoint, breakpoint),
   }
 }

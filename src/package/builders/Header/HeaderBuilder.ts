@@ -20,9 +20,5 @@ export default (): IHeaderBuilder => {
       return Registry()
     },
     getData: () => map,
-    getConfig: () => map,
-    getBreakpointConfig: function(breakpoint) {
-      return pickNearestBreakpoint(map, breakpoint)
-    },
   }
 }

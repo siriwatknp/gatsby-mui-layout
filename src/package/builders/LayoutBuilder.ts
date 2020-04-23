@@ -1,8 +1,8 @@
 import HeaderBuilder from "./Header"
-import SidebarBuilder from "./EdgeSidebar"
+import EdgeSidebarBuilder from "./EdgeSidebar"
 import ContentBuilder from "./Content"
 import FooterBuilder from "./Footer"
-import InsetBuilder from "./InsetSidebar"
+import InsetSidebarBuilder from "./InsetSidebar"
 import {
   IHeaderBuilder,
   IEdgeSidebarBuilder,
@@ -35,20 +35,20 @@ export default (): ILayoutBuilder => {
     autoCollapse: {},
   }
   const header = HeaderBuilder()
-  const sidebar = SidebarBuilder()
+  const edgeSidebar = EdgeSidebarBuilder()
+  const insetSidebar = InsetSidebarBuilder()
   const content = ContentBuilder()
   const footer = FooterBuilder()
-  const inset = InsetBuilder()
 
   return {
     configureHeader(callback) {
       callback(header)
     },
     configureSidebar(callback) {
-      callback(sidebar)
+      callback(edgeSidebar)
     },
     configureInset(callback) {
-      callback(inset)
+      callback(insetSidebar)
     },
     configureContent(callback) {
       callback(content)
@@ -61,16 +61,16 @@ export default (): ILayoutBuilder => {
     },
     getComponentData: () => ({
       global,
-      edgeSidebar: sidebar.getData(),
-      insetSidebar: inset.getData(),
+      edgeSidebar: edgeSidebar.getData(),
+      insetSidebar: insetSidebar.getData(),
       header: header.getData(),
       content: content.getData(),
       footer: footer.getData(),
     }),
     getInitialState: () => {
-      const sidebarIds = sidebar.getSidebarIds()
+      const ids = edgeSidebar.getSidebarIds()
       return {
-        sidebar: sidebarIds.reduce(
+        sidebar: ids.reduce(
           (result, curr) => ({
             ...result,
             [curr]: { open: false, collapsed: false },

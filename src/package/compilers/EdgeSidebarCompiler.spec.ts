@@ -9,22 +9,19 @@ describe("EdgeSidebarCompiler", () => {
   it("get correct result style", () => {
     const sidebar = EdgeSidebarBuilder()
     sidebar
-      .create(sidebarId)
+      .create(sidebarId, { anchor: "left" })
       .registerPersistentConfig("xs", {
-        anchor: "left",
         width: 256,
         collapsible: true,
         collapsedWidth: 80,
         persistentBehavior: "flexible",
       })
       .registerPersistentConfig("md", {
-        anchor: "left",
         width: "30%",
         collapsible: false,
         persistentBehavior: "fit",
       })
       .registerPermanentConfig("lg", {
-        anchor: "left",
         width: "50%",
         collapsible: false,
       })
@@ -39,7 +36,7 @@ describe("EdgeSidebarCompiler", () => {
         sidebar: { [sidebarId]: { collapsed: false, open: true } },
       },
       sidebar.getData(),
-      header.getConfig()
+      header.getData()
     )
 
     expect(compiler.getResultStyle(sidebarId)).toStrictEqual({
@@ -56,13 +53,14 @@ describe("EdgeSidebarCompiler", () => {
 
   it("return empty if no breakpoint config found", () => {
     const sidebar = SidebarBuilder()
-    sidebar.create(sidebarId).registerPersistentConfig("md", {
-      anchor: "left",
-      width: "30%",
-      collapsible: true,
-      collapsedWidth: "12%",
-      persistentBehavior: "fit",
-    })
+    sidebar
+      .create(sidebarId, { anchor: "left" })
+      .registerPersistentConfig("md", {
+        width: "30%",
+        collapsible: true,
+        collapsedWidth: "12%",
+        persistentBehavior: "fit",
+      })
 
     const header = HeaderBuilder()
     header.create("header").registerConfig("xs", {
@@ -75,7 +73,7 @@ describe("EdgeSidebarCompiler", () => {
         sidebar: { [sidebarId]: { open: true, collapsed: true } },
       },
       sidebar.getData(),
-      header.getConfig()
+      header.getData()
     )
 
     expect(compiler.getResultStyle(sidebarId)).toStrictEqual({

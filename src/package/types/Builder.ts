@@ -4,7 +4,9 @@ import {
   PermanentSidebarConfig,
   PersistentSidebarConfig,
   EdgeSidebarConfig,
-  TemporarySidebarConfig, InsetSidebarConfig,
+  TemporarySidebarConfig,
+  InsetSidebarConfig,
+  SidebarProperties,
 } from "./Config"
 import { Dictionary, MapBreakpoint } from "./Utils"
 
@@ -42,30 +44,25 @@ export interface IContentBuilder {
 export interface IHeaderBuilder {
   create: (id: string) => IRegistry<HeaderConfig>
   getData: () => HeaderConfigMap
-  getConfig: () => HeaderConfigMap
-  getBreakpointConfig: (breakpoint: Breakpoint) => HeaderConfig
 }
 
 export interface IEdgeSidebarRegistry {
   registerPersistentConfig: (
     breakpoint: Breakpoint,
-    config: Omit<PersistentSidebarConfig, "id" | "variant">
+    config: Omit<PersistentSidebarConfig, "id" | "anchor" | "variant">
   ) => IEdgeSidebarRegistry
   registerPermanentConfig: (
     breakpoint: Breakpoint,
-    config: Omit<PermanentSidebarConfig, "id" | "variant">
+    config: Omit<PermanentSidebarConfig, "id" | "anchor" | "variant">
   ) => IEdgeSidebarRegistry
   registerTemporaryConfig: (
     breakpoint: Breakpoint,
-    config: Omit<TemporarySidebarConfig, "id" | "variant">
+    config: Omit<TemporarySidebarConfig, "id" | "anchor" | "variant">
   ) => IEdgeSidebarRegistry
 }
 
 export interface IEdgeSidebarBuilder {
-  create: (id: string) => IEdgeSidebarRegistry
+  create: (id: string, properties: SidebarProperties) => IEdgeSidebarRegistry
   getSidebarIds: () => string[]
   getData: () => EdgeSidebarData
-  getConfig: () => MapBreakpoint<EdgeSidebarConfig[]>
-  getConfigMapById: () => Dictionary<MapBreakpoint<EdgeSidebarConfig>>
-  getBreakpointConfig: (breakpoint: Breakpoint) => EdgeSidebarConfig[]
 }
