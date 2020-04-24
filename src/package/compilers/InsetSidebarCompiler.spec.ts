@@ -37,7 +37,13 @@ describe("InsetSidebarCompiler", () => {
           paddingRight: 999,
           width: "auto",
         },
-        md: { position: "absolute", top: 0, width: "100%" },
+        md: {
+          position: "absolute",
+          top: 0,
+          width: "100%",
+          margin: "unset",
+          padding: "unset",
+        },
         lg: { position: "sticky", top: "4rem" },
       },
     })

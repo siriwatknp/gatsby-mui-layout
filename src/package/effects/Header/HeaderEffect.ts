@@ -32,6 +32,7 @@ export default (header: Partial<HeaderConfig>): IHeaderEffect => {
       isAboveSomeSidebars && !isObjectClipped(sidebarId)
         ? incrementZIndex(theme, 20)
         : undefined,
+    isObjectClipped,
     resolveHeight: (height, { objectId, clippable, insetFixed } = {}) => {
       if (clippable && insetFixed && process.env.NODE_ENV === "development") {
         console.warn(
@@ -52,7 +53,7 @@ export default (header: Partial<HeaderConfig>): IHeaderEffect => {
       return 0
     },
     getInitialHeight(options = {}) {
-      return this.resolveHeight(options.height || header.initialHeight, options)
+      return this.resolveHeight(options.height ?? header.initialHeight, options)
     },
     getUpdatedHeight(options = {}) {
       const baseHeight = this.getInitialHeight(options)

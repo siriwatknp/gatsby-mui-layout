@@ -6,7 +6,7 @@ import useSidebarAutoCollapse from "../../core/hooks/useSidebarAutoCollapse"
 import PersistentDrawer from "./Persistent"
 import PermanentDrawer from "./Permanent"
 import TemporaryDrawer from "./Temporary"
-import HeaderAdjustment from "../HeaderAdjustment"
+import EdgeHeaderOffset from "../EdgeHeaderOffset"
 import useAdjustmentStable from "../../core/hooks/useAdjustmentStable"
 import { createBreakpointStyles, createHiddenStyles } from "../../utils"
 import { isCollapsibleSidebarConfig } from "../../utils/sidebarChecker"
@@ -44,7 +44,7 @@ const DrawerSidebar = ({
     isCollapsibleSidebarConfig
   )
   const headerAdjustment = (
-    <HeaderAdjustment clippable objectId={sidebarId} stable={stable} />
+    <EdgeHeaderOffset sidebarId={sidebarId} />
   )
 
   return (

@@ -9,6 +9,8 @@ export default (config: AbsoluteInsetSidebarConfig) => {
       position: "absolute" as const,
       top: 0,
       width: "100%",
+      padding: "unset",
+      margin: "unset",
     }),
   }
 }

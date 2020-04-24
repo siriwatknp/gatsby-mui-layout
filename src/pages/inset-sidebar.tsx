@@ -67,7 +67,6 @@ const IndexPage = () => {
           <InsetContainer>
             <ContentMockUp />
             <InsetSidebar sidebarId="primarySidebar">
-              <HeaderAdjustment stable />
               <NavHeaderMockUp />
               <div style={{ flex: 1 }}>
                 <NavContentMockUp />

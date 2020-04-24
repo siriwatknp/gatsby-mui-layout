@@ -9,7 +9,7 @@ import { useSidebar, SidebarProvider } from "../../core"
 import useSidebarAutoCollapse from "../../core/hooks/useSidebarAutoCollapse"
 import { createBreakpointStyles, createHiddenStyles } from "../../utils"
 import { isCollapsibleSidebarConfig } from "../../utils/sidebarChecker"
-import HeaderAdjustment from "../HeaderAdjustment"
+import EdgeHeaderOffset from "../EdgeHeaderOffset"
 
 const SwipeableSidebar = ({
   onClose,
@@ -51,9 +51,7 @@ const SwipeableSidebar = ({
     edgeSidebar.configMapById?.[sidebarId],
     isCollapsibleSidebarConfig
   )
-  const headerAdjustment = (
-    <HeaderAdjustment clippable objectId={sidebarId} stable={stable} />
-  )
+  const headerAdjustment = <EdgeHeaderOffset sidebarId={sidebarId} />
 
   return (
     <SidebarProvider id={sidebarId}>

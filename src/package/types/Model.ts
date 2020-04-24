@@ -42,6 +42,7 @@ export interface IHeaderEffect {
   id: string
   getHeaderZIndex: (theme?: Theme) => ZIndexStyle
   getEdgeSidebarZIndex: (id?: string, theme?: Theme) => ZIndexStyle
+  isObjectClipped: (sidebarId: string) => boolean
   resolveHeight: (
     height?: number | string,
     options?: HeaderHeightParams

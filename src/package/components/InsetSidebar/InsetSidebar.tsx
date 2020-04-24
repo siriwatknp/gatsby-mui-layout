@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { makeStyles } from "@material-ui/core/styles"
 import HeaderAdjustment from "../HeaderAdjustment"
+import InsetHeaderOffset from "../InsetHeaderOffset"
 import { useInsetSidebar } from "../../core"
 import useAdjustmentStable from "../../core/hooks/useAdjustmentStable"
 import { MediaQueries } from "../../utils/createBreakpointStyles"
@@ -42,7 +43,7 @@ const InsetSidebar = ({
   return (
     <Div className={`InsetSidebar-root ${classes.root}`} styles={rootStyles}>
       <Div className={`InsetSidebar-body ${classes.body}`} styles={bodyStyles}>
-        <HeaderAdjustment insetFixed={variant === "fixed"} stable={stable} />
+        <InsetHeaderOffset sidebarId={sidebarId} />
         {children}
       </Div>
     </Div>
