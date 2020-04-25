@@ -1,6 +1,10 @@
 import { EdgeSidebarData } from "../types"
 import { Breakpoint, keys } from "@material-ui/core/styles/createBreakpoints"
-import { isCollapsibleSidebarConfig } from "../utils/sidebarChecker"
+import {
+  isCollapsibleSidebarConfig,
+  isPersistentSidebarConfig,
+  isTemporarySidebarConfig,
+} from "../utils/sidebarChecker"
 
 export default (edgeSidebar: Pick<EdgeSidebarData, "configMapById">) => {
   return {
@@ -9,7 +13,10 @@ export default (edgeSidebar: Pick<EdgeSidebarData, "configMapById">) => {
       let found: boolean = false
       keys.forEach(bp => {
         const config = edgeSidebar.configMapById[sidebarId][bp]
-        if (isCollapsibleSidebarConfig(config)) {
+        if (
+          isPersistentSidebarConfig(config) ||
+          isTemporarySidebarConfig(config)
+        ) {
           found = true
         } else if (config || (!config && !found)) {
           result.push(bp)

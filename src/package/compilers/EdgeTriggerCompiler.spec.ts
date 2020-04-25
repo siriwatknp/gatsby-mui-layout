@@ -23,6 +23,6 @@ describe("EdgeTriggerCompiler", () => {
       })
 
     const compiler = EdgeTriggerCompiler(sidebar.getData())
-    expect(compiler.getHiddenBreakpoints("sidebar")).toStrictEqual(["xs", "md"])
+    expect(compiler.getHiddenBreakpoints("sidebar")).toStrictEqual(["lg", "xl"])
   })
 })

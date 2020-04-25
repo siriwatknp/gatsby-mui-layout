@@ -1,3 +1,4 @@
-import contentBased from './contentBased'
+import contentBased from "./contentBased"
+import cozy from "./cozy"
 
-export { contentBased }
+export { contentBased, cozy }
