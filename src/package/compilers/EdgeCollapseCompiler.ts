@@ -8,7 +8,7 @@ export default (edgeSidebar: Pick<EdgeSidebarData, "configMapById">) => {
       const result: Breakpoint[] = []
       let found: boolean = false
       keys.forEach(bp => {
-        const config = edgeSidebar.configMapById[sidebarId][bp]
+        const config = edgeSidebar.configMapById?.[sidebarId]?.[bp]
         if (isCollapsibleSidebarConfig(config)) {
           if (config?.collapsible) {
             found = true
