@@ -6,10 +6,10 @@ import { createBreakpointStyles, createHiddenStyles } from "../../utils"
 
 export const useInsetSidebar = (id: string) => {
   const {
-    data: { insetSidebar },
+    data: { insetSidebar, header },
   } = useLayoutCtx()
   const { breakpoints } = useTheme<Theme>()
-  const compiler = InsetSidebarCompiler(insetSidebar)
+  const compiler = InsetSidebarCompiler(insetSidebar, header)
   const { root, body } = compiler.getResultStyle(id)
   const variant = compiler.getVariant(id)
   const hiddenRootStyles = createHiddenStyles(root, [], breakpoints)

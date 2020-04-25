@@ -1,6 +1,10 @@
-import { AbsoluteInsetSidebarConfig } from "../../../types"
+import { AbsoluteInsetSidebarConfig, HeaderConfig } from "../../../types"
+import { subtractCalc } from "../../../utils"
 
-export default (config: AbsoluteInsetSidebarConfig) => {
+export default (
+  config: AbsoluteInsetSidebarConfig,
+  headerConfig: HeaderConfig
+) => {
   return {
     getRootStyle: () => ({
       width: config.width,
@@ -11,6 +15,8 @@ export default (config: AbsoluteInsetSidebarConfig) => {
       width: "100%",
       padding: "unset",
       margin: "unset",
+      overflow: 'auto',
+      height: subtractCalc("100vh", headerConfig?.initialHeight ?? 0),
     }),
   }
 }

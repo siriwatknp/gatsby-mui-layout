@@ -1,8 +1,15 @@
 import InsetSidebarCompiler from "./InsetSidebarCompiler"
 import InsetSidebarBuilder from "../builders/InsetSidebar"
+import HeaderBuilder from "../builders/Header"
 
 describe("InsetSidebarCompiler", () => {
   it("return correct style for multiple variants", () => {
+    const header = HeaderBuilder()
+    header.create("header").registerConfig("xs", {
+      initialHeight: 56,
+      position: "fixed",
+    })
+
     const builder = InsetSidebarBuilder()
 
     builder
@@ -18,7 +25,7 @@ describe("InsetSidebarCompiler", () => {
         width: 256,
       })
 
-    const compiler = InsetSidebarCompiler(builder.getData())
+    const compiler = InsetSidebarCompiler(builder.getData(), header.getData())
 
     expect(compiler.getResultStyle("insetSidebar")).toStrictEqual({
       root: {
@@ -41,6 +48,8 @@ describe("InsetSidebarCompiler", () => {
           position: "absolute",
           top: 0,
           width: "100%",
+          height: "calc(100vh - 56px)",
+          overflow: "auto",
           margin: "unset",
           padding: "unset",
         },

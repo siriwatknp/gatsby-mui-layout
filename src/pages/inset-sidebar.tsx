@@ -67,7 +67,8 @@ const IndexPage = () => {
           </Header>
           <Content>
             <InsetContainer
-              maxWidth={'xl'}
+              maxWidth={false}
+              disableGutters
               rightSidebar={
                 <InsetSidebar sidebarId="primarySidebar">
                   <NavHeaderMockUp />
