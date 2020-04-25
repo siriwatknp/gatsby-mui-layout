@@ -30,25 +30,29 @@ const IndexPage = () => {
         scheme={standard}
         // initialState={{ sidebar: { primarySidebar: { open: true } } }}
       >
-        <Header>
-          <Toolbar>
-            <SidebarTrigger sidebarId="primarySidebar" />
-            <HeaderMockUp />
-          </Toolbar>
-        </Header>
-        <DrawerSidebar sidebarId="primarySidebar">
-          <SidebarContent>
-            <NavHeaderMockUp />
-            <NavContentMockUp />
-          </SidebarContent>
-          <CollapseBtn />
-        </DrawerSidebar>
-        <Content>
-          <ContentMockUp />
-        </Content>
-        <Footer>
-          <FooterMockUp />
-        </Footer>
+        {({ state: { sidebar } }) => (
+          <>
+            <Header>
+              <Toolbar>
+                <SidebarTrigger sidebarId="primarySidebar" />
+                <HeaderMockUp />
+              </Toolbar>
+            </Header>
+            <DrawerSidebar sidebarId="primarySidebar">
+              <SidebarContent>
+                <NavHeaderMockUp collapsed={sidebar.primarySidebar.collapsed} />
+                <NavContentMockUp />
+              </SidebarContent>
+              <CollapseBtn />
+            </DrawerSidebar>
+            <Content>
+              <ContentMockUp />
+            </Content>
+            <Footer>
+              <FooterMockUp />
+            </Footer>
+          </>
+        )}
       </Root>
     </StylesProvider>
   )

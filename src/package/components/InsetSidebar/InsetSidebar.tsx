@@ -10,7 +10,7 @@ const useStyles = makeStyles(({ palette }) => ({
     position: "relative",
     flexShrink: 0,
   },
-  body: {
+  paper: {
     backgroundColor: palette?.grey?.[100],
   },
 }))
@@ -27,7 +27,7 @@ const InsetSidebar = ({
   ...props
 }: React.PropsWithChildren<{
   sidebarId: string
-  classes?: { root: object; body: object }
+  classes?: { root?: string; paper?: string }
 }>) => {
   const classes = useStyles(props)
   const { rootStyles, bodyStyles } = useInsetSidebar(
@@ -35,7 +35,7 @@ const InsetSidebar = ({
   )
   return (
     <Div className={`InsetSidebar-root ${classes.root}`} styles={rootStyles}>
-      <Div className={`InsetSidebar-body ${classes.body}`} styles={bodyStyles}>
+      <Div className={`InsetSidebar-paper ${classes.paper}`} styles={bodyStyles}>
         <InsetHeaderOffset sidebarId={sidebarId} />
         {children}
       </Div>
