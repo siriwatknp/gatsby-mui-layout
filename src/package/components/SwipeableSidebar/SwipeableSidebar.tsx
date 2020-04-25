@@ -4,11 +4,9 @@ import { SwipeableDrawerProps } from "@material-ui/core/SwipeableDrawer"
 import PersistentSwipeableDrawer from "./Persistent"
 import PermanentSwipeableDrawer from "./Permanent"
 import TemporarySwipeableDrawer from "./Temporary"
-import useAdjustmentStable from "../../core/hooks/useAdjustmentStable"
 import { useSidebar, SidebarProvider } from "../../core"
 import useSidebarAutoCollapse from "../../core/hooks/useSidebarAutoCollapse"
 import { createBreakpointStyles, createHiddenStyles } from "../../utils"
-import { isCollapsibleSidebarConfig } from "../../utils/sidebarChecker"
 import EdgeHeaderOffset from "../EdgeHeaderOffset"
 
 const SwipeableSidebar = ({
@@ -26,7 +24,6 @@ const SwipeableSidebar = ({
   const { breakpoints } = useTheme()
   const {
     styles: { permanent, persistent, temporary },
-    edgeSidebar,
     state,
     anchor,
     setOpen,
@@ -47,10 +44,6 @@ const SwipeableSidebar = ({
     onClose: wrappedOnClose,
   }
 
-  const stable = useAdjustmentStable(
-    edgeSidebar.configMapById?.[sidebarId],
-    isCollapsibleSidebarConfig
-  )
   const headerAdjustment = <EdgeHeaderOffset sidebarId={sidebarId} />
 
   return (

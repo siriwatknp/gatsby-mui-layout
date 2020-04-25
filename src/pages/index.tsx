@@ -16,7 +16,6 @@ import {
   Header,
   Content,
   Footer,
-  HeaderAdjustment,
   InsetContainer,
   InsetSidebar,
   InsetAvoidingView,
@@ -34,12 +33,14 @@ const IndexPage = () => {
     builder
       .create("appHeader")
       .registerConfig("xs", {
-        position: "fixed",
-        clipped: false,
+        position: "relative",
+        clipped: true,
+        initialHeight: 56
       })
       .registerConfig("md", {
-        position: "sticky",
-        clipped: false,
+        position: "relative",
+        clipped: true,
+        initialHeight: 64,
       })
       .registerConfig("lg", {
         position: "sticky",
@@ -58,13 +59,16 @@ const IndexPage = () => {
         persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
+        headerMagnetEnabled: true
       })
       .registerPersistentConfig("md", {
         width: "30%",
         persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
+        headerMagnetEnabled: true
       })
+
 
     builder
       .create("secondarySidebar", { anchor: "right" })

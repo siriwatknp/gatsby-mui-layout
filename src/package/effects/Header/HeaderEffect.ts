@@ -1,13 +1,9 @@
 import { Theme } from "@material-ui/core/styles"
 import { HeaderConfig, IHeaderEffect } from "../../types"
-import { toValidCssValue } from "../../utils"
 
 const incrementZIndex = (theme: Theme, plus: number) => ({
   zIndex: (theme?.zIndex?.drawer ?? 1200) + plus,
 })
-
-const calc = (...args: (string | number)[]) =>
-  `calc(${args.map(toValidCssValue).join(" - ")})`
 
 export const isSomeClipped = ({ clipped }: Pick<HeaderConfig, "clipped">) => {
   if (typeof clipped === "boolean") {
@@ -33,46 +29,5 @@ export default (header: Partial<HeaderConfig>): IHeaderEffect => {
         ? incrementZIndex(theme, 20)
         : undefined,
     isObjectClipped,
-    resolveHeight: (height, { objectId, clippable, insetFixed } = {}) => {
-      if (clippable && insetFixed && process.env.NODE_ENV === "development") {
-        console.warn(
-          "You should not have both 'clippable' & 'insetFixed' set to true."
-        )
-      }
-      const isClipped = isObjectClipped(objectId)
-      if (clippable) {
-        if (isClipped) return height
-        return 0
-      }
-      if (insetFixed) {
-        return height
-      }
-      if (["absolute", "fixed"].includes(header.position)) {
-        return height
-      }
-      return 0
-    },
-    getInitialHeight(options = {}) {
-      return this.resolveHeight(options.height ?? header.initialHeight, options)
-    },
-    getUpdatedHeight(options = {}) {
-      const baseHeight = this.getInitialHeight(options)
-      const offsetHeight = this.getOffsetHeight(options)
-      return calc(baseHeight, offsetHeight)
-    },
-    getOffsetHeight({
-      objectId,
-      clippable,
-      scrollY = 0,
-      insetFixed,
-      stable,
-    } = {}) {
-      if (stable) return 0
-      const isClipped = isObjectClipped(objectId)
-      if (clippable && isClipped && header.position === "relative")
-        return scrollY
-      if (insetFixed && header.position === "relative") return scrollY
-      return 0
-    },
   }
 }

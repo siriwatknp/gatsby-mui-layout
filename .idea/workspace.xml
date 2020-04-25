@@ -2,29 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/EdgeHeaderOffsetCompiler.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/EdgeHeaderOffsetCompiler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/HeaderOffsetCompiler.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/HeaderOffsetCompiler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/InsetHeaderOffsetCompiler.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/compilers/InsetHeaderOffsetCompiler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/EdgeHeaderOffset/EdgeHeaderOffset.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/EdgeHeaderOffset/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/HeaderOffset/HeaderOffset.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/HeaderOffset/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetHeaderOffset/InsetHeaderOffset.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/components/InsetHeaderOffset/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useEdgeHeaderMagnet.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/compilers/InsetSidebarCompiler.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/compilers/InsetSidebarCompiler.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/compilers/EdgeHeaderOffsetCompiler.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/compilers/EdgeHeaderOffsetCompiler.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/compilers/EdgeHeaderOffsetCompiler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/compilers/EdgeHeaderOffsetCompiler.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/EdgeHeaderOffset/EdgeHeaderOffset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/EdgeHeaderOffset/EdgeHeaderOffset.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/HeaderAdjustment/HeaderAdjustment.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/HeaderAdjustment/index.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/InsetSidebar/InsetSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/InsetSidebar/InsetSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/StyledProxy/StyledProxy.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/StyledProxy/StyledProxy.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useAdjustmentStable.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useHeaderAdjustment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useHeaderResize.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useHeaderResize.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/effects/Header/HeaderEffect.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/Header/HeaderEffect.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/effects/Header/HeaderEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/Header/HeaderEffect.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/models/Sidebar/Inset/AbsoluteInset.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/models/Sidebar/Inset/AbsoluteInset.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/types/Config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/package/types/Model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/types/Model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/inset-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/inset-sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +230,7 @@
       <workItem from="1587563226225" duration="15071000" />
       <workItem from="1587647403565" duration="12551000" />
       <workItem from="1587696724808" duration="460000" />
-      <workItem from="1587737125414" duration="7088000" />
+      <workItem from="1587737125414" duration="10270000" />
     </task>
     <servers />
   </component>

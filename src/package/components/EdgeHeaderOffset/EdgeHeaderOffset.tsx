@@ -4,6 +4,7 @@ import { useLayoutCtx } from "../../core/Context"
 import StyledProxy from "../StyledProxy"
 import EdgeHeaderOffsetCompiler from "../../compilers/EdgeHeaderOffsetCompiler"
 import { createBreakpointStyles } from "../../utils"
+import useEdgeHeaderMagnet from "../../core/hooks/useEdgeHeaderMagnet"
 
 const EdgeHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
   const { breakpoints } = useTheme()
@@ -13,7 +14,14 @@ const EdgeHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
     compiler.getResultStyle(sidebarId),
     breakpoints
   )
-  return <StyledProxy className="EdgeHeaderOffset" styles={styles} />
+  const inlineStyle = useEdgeHeaderMagnet(sidebarId)
+  return (
+    <StyledProxy
+      className="EdgeHeaderOffset"
+      styles={styles}
+      style={inlineStyle}
+    />
+  )
 }
 
 export default EdgeHeaderOffset

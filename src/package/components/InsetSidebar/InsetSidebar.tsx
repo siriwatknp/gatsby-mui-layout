@@ -1,12 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import { makeStyles } from "@material-ui/core/styles"
-import HeaderAdjustment from "../HeaderAdjustment"
 import InsetHeaderOffset from "../InsetHeaderOffset"
 import { useInsetSidebar } from "../../core"
-import useAdjustmentStable from "../../core/hooks/useAdjustmentStable"
 import { MediaQueries } from "../../utils/createBreakpointStyles"
-import { isFixedInsetSidebarConfig } from "../../utils/sidebarChecker"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -33,12 +30,8 @@ const InsetSidebar = ({
   classes?: { root: object; body: object }
 }>) => {
   const classes = useStyles(props)
-  const { rootStyles, bodyStyles, variant, insetSidebar } = useInsetSidebar(
+  const { rootStyles, bodyStyles } = useInsetSidebar(
     sidebarId
-  )
-  const stable = useAdjustmentStable(
-    insetSidebar.configMapById?.[sidebarId],
-    isFixedInsetSidebarConfig
   )
   return (
     <Div className={`InsetSidebar-root ${classes.root}`} styles={rootStyles}>

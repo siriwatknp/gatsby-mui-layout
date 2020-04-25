@@ -7,6 +7,8 @@ const StyledProxy = ({
   ...props
 }: React.PropsWithChildren<{ styles: MediaQueries }>) => <div {...props} />
 
-export default styled(StyledProxy)<{ styles: MediaQueries, className?: string }>(
-  ({ styles }) => styles
-)
+export default styled(StyledProxy)<{
+  styles: MediaQueries
+  className?: string
+  style?: object
+}>(({ styles }) => styles)

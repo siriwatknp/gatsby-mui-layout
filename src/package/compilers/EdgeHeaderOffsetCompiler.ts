@@ -1,6 +1,7 @@
 import HeaderEffect from "../effects/Header"
 import { EdgeSidebarData, HeaderConfigMap, ResultStyle } from "../types"
 import { combineBreakpoints, pickNearestBreakpoint } from "../utils"
+import { isCollapsibleSidebarConfig } from "../utils/sidebarChecker"
 
 export default (
   edgeSidebar: Pick<EdgeSidebarData, "configMapById">,
@@ -14,15 +15,17 @@ export default (
       if (configMap) {
         const breakpoints = combineBreakpoints(configMap, header)
         breakpoints.forEach(bp => {
-          const config = pickNearestBreakpoint(configMap, bp)
-          if (config) {
+          const sidebarConfig = pickNearestBreakpoint(configMap, bp)
+          const headerConfig = pickNearestBreakpoint(header, bp)
+          if (sidebarConfig) {
             if (
-              header[bp] &&
-              HeaderEffect(header[bp]).isObjectClipped(sidebarId)
+              headerConfig &&
+              HeaderEffect(headerConfig).isObjectClipped(sidebarId) &&
+              isCollapsibleSidebarConfig(sidebarConfig)
             ) {
               found = true
               result[bp] = {
-                height: pickNearestBreakpoint(header, bp).initialHeight,
+                height: headerConfig.initialHeight,
               }
             } else if (found) {
               found = false

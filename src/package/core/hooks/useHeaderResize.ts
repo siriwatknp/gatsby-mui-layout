@@ -9,6 +9,7 @@ export default (headerId: string, initialHeight?: number | string) => {
     new ResizeSensor(headerElm, () => {
       if (!ref.current) {
         ref.current = headerElm.clientHeight
+        setHeight(headerElm.clientHeight)
       }
       if (ref.current !== headerElm.clientHeight) {
         ref.current = headerElm.clientHeight

@@ -7,9 +7,7 @@ import PersistentDrawer from "./Persistent"
 import PermanentDrawer from "./Permanent"
 import TemporaryDrawer from "./Temporary"
 import EdgeHeaderOffset from "../EdgeHeaderOffset"
-import useAdjustmentStable from "../../core/hooks/useAdjustmentStable"
 import { createBreakpointStyles, createHiddenStyles } from "../../utils"
-import { isCollapsibleSidebarConfig } from "../../utils/sidebarChecker"
 
 const DrawerSidebar = ({
   onClose,
@@ -26,7 +24,6 @@ const DrawerSidebar = ({
     styles: { permanent, persistent, temporary },
     state,
     setOpen,
-    edgeSidebar,
   } = useSidebar(sidebarId)
   const wrappedOnClose: DrawerProps["onClose"] = (...args) => {
     if (typeof onClose === "function") onClose(...args)
@@ -39,10 +36,6 @@ const DrawerSidebar = ({
     onClose: wrappedOnClose,
   }
 
-  const stable = useAdjustmentStable(
-    edgeSidebar.configMapById?.[sidebarId],
-    isCollapsibleSidebarConfig
-  )
   const headerAdjustment = (
     <EdgeHeaderOffset sidebarId={sidebarId} />
   )

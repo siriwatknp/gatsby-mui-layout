@@ -59,4 +59,63 @@ describe("EdgeHeaderOffsetCompiler", () => {
       },
     })
   })
+
+  it("return correct result style 2", () => {
+    const header = HeaderBuilder()
+
+    header
+      .create("appHeader")
+      .registerConfig("xs", {
+        position: "fixed",
+        clipped: true,
+        initialHeight: 56,
+      })
+      .registerConfig("md", {
+        position: "relative",
+        clipped: true,
+        initialHeight: 64,
+      })
+      .registerConfig("lg", {
+        position: "sticky",
+        initialHeight: 64,
+        clipped: true,
+      })
+
+    const sidebar = EdgeSidebarBuilder()
+    sidebar
+      .create("primarySidebar", { anchor: "left" })
+      .registerTemporaryConfig("xs", {
+        width: "auto",
+      })
+      .registerPersistentConfig("sm", {
+        width: 256,
+        persistentBehavior: "fit",
+        collapsible: true,
+        collapsedWidth: 80,
+        headerMagnetEnabled: true,
+      })
+      .registerPersistentConfig("md", {
+        width: "30%",
+        persistentBehavior: "fit",
+        collapsible: true,
+        collapsedWidth: 80,
+      })
+
+    const compiler = EdgeHeaderOffsetCompiler(
+      sidebar.getData(),
+      header.getData()
+    )
+
+    expect(compiler.getResultStyle("primarySidebar")).toStrictEqual({
+      sm: {
+        height: 56,
+      },
+      md: {
+        height: 64,
+      },
+      lg: {
+        height: 64,
+      },
+    })
+  })
 })

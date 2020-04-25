@@ -43,13 +43,6 @@ export interface IHeaderEffect {
   getHeaderZIndex: (theme?: Theme) => ZIndexStyle
   getEdgeSidebarZIndex: (id?: string, theme?: Theme) => ZIndexStyle
   isObjectClipped: (sidebarId: string) => boolean
-  resolveHeight: (
-    height?: number | string,
-    options?: HeaderHeightParams
-  ) => number | string
-  getInitialHeight: (options?: HeaderHeightParams) => number | string
-  getUpdatedHeight: (options?: HeaderHeightParams) => string
-  getOffsetHeight: (options?: HeaderHeightParams) => number
 }
 
 export interface IWidth {
