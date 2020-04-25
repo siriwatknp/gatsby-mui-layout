@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import debounce from "debounce"
 
-export default () => {
+export const useScrollY = () => {
   function getScrollY(w: Window = window) {
     return typeof w === "object" ? w.scrollY : 0
   }
@@ -19,3 +19,5 @@ export default () => {
   }, [])
   return scrollY
 }
+
+export default useScrollY

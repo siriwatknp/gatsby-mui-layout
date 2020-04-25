@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 import { keys } from "@material-ui/core/styles/createBreakpoints"
-import useScreen from "./useScreen"
+import { useScreen } from "./useScreen"
 import { useLayoutCtx } from "../Context"
 
-export default (sidebarId: string) => {
+export const useSidebarAutoCollapse = (sidebarId: string) => {
   const {
     data: {
       global: {
@@ -23,3 +23,5 @@ export default (sidebarId: string) => {
     }
   }, [screen])
 }
+
+export default useSidebarAutoCollapse

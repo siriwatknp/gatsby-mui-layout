@@ -6,6 +6,7 @@ import { useLayoutCtx } from "../../core"
 import { MediaQueries } from "../../utils/createBreakpointStyles"
 import { createBreakpointStyles } from "../../utils"
 import ContentCompiler from "../../compilers/ContentCompiler"
+import { useFullScreenCtx } from "../../core/Context/FullScreenContext"
 
 const StyledComponent = styled("main")(
   ({ styles }: { styles: MediaQueries }) => ({
@@ -20,8 +21,15 @@ const Content = ({ children, ...props }: React.PropsWithChildren<{}>) => {
     ContentCompiler(state, data.edgeSidebar).getResultStyle(data.content.id),
     breakpoints
   )
+  const isFullScreen = useFullScreenCtx()
   return (
-    <StyledComponent {...props} styles={styles}>
+    <StyledComponent
+      {...props}
+      styles={{
+        ...styles,
+        ...(isFullScreen && { flexGrow: 1, minHeight: 0, display: "flex" }),
+      }}
+    >
       <HeaderOffset />
       {children}
     </StyledComponent>

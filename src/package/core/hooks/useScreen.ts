@@ -8,7 +8,7 @@ function getWindowWidth(w: Window) {
   return typeof w === "object" ? w.innerWidth : undefined
 }
 
-export default (): Breakpoint => {
+export const useScreen = (): Breakpoint => {
   const { breakpoints } = useTheme()
   const getScreen = (): Breakpoint =>
     mapWidthToScreen(getWindowWidth(window), breakpoints)
@@ -29,3 +29,5 @@ export default (): Breakpoint => {
 
   return screen
 }
+
+export default useScreen

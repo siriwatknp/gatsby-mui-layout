@@ -8,6 +8,9 @@ export default (config: StickyInsetSidebarConfig) => {
     getBodyStyle: () => ({
       position: "sticky" as const,
       top: config.top,
+      margin: "unset",
+      padding: "unset",
+      height: "auto",
     }),
   }
 }

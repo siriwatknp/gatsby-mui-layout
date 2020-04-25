@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { ResizeSensor } from "css-element-queries"
 
-export default (headerId: string, initialHeight?: number | string) => {
+export const useHeaderResize = (headerId: string, initialHeight?: number | string) => {
   const [height, setHeight] = useState(initialHeight)
   const ref = useRef(0)
   useEffect(() => {
@@ -19,3 +19,5 @@ export default (headerId: string, initialHeight?: number | string) => {
   }, [])
   return height
 }
+
+export default useHeaderResize

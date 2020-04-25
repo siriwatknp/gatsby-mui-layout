@@ -1,8 +1,12 @@
 import { Breakpoints } from "@material-ui/core/styles/createBreakpoints"
 import { InsetSidebarConfig, InsetSidebarData, MapBreakpoint } from "../types"
 import { MediaQueries } from "../utils/createBreakpointStyles"
-import { isFixedInsetSidebarConfig } from "../utils/sidebarChecker"
+import {
+  isAbsoluteInsetSidebarConfig,
+  isFixedInsetSidebarConfig,
+} from "../utils/sidebarChecker"
 import { createFixedInsetSidebarEffect } from "../effects/FixedInsetSidebar"
+import { createAbsoluteInsetSidebarEffect } from "../effects/AbsoluteInsetSidebar"
 
 export default (insetSidebar: Pick<InsetSidebarData, "configMapById">) => {
   const iterateBreakpoints = (
@@ -18,8 +22,14 @@ export default (insetSidebar: Pick<InsetSidebarData, "configMapById">) => {
       }
       if (lastConfig && isFixedInsetSidebarConfig(lastConfig)) {
         result[breakpoints.only(bp)] = {
-          ...result[breakpoints.only(bp)] as object,
-          ...createFixedInsetSidebarEffect(lastConfig).getAvoidingStyle()
+          ...(result[breakpoints.only(bp)] as object),
+          ...createFixedInsetSidebarEffect(lastConfig).getAvoidingStyle(),
+        }
+      }
+      if (lastConfig && isAbsoluteInsetSidebarConfig(lastConfig)) {
+        result[breakpoints.only(bp)] = {
+          ...(result[breakpoints.only(bp)] as object),
+          ...createAbsoluteInsetSidebarEffect(lastConfig).getAvoidingStyle(),
         }
       }
     })

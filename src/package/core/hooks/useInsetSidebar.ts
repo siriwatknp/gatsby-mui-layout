@@ -4,7 +4,7 @@ import { useLayoutCtx } from "../Context"
 import InsetSidebarCompiler from "../../compilers/InsetSidebarCompiler"
 import { createBreakpointStyles, createHiddenStyles } from "../../utils"
 
-const useInsetSidebar = (id: string) => {
+export const useInsetSidebar = (id: string) => {
   const {
     data: { insetSidebar },
   } = useLayoutCtx()

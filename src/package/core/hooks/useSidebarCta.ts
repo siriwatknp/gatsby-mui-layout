@@ -2,7 +2,7 @@ import { Theme, useTheme } from "@material-ui/core"
 import { useSidebarCtx } from "../Context"
 import useSidebar from "./useSidebar"
 
-const useSidebarCta = (sidebarId: string, consumer?: string) => {
+export const useSidebarCta = (sidebarId: string, consumer?: string) => {
   const { breakpoints } = useTheme<Theme>()
   const { id = sidebarId } = useSidebarCtx()
   const props = useSidebar(id, consumer)

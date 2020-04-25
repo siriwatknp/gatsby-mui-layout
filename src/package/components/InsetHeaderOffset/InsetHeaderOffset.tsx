@@ -4,6 +4,7 @@ import { useLayoutCtx } from "../../core/Context"
 import StyledProxy from "../StyledProxy"
 import InsetHeaderOffsetCompiler from "../../compilers/InsetHeaderOffsetCompiler"
 import { createBreakpointStyles } from "../../utils"
+import { useInsetHeaderMagnet } from "../../core/hooks/useInsetHeaderMagnet"
 
 const InsetHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
   const { breakpoints } = useTheme()
@@ -13,8 +14,13 @@ const InsetHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
     compiler.getResultStyle(sidebarId),
     breakpoints
   )
+  const inlineStyle = useInsetHeaderMagnet(sidebarId)
   return (
-    <StyledProxy className="InsetHeaderOffset" styles={styles} />
+    <StyledProxy
+      className="InsetHeaderOffset"
+      styles={styles}
+      style={inlineStyle}
+    />
   )
 }
 

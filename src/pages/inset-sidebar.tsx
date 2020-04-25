@@ -13,9 +13,9 @@ import {
 import {
   Root,
   Header,
-  HeaderAdjustment,
   Content,
   Footer,
+  FullScreen,
   InsetSidebar,
   InsetContainer,
   InsetFooter,
@@ -44,9 +44,10 @@ const IndexPage = () => {
       .create("primarySidebar", { anchor: "right" })
       .registerFixedConfig("md", {
         width: 256,
+        headerMagnetEnabled: true,
       })
       .registerAbsoluteConfig("lg", {
-        width: '30%',
+        width: "30%",
       })
   })
 
@@ -57,26 +58,32 @@ const IndexPage = () => {
         scheme={scheme}
         // initialState={{ sidebar: { primarySidebar: { open: true } } }}
       >
-        <Header>
-          <Toolbar>
-            <SidebarTrigger sidebarId="primarySidebar" />
-            <HeaderMockUp />
-          </Toolbar>
-        </Header>
-        <Content>
-          <InsetContainer>
-            <ContentMockUp />
-            <InsetSidebar sidebarId="primarySidebar">
-              <NavHeaderMockUp />
-              <div style={{ flex: 1 }}>
-                <NavContentMockUp />
-              </div>
-            </InsetSidebar>
-          </InsetContainer>
-        </Content>
-        <InsetFooter>
-          <FooterMockUp />
-        </InsetFooter>
+        <FullScreen>
+          <Header>
+            <Toolbar>
+              <SidebarTrigger sidebarId="primarySidebar" />
+              <HeaderMockUp />
+            </Toolbar>
+          </Header>
+          <Content>
+            <InsetContainer
+              maxWidth={'xl'}
+              rightSidebar={
+                <InsetSidebar sidebarId="primarySidebar">
+                  <NavHeaderMockUp />
+                  <div style={{ flex: 1 }}>
+                    <NavContentMockUp />
+                  </div>
+                </InsetSidebar>
+              }
+            >
+              <ContentMockUp />
+            </InsetContainer>
+          </Content>
+          <InsetFooter>
+            <FooterMockUp />
+          </InsetFooter>
+        </FullScreen>
       </Root>
     </StylesProvider>
   )

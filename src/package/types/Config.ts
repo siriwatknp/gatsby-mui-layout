@@ -15,10 +15,12 @@ export type FixedInsetSidebarConfig = {
   anchor: DrawerAnchor
   width: number | string
   variant: "fixed"
+  headerMagnetEnabled?: boolean
 }
 
 export type AbsoluteInsetSidebarConfig = {
   id?: string
+  anchor: DrawerAnchor
   width: number | string
   variant: "absolute"
 }

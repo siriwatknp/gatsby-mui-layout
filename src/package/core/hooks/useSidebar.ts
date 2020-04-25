@@ -2,7 +2,7 @@ import { useLayoutCtx } from "../Context"
 import { getSidebarAnchor } from "../../utils"
 import EdgeSidebarCompiler from "../../compilers/EdgeSidebarCompiler"
 
-const useSidebar = (id: string, consumer?: string) => {
+export const useSidebar = (id: string, consumer?: string) => {
   if (!id) {
     throw new Error(`You must specify a sidebar id to <${consumer} />`)
   }

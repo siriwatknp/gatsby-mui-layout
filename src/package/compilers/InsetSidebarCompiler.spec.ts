@@ -44,7 +44,13 @@ describe("InsetSidebarCompiler", () => {
           margin: "unset",
           padding: "unset",
         },
-        lg: { position: "sticky", top: "4rem" },
+        lg: {
+          position: "sticky",
+          top: "4rem",
+          height: "auto",
+          margin: "unset",
+          padding: "unset",
+        },
       },
     })
   })
