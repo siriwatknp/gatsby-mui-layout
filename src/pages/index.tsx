@@ -35,7 +35,7 @@ const IndexPage = () => {
       .registerConfig("xs", {
         position: "relative",
         clipped: true,
-        initialHeight: 56
+        initialHeight: 56,
       })
       .registerConfig("md", {
         position: "relative",
@@ -59,16 +59,15 @@ const IndexPage = () => {
         persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
-        headerMagnetEnabled: true
+        headerMagnetEnabled: true,
       })
       .registerPersistentConfig("md", {
         width: "30%",
         persistentBehavior: "fit",
         collapsible: true,
         collapsedWidth: 80,
-        headerMagnetEnabled: true
+        headerMagnetEnabled: true,
       })
-
 
     builder
       .create("secondarySidebar", { anchor: "right" })
@@ -133,14 +132,19 @@ const IndexPage = () => {
           <CollapseBtn />
         </DrawerSidebar>
         <Content>
-          <InsetContainer>
-            <InsetSidebar sidebarId="secondInsetSidebar">
-              <Box height={200} width={80} bgcolor={"primary.main"} />
-            </InsetSidebar>
+          <InsetContainer
+            leftSidebar={
+              <InsetSidebar sidebarId="secondInsetSidebar">
+                <Box height={200} width={80} bgcolor={"primary.main"} />
+              </InsetSidebar>
+            }
+            rightSidebar={
+              <InsetSidebar sidebarId="insetSidebar">
+                <NavContentMockUp />
+              </InsetSidebar>
+            }
+          >
             <ContentMockUp />
-            <InsetSidebar sidebarId="insetSidebar">
-              <NavContentMockUp />
-            </InsetSidebar>
           </InsetContainer>
         </Content>
         <InsetFooter>

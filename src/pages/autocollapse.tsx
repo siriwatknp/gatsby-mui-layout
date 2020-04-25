@@ -13,7 +13,6 @@ import {
 import {
   Root,
   Header,
-  HeaderAdjustment,
   Content,
   Footer,
   DrawerSidebar,
@@ -63,7 +62,6 @@ const IndexPage = () => {
           </Toolbar>
         </Header>
         <DrawerSidebar sidebarId="primarySidebar">
-          <HeaderAdjustment objectId="primarySidebar" clippable />
           <NavHeaderMockUp />
           <div style={{ flex: 1 }}>
             <NavContentMockUp />
@@ -71,7 +69,6 @@ const IndexPage = () => {
           <CollapseBtn />
         </DrawerSidebar>
         <Content>
-          <HeaderAdjustment />
           <ContentMockUp />
         </Content>
         <Footer>
