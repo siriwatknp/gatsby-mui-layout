@@ -1,6 +1,9 @@
-import createModel, { isSomeClipped } from "./HeaderEffect"
+import HeaderEffect, { isSomeClipped } from "./HeaderEffect"
 
 describe("HeaderEffect", function() {
+  it("should not throw if config is undefined", () => {
+    expect(() => HeaderEffect(undefined)).not.toThrow()
+  })
   it("isSomeClipped return correct value", () => {
     expect(isSomeClipped({ clipped: false })).toBeFalsy()
     expect(
@@ -12,7 +15,7 @@ describe("HeaderEffect", function() {
   })
 
   it("return undefined if no 'clipped' config in header", () => {
-    let model = createModel({
+    let model = HeaderEffect({
       id: "appHeader",
       position: "relative",
     })
@@ -21,7 +24,7 @@ describe("HeaderEffect", function() {
   })
 
   it("return correct header zIndex (single sidebar)", () => {
-    let model = createModel({
+    let model = HeaderEffect({
       id: "appHeader",
       position: "sticky",
       clipped: { "sidebar-1": true },
@@ -33,7 +36,7 @@ describe("HeaderEffect", function() {
   })
 
   it("return correct header zIndex (multiple sidebars)", () => {
-    let model = createModel({
+    let model = HeaderEffect({
       id: "appHeader",
       position: "sticky",
       clipped: { "sidebar-1": false, "sidebar-2": true },

@@ -4,8 +4,9 @@ import IconButton, { IconButtonProps } from "@material-ui/core/IconButton"
 import ArrowLeft from "@material-ui/icons/KeyboardArrowLeftRounded"
 import ArrowRight from "@material-ui/icons/KeyboardArrowRightRounded"
 import MenuRounded from "@material-ui/icons/MenuRounded"
+import EdgeTriggerCompiler from "../../compilers/EdgeTriggerCompiler"
 import { useSidebarCta } from "../../core"
-import { createHiddenStyles } from "../../utils"
+import { createDisplayNone } from "../../utils"
 import { CtaProps } from "../../types"
 import createHiddenProxyComponent from "../Shared/StyledProxy"
 
@@ -41,9 +42,9 @@ const SidebarTrigger = ({
     id,
     anchor,
     breakpoints,
+    edgeSidebar,
     state,
     setOpen,
-    styles: { permanent, persistent, temporary },
   } = useSidebarCta(sidebarId, "SidebarTrigger")
   const classes = useStyles({ ...props, anchor })
   const getArrow = () => {
@@ -53,18 +54,14 @@ const SidebarTrigger = ({
     if (anchor === "right") return <ArrowRight {...SvgIconProps} />
     return null
   }
-  const hiddenStyles = createHiddenStyles(
-    {
-      ...persistent,
-      ...temporary,
-    },
-    [permanent],
+  const styles = createDisplayNone(
+    EdgeTriggerCompiler(edgeSidebar).getHiddenBreakpoints(id),
     breakpoints
   )
   return (
     <StyledProxyIconBtn
       {...props}
-      hiddenStyles={hiddenStyles}
+      styles={styles}
       classes={classes}
       onClick={e => {
         if (typeof onClick === "function") onClick(e)

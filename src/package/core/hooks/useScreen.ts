@@ -11,7 +11,10 @@ function getWindowWidth(w: Window) {
 export const useScreen = (): Breakpoint => {
   const { breakpoints } = useTheme()
   const getScreen = (): Breakpoint =>
-    mapWidthToScreen(getWindowWidth(window), breakpoints)
+    mapWidthToScreen(
+      getWindowWidth(typeof window === "object" ? window : undefined),
+      breakpoints
+    )
 
   const [screen, setScreen] = React.useState<Breakpoint>(getScreen())
   const updater = React.useRef(

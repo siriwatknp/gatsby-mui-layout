@@ -5,7 +5,9 @@ const incrementZIndex = (theme: Theme, plus: number) => ({
   zIndex: (theme?.zIndex?.drawer ?? 1200) + plus,
 })
 
-export const isSomeClipped = ({ clipped }: Pick<HeaderConfig, "clipped">) => {
+export const isSomeClipped = ({
+  clipped,
+}: Pick<HeaderConfig, "clipped"> = {}) => {
   if (typeof clipped === "boolean") {
     return clipped
   }
@@ -21,7 +23,7 @@ export default (header: Partial<HeaderConfig>): IHeaderEffect => {
     (typeof header.clipped === "boolean" && header.clipped) ||
     (typeof header.clipped === "object" && header.clipped?.[sidebarId])
   return {
-    id: header.id,
+    id: header?.id,
     getHeaderZIndex: (theme?: Theme) =>
       isAboveSomeSidebars ? incrementZIndex(theme, 10) : undefined,
     getEdgeSidebarZIndex: (sidebarId: string, theme?: Theme) =>

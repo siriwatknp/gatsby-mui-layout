@@ -2,19 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/package/core/hooks/useBreakpointConfig.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/styles/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/package/styles/transition.styles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/EdgeCollapseCompiler.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/EdgeCollapseCompiler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/EdgeTriggerCompiler.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/compilers/EdgeTriggerCompiler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/presets/contentBased.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/package/presets/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/content-based.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/DrawerSidebar/DrawerSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/EdgeHeaderOffset/EdgeHeaderOffset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/EdgeHeaderOffset/EdgeHeaderOffset.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/InsetAvoidingView/InsetAvoidingView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/InsetAvoidingView/InsetAvoidingView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/InsetHeaderOffset/InsetHeaderOffset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/InsetHeaderOffset/InsetHeaderOffset.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/SwipeableSidebar/SwipeableSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useInsetSidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useInsetSidebar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/CTA/CollapseBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/CTA/CollapseBtn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/CTA/SidebarTrigger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useEdgeHeaderMagnet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useEdgeHeaderMagnet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useScreen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useScreen.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/core/hooks/useScrollY.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/core/hooks/useScrollY.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/effects/Header/HeaderEffect.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/Header/HeaderEffect.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/effects/Header/HeaderEffect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/effects/Header/HeaderEffect.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/utils/createHiddenStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/utils/createHiddenStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +47,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/package/styles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/package/compilers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -68,9 +74,9 @@
       <recent name="$PROJECT_DIR$/src/package/types/Builder.ts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/package/compilers" />
       <recent name="$PROJECT_DIR$/src/package/styles" />
       <recent name="$PROJECT_DIR$/src/pages" />
-      <recent name="$PROJECT_DIR$/src/package/compilers" />
       <recent name="$PROJECT_DIR$/src/package/core/Builder/Sidebar" />
       <recent name="$PROJECT_DIR$/src/package/core/Builder/Header" />
     </key>

@@ -11,7 +11,7 @@ interface CreateHiddenStyles {
   (
     self: ResultStyle,
     siblings: ResultStyle[],
-    breakpoints: Breakpoints
+    breakpoints: Breakpoints,
   ): MediaQueries
 }
 

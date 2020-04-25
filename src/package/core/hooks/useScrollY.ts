@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from "react"
 import debounce from "debounce"
 
 export const useScrollY = () => {
-  function getScrollY(w: Window = window) {
-    return typeof w === "object" ? w.scrollY : 0
+  const w = typeof window === "object" ? window : undefined
+  function getScrollY(obj: Window) {
+    return typeof obj === "object" ? obj.scrollY : 0
   }
-  const [scrollY, setScrollY] = useState(getScrollY())
+  const [scrollY, setScrollY] = useState(getScrollY(w))
   const debounceScrollListener = useRef(
     debounce(() => {
-      setScrollY(getScrollY())
+      setScrollY(getScrollY(w))
     }, 300)
   )
   useEffect(() => {

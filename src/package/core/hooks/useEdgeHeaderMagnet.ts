@@ -24,6 +24,7 @@ export const useEdgeHeaderMagnet = (sidebarId: string): { height: string } => {
   useEffect(() => {
     if (
       resizedHeight &&
+      headerConfig &&
       headerConfig.position === "relative" &&
       headerEffect.isObjectClipped(sidebarId) &&
       isCollapsibleSidebarConfig(sidebarConfig) &&

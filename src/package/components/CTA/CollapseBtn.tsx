@@ -3,10 +3,11 @@ import { makeStyles } from "@material-ui/core/styles"
 import Button, { ButtonProps } from "@material-ui/core/Button"
 import ArrowLeft from "@material-ui/icons/KeyboardArrowLeftRounded"
 import ArrowRight from "@material-ui/icons/KeyboardArrowRightRounded"
+import EdgeCollapseCompiler from "../../compilers/EdgeCollapseCompiler"
 import createHiddenProxyComponent from "../Shared/StyledProxy"
 import { CtaProps } from "../../types"
 import { useSidebarCta } from "../../core"
-import { createHiddenStyles } from "../../utils"
+import { createDisplayNone } from "../../utils"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -35,9 +36,9 @@ const CollapseBtn = ({
     id,
     anchor,
     breakpoints,
+    edgeSidebar,
     state,
     setCollapsed,
-    styles: { permanent, persistent, temporary },
   } = useSidebarCta(sidebarId, "CollapseBtn")
   const arrowR = <ArrowRight {...SvgIconProps} />
   const arrowL = <ArrowLeft {...SvgIconProps} />
@@ -50,19 +51,15 @@ const CollapseBtn = ({
     }
     return null
   }
-  const hiddenStyles = createHiddenStyles(
-    {
-      ...permanent,
-      ...persistent,
-    },
-    [temporary],
+  const hiddenStyles = createDisplayNone(
+    EdgeCollapseCompiler(edgeSidebar).getHiddenBreakpoints(id),
     breakpoints
   )
   return (
     <StyledProxyButton
       {...props}
       classes={classes}
-      hiddenStyles={hiddenStyles}
+      styles={hiddenStyles}
       onClick={e => {
         if (typeof onClick === "function") onClick(e)
         setCollapsed(id, !state.collapsed)
