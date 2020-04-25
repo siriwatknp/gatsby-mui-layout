@@ -12,7 +12,7 @@ const StyledComponent = styled("footer")(
   })
 )
 
-const Footer = (props: React.PropsWithChildren<{}>) => {
+const Footer = (props: React.PropsWithChildren<{ className?: string }>) => {
   const { breakpoints } = useTheme()
   const { data, state } = useLayoutCtx()
   const styles = createBreakpointStyles(

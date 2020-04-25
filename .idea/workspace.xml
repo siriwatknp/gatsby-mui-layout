@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="379f0352-c00b-464c-8853-cc7dfa64bbe1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/react.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/cart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/messenger.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/InsetSidebar/InsetSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/InsetSidebar/InsetSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package/components/Root/Root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Root/Root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/page-2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/standard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/standard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Content/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/Footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/InsetAvoidingView/InsetAvoidingView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/InsetAvoidingView/InsetAvoidingView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package/components/InsetFooter/InsetFooter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/package/components/InsetFooter/InsetFooter.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

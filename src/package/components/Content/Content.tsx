@@ -14,7 +14,10 @@ const StyledComponent = styled("main")(
   })
 )
 
-const Content = ({ children, ...props }: React.PropsWithChildren<{}>) => {
+const Content = ({
+  children,
+  ...props
+}: React.PropsWithChildren<{ className?: string }>) => {
   const { breakpoints } = useTheme()
   const { data, state } = useLayoutCtx()
   const styles = createBreakpointStyles(

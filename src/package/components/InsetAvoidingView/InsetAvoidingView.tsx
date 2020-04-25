@@ -4,7 +4,9 @@ import { useLayoutCtx } from "../../core"
 import StyledProxy from "../StyledProxy"
 import InsetAvoidingViewCompiler from "../../compilers/InsetAvoidingViewCompiler"
 
-const InsetAvoidingView = (props: React.PropsWithChildren<{}>) => {
+const InsetAvoidingView = (
+  props: React.PropsWithChildren<{ className?: string }>
+) => {
   const { data } = useLayoutCtx()
   const { breakpoints } = useTheme()
   const styles = InsetAvoidingViewCompiler(
