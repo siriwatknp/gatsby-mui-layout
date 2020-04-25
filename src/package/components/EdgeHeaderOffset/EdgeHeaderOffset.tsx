@@ -23,7 +23,7 @@ const EdgeHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
   return (
     <StyledProxy
       className={cx("EdgeHeaderOffset", transition.smooth)}
-      styles={styles}
+      styles={{ ...styles, flexShrink: 0 }}
       style={inlineStyle}
     />
   )

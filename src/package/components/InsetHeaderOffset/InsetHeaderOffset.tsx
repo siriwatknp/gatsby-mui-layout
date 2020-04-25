@@ -23,7 +23,7 @@ const InsetHeaderOffset = ({ sidebarId }: { sidebarId: string }) => {
   return (
     <StyledProxy
       className={cx("InsetHeaderOffset", transition.smooth)}
-      styles={styles}
+      styles={{ ...styles, flexShrink: 0 }}
       style={inlineStyle}
     />
   )

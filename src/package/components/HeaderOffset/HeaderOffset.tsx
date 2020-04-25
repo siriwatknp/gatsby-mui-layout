@@ -10,7 +10,12 @@ const HeaderOffset = () => {
   const { data } = useLayoutCtx()
   const compiler = HeaderOffsetCompiler(data.header)
   const styles = createBreakpointStyles(compiler.getResultStyle(), breakpoints)
-  return <StyledProxy className={"HeaderOffset"} styles={styles} />
+  return (
+    <StyledProxy
+      className={"HeaderOffset"}
+      styles={{ ...styles, flexShrink: 0 }}
+    />
+  )
 }
 
 export default HeaderOffset
