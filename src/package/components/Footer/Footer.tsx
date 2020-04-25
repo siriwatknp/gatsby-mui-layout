@@ -20,7 +20,12 @@ const Footer = (props: React.PropsWithChildren<{}>) => {
     ContentCompiler(state, data.edgeSidebar).getResultStyle(data.footer.id),
     breakpoints
   )
-  return <StyledComponent {...props} styles={styles} />
+  return (
+    <StyledComponent
+      {...props}
+      styles={{ transition: "all 225ms", ...styles }}
+    />
+  )
 }
 
 export default Footer

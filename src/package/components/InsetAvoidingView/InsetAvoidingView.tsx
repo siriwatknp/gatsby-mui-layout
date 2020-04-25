@@ -10,7 +10,15 @@ const InsetAvoidingView = (props: React.PropsWithChildren<{}>) => {
   const styles = InsetAvoidingViewCompiler(
     data.insetSidebar
   ).getMediaQueryStyle(breakpoints)
-  return <StyledProxy {...props} styles={styles} />
+  return (
+    <StyledProxy
+      {...props}
+      styles={{
+        transition: "all 225ms",
+        ...styles,
+      }}
+    />
+  )
 }
 
 export default InsetAvoidingView

@@ -11,7 +11,7 @@ export const useInsetSidebar = (id: string) => {
   const { breakpoints } = useTheme<Theme>()
   const compiler = InsetSidebarCompiler(insetSidebar, header)
   const { root, body } = compiler.getResultStyle(id)
-  const variant = compiler.getVariant(id)
+  const variant = compiler.getVariant(id) // value won't change when viewport changes
   const hiddenRootStyles = createHiddenStyles(root, [], breakpoints)
   const hiddenBodyStyles = createHiddenStyles(body, [], breakpoints)
   return {

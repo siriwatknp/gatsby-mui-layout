@@ -26,6 +26,7 @@ const Content = ({ children, ...props }: React.PropsWithChildren<{}>) => {
     <StyledComponent
       {...props}
       styles={{
+        transition: "all 225ms",
         ...styles,
         ...(isFullScreen && { flexGrow: 1, minHeight: 0, display: "flex" }),
       }}
