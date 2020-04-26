@@ -3,12 +3,12 @@ import cx from "clsx"
 import { makeStyles } from "@material-ui/core/styles"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { DrawerProps } from "@material-ui/core/Drawer"
-import { useSidebar, SidebarProvider } from "../../core"
+import { useSidebar, SidebarProvider, useWindow } from "../../core"
 import { useBreakpointConfig, useSidebarAutoCollapse } from "../../core/hooks"
+import EdgeHeaderOffset from "../EdgeHeaderOffset"
 import PersistentDrawer from "./Persistent"
 import PermanentDrawer from "./Permanent"
 import TemporaryDrawer from "./Temporary"
-import EdgeHeaderOffset from "../EdgeHeaderOffset"
 import { createBreakpointStyles, createHiddenStyles } from "../../utils"
 import { transitionStyles } from "../../styles"
 import { EdgeSidebarConfig } from "../../types"
@@ -16,16 +16,18 @@ import { EdgeSidebarConfig } from "../../types"
 const useTransitionStyles = makeStyles(transitionStyles)
 
 const DrawerSidebar = ({
+  sidebarId,
   onClose,
   children,
   PaperProps,
+  ModalProps,
   SlideProps,
   ...props
 }: Omit<DrawerProps, "variant"> & {
   sidebarId: string
 }) => {
-  const sidebarId = props.sidebarId
   useSidebarAutoCollapse(sidebarId)
+  const { iDocument } = useWindow()
   const transition = useTransitionStyles()
   const [entered, setEntered] = React.useState(false)
   const { breakpoints } = useTheme()
@@ -51,6 +53,10 @@ const DrawerSidebar = ({
         (entered || config?.variant === "permanent") && transition.root,
         PaperProps?.className
       ),
+    },
+    ModalProps: {
+      container: iDocument.body,
+      ...ModalProps,
     },
     SlideProps: {
       ...SlideProps,

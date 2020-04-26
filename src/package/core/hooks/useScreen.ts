@@ -2,6 +2,7 @@ import React from "react"
 import debounce from "debounce"
 import useTheme from "@material-ui/core/styles/useTheme"
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints"
+import { useWindow } from "../Context"
 import mapWidthToScreen from "../../utils/mapWidthToScreen"
 
 function getWindowWidth(w: Window) {
@@ -10,11 +11,9 @@ function getWindowWidth(w: Window) {
 
 export const useScreen = (): Breakpoint => {
   const { breakpoints } = useTheme()
+  const { iWindow } = useWindow()
   const getScreen = (): Breakpoint =>
-    mapWidthToScreen(
-      getWindowWidth(typeof window === "object" ? window : undefined),
-      breakpoints
-    )
+    mapWidthToScreen(getWindowWidth(iWindow), breakpoints)
 
   const [screen, setScreen] = React.useState<Breakpoint>(getScreen())
   const updater = React.useRef(
@@ -24,9 +23,9 @@ export const useScreen = (): Breakpoint => {
   )
 
   React.useEffect(() => {
-    window.addEventListener("resize", updater.current)
+    iWindow.addEventListener("resize", updater.current)
     return () => {
-      window.removeEventListener("resize", updater.current)
+      iWindow.removeEventListener("resize", updater.current)
     }
   }, [])
 

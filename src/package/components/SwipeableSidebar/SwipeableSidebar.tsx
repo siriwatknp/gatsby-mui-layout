@@ -2,13 +2,13 @@ import React from "react"
 import cx from "clsx"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { SwipeableDrawerProps } from "@material-ui/core/SwipeableDrawer"
+import { useSidebar, SidebarProvider, useWindow } from "../../core"
+import { useBreakpointConfig, useSidebarAutoCollapse } from "../../core/hooks"
+import EdgeHeaderOffset from "../EdgeHeaderOffset"
 import PersistentSwipeableDrawer from "./Persistent"
 import PermanentSwipeableDrawer from "./Permanent"
 import TemporarySwipeableDrawer from "./Temporary"
-import { useSidebar, SidebarProvider } from "../../core"
-import { useBreakpointConfig, useSidebarAutoCollapse } from "../../core/hooks"
 import { createBreakpointStyles, createHiddenStyles } from "../../utils"
-import EdgeHeaderOffset from "../EdgeHeaderOffset"
 import { transitionStyles } from "../../styles"
 import { EdgeSidebarConfig } from "../../types"
 
@@ -19,6 +19,7 @@ const SwipeableSidebar = ({
   onOpen,
   children,
   PaperProps,
+  ModalProps,
   SlideProps,
   ...props
 }: Omit<SwipeableDrawerProps, "variant" | "open" | "onClose" | "onOpen"> & {
@@ -28,6 +29,7 @@ const SwipeableSidebar = ({
 }) => {
   const { sidebarId } = props
   useSidebarAutoCollapse(sidebarId)
+  const { iDocument } = useWindow()
   const transition = useTransitionStyles()
   const [entered, setEntered] = React.useState(false)
   const { breakpoints } = useTheme()
@@ -57,6 +59,10 @@ const SwipeableSidebar = ({
         (entered || config?.variant === "permanent") && transition.root,
         PaperProps?.className
       ),
+    },
+    ModalProps: {
+      container: iDocument.body,
+      ...ModalProps,
     },
     SlideProps: {
       ...SlideProps,
